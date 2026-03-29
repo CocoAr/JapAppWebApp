@@ -6,5 +6,5 @@ pages_build_output_dir = "dist"
 binding = "DB"
 database_name = "jap_vocab_db"
 # Replace with the id from `wrangler d1 create jap_vocab_db` before deploying remotely.
-database_id = "00000000-0000-0000-0000-000000000001"
+database_id = "7f02ac07-f92c-440d-9f2c-1aed0f151dfa"
 migrations_dir = "migrations"
