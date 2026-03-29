@@ -11,6 +11,8 @@ import { shuffle } from "../lib/shuffle";
 import { useAuth } from "../context/AuthContext";
 import { weakWords } from "../lib/progress";
 
+type StudyPhase = "prompt" | "revealWeak" | "revealKnownSelfCheck";
+
 export function StudySession() {
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode");
@@ -50,7 +52,7 @@ export function StudySession() {
   }, [mode, category, progress]);
 
   const [index, setIndex] = useState(0);
-  const [answered, setAnswered] = useState(false);
+  const [phase, setPhase] = useState<StudyPhase>("prompt");
   const [knownCount, setKnownCount] = useState(0);
   const [unknownCount, setUnknownCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -58,7 +60,7 @@ export function StudySession() {
 
   useEffect(() => {
     setIndex(0);
-    setAnswered(false);
+    setPhase("prompt");
     setKnownCount(0);
     setUnknownCount(0);
     setError(null);
@@ -126,43 +128,72 @@ export function StudySession() {
     [mode, category, navigate, mergeCategorySession, resolveLabel]
   );
 
-  const goNext = useCallback(() => {
-    if (!answered) return;
-    if (isLast) {
-      void finishSession(knownCount, unknownCount);
-      return;
-    }
-    setIndex((i) => i + 1);
-    setAnswered(false);
-  }, [answered, isLast, finishSession, knownCount, unknownCount]);
+  const advanceToNextOrFinish = useCallback(
+    (k: number, u: number) => {
+      if (isLast) {
+        void finishSession(k, u);
+        return;
+      }
+      setIndex((i) => i + 1);
+      setPhase("prompt");
+    },
+    [isLast, finishSession]
+  );
 
-  const onKnew = useCallback(async () => {
-    if (answered || !current) return;
-    try {
-      await apiPostWord(current.id, "known");
-      mergeWordProgress(current.id, "known");
-      setKnownCount((c) => c + 1);
-      setAnswered(true);
-      setError(null);
-    } catch (e) {
-      if (e instanceof ApiError) setError(e.message);
-      else setError("Error de red.");
-    }
-  }, [answered, current, mergeWordProgress]);
+  const goNext = useCallback(() => {
+    if (phase !== "revealWeak") return;
+    advanceToNextOrFinish(knownCount, unknownCount);
+  }, [phase, advanceToNextOrFinish, knownCount, unknownCount]);
+
+  /** Lo sabía: solo muestra la respuesta y la autocomprobación (sin guardar aún). */
+  const onKnew = useCallback(() => {
+    if (phase !== "prompt" || !current) return;
+    setPhase("revealKnownSelfCheck");
+  }, [phase, current]);
 
   const onUnknown = useCallback(async () => {
-    if (answered || !current) return;
+    if (phase !== "prompt" || !current) return;
     try {
       await apiPostWord(current.id, "weak");
       mergeWordProgress(current.id, "weak");
       setUnknownCount((c) => c + 1);
-      setAnswered(true);
+      setPhase("revealWeak");
       setError(null);
     } catch (e) {
       if (e instanceof ApiError) setError(e.message);
       else setError("Error de red.");
     }
-  }, [answered, current, mergeWordProgress]);
+  }, [phase, current, mergeWordProgress]);
+
+  const onSelfCorrect = useCallback(async () => {
+    if (phase !== "revealKnownSelfCheck" || !current) return;
+    try {
+      await apiPostWord(current.id, "known");
+      mergeWordProgress(current.id, "known");
+      const newK = knownCount + 1;
+      setKnownCount(newK);
+      setError(null);
+      advanceToNextOrFinish(newK, unknownCount);
+    } catch (e) {
+      if (e instanceof ApiError) setError(e.message);
+      else setError("Error de red.");
+    }
+  }, [phase, current, mergeWordProgress, knownCount, unknownCount, advanceToNextOrFinish]);
+
+  const onSelfWrong = useCallback(async () => {
+    if (phase !== "revealKnownSelfCheck" || !current) return;
+    try {
+      await apiPostWord(current.id, "weak");
+      mergeWordProgress(current.id, "weak");
+      const newU = unknownCount + 1;
+      setUnknownCount(newU);
+      setError(null);
+      advanceToNextOrFinish(knownCount, newU);
+    } catch (e) {
+      if (e instanceof ApiError) setError(e.message);
+      else setError("Error de red.");
+    }
+  }, [phase, current, mergeWordProgress, knownCount, unknownCount, advanceToNextOrFinish]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -171,25 +202,36 @@ export function StudySession() {
         navigate(-1);
         return;
       }
-      if (!answered) {
-        if (e.key === "j" || e.key === "J") {
+      if (phase === "prompt") {
+        if (e.key === "ArrowLeft") {
           e.preventDefault();
-          void onKnew();
-        }
-        if (e.key === "k" || e.key === "K") {
+          onKnew();
+        } else if (e.key === "ArrowRight") {
           e.preventDefault();
           void onUnknown();
         }
         return;
       }
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        goNext();
+      if (phase === "revealWeak") {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          goNext();
+        }
+        return;
+      }
+      if (phase === "revealKnownSelfCheck") {
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          void onSelfCorrect();
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          void onSelfWrong();
+        }
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [answered, onKnew, onUnknown, goNext, navigate]);
+  }, [phase, onKnew, onUnknown, goNext, onSelfCorrect, onSelfWrong, navigate]);
 
   if (!mode || (mode !== "weak" && !category)) {
     return (
@@ -224,23 +266,36 @@ export function StudySession() {
       </p>
       {error ? <p className="form-error">{error}</p> : null}
       <div className="hiragana-display">{current.hiragana}</div>
-      {answered ? (
+      {phase === "revealWeak" ? (
         <div className="reveal">
           <p className="spanish-reveal">{current.spanish}</p>
           <button type="button" className="btn btn-primary btn-large" onClick={goNext}>
             {isLast ? "Ver resumen" : "Siguiente"}
           </button>
-          <p className="muted hints">Enter · Espacio · Esc = volver</p>
+          <p className="muted hints">→ siguiente · Esc = volver</p>
+        </div>
+      ) : phase === "revealKnownSelfCheck" ? (
+        <div className="reveal">
+          <p className="spanish-reveal">{current.spanish}</p>
+          <div className="answer-row">
+            <button type="button" className="btn btn-known btn-large" onClick={() => void onSelfCorrect()}>
+              Estaba en lo correcto
+            </button>
+            <button type="button" className="btn btn-unknown btn-large" onClick={() => void onSelfWrong()}>
+              Me equivoqué
+            </button>
+          </div>
+          <p className="muted hints">← correcto · → me equivoqué · Esc = volver</p>
         </div>
       ) : (
         <div className="answer-row">
-          <button type="button" className="btn btn-known btn-large" onClick={() => void onKnew()}>
+          <button type="button" className="btn btn-known btn-large" onClick={onKnew}>
             Lo sabía
           </button>
           <button type="button" className="btn btn-unknown btn-large" onClick={() => void onUnknown()}>
             No lo sabía
           </button>
-          <p className="muted hints">J = sabía · K = no sabía · Esc = volver</p>
+          <p className="muted hints">← lo sabía · → no lo sabía · Esc = volver</p>
         </div>
       )}
     </div>
