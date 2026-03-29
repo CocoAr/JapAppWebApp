@@ -1,0 +1,1553 @@
+{
+  "pages": [
+    {
+      "id": "page_1",
+      "label": "Nivel 1"
+    },
+    {
+      "id": "page_2",
+      "label": "Nivel 2"
+    },
+    {
+      "id": "page_3",
+      "label": "Nivel 3"
+    },
+    {
+      "id": "page_4",
+      "label": "Nivel 4"
+    },
+    {
+      "id": "page_5",
+      "label": "Nivel 5"
+    },
+    {
+      "id": "page_6",
+      "label": "Nivel 6"
+    },
+    {
+      "id": "page_7",
+      "label": "Nivel 7"
+    },
+    {
+      "id": "page_8",
+      "label": "Nivel 8"
+    },
+    {
+      "id": "page_9",
+      "label": "Nivel 9"
+    }
+  ],
+  "topics": [
+    {
+      "id": "people_relationships",
+      "label": "Personas y relaciones"
+    },
+    {
+      "id": "body",
+      "label": "Cuerpo"
+    },
+    {
+      "id": "home_places_buildings",
+      "label": "Hogar, lugares y edificios"
+    },
+    {
+      "id": "nature_weather_landscape",
+      "label": "Naturaleza, clima y paisaje"
+    },
+    {
+      "id": "animals",
+      "label": "Animales"
+    },
+    {
+      "id": "food_drink",
+      "label": "Comida y bebida"
+    },
+    {
+      "id": "everyday_objects",
+      "label": "Objetos cotidianos"
+    },
+    {
+      "id": "transport",
+      "label": "Transporte"
+    },
+    {
+      "id": "study_language_communication",
+      "label": "Estudio, idioma y comunicación"
+    },
+    {
+      "id": "time_calendar",
+      "label": "Tiempo y calendario"
+    },
+    {
+      "id": "numbers",
+      "label": "Números"
+    },
+    {
+      "id": "basic_expressions_directions",
+      "label": "Expresiones básicas y direcciones"
+    },
+    {
+      "id": "work_daily_life",
+      "label": "Trabajo y vida diaria"
+    },
+    {
+      "id": "hobbies_leisure",
+      "label": "Pasatiempos y ocio"
+    },
+    {
+      "id": "colors",
+      "label": "Colores"
+    }
+  ],
+  "words": [
+    {
+      "id": "w001",
+      "hiragana": "あい",
+      "spanish": "amor",
+      "page": "page_1",
+      "topics": [
+        "people_relationships",
+        "work_daily_life"
+      ]
+    },
+    {
+      "id": "w002",
+      "hiragana": "あお",
+      "spanish": "azul",
+      "page": "page_1",
+      "topics": [
+        "colors"
+      ]
+    },
+    {
+      "id": "w003",
+      "hiragana": "あか",
+      "spanish": "rojo",
+      "page": "page_1",
+      "topics": [
+        "colors"
+      ]
+    },
+    {
+      "id": "w004",
+      "hiragana": "いえ",
+      "spanish": "casa",
+      "page": "page_1",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w005",
+      "hiragana": "うえ",
+      "spanish": "arriba",
+      "page": "page_1",
+      "topics": [
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w006",
+      "hiragana": "え",
+      "spanish": "dibujo / imagen",
+      "page": "page_1",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w007",
+      "hiragana": "かお",
+      "spanish": "cara",
+      "page": "page_1",
+      "topics": [
+        "body"
+      ]
+    },
+    {
+      "id": "w008",
+      "hiragana": "き",
+      "spanish": "árbol",
+      "page": "page_1",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w009",
+      "hiragana": "かぎ",
+      "spanish": "llave",
+      "page": "page_1",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w010",
+      "hiragana": "こえ",
+      "spanish": "voz",
+      "page": "page_1",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w011",
+      "hiragana": "ここ",
+      "spanish": "aquí",
+      "page": "page_1",
+      "topics": [
+        "basic_expressions_directions",
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w012",
+      "hiragana": "ご",
+      "spanish": "cinco",
+      "page": "page_1",
+      "topics": [
+        "numbers"
+      ]
+    },
+    {
+      "id": "w013",
+      "hiragana": "がいこくご",
+      "spanish": "idioma extranjero",
+      "page": "page_1",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w014",
+      "hiragana": "あさ",
+      "spanish": "mañana",
+      "page": "page_2",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w015",
+      "hiragana": "あし",
+      "spanish": "pie / pierna",
+      "page": "page_2",
+      "topics": [
+        "body"
+      ]
+    },
+    {
+      "id": "w016",
+      "hiragana": "あじ",
+      "spanish": "sabor",
+      "page": "page_2",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w017",
+      "hiragana": "いし",
+      "spanish": "piedra",
+      "page": "page_2",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w018",
+      "hiragana": "いす",
+      "spanish": "silla",
+      "page": "page_2",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w019",
+      "hiragana": "うさぎ",
+      "spanish": "conejo",
+      "page": "page_2",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w020",
+      "hiragana": "うし",
+      "spanish": "vaca",
+      "page": "page_2",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w021",
+      "hiragana": "おかし",
+      "spanish": "golosina / dulce",
+      "page": "page_2",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w022",
+      "hiragana": "かさ",
+      "spanish": "paraguas",
+      "page": "page_2",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w023",
+      "hiragana": "かぞく",
+      "spanish": "familia",
+      "page": "page_2",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w024",
+      "hiragana": "さけ",
+      "spanish": "alcohol / sake",
+      "page": "page_2",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w025",
+      "hiragana": "すし",
+      "spanish": "sushi",
+      "page": "page_2",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w026",
+      "hiragana": "あした",
+      "spanish": "mañana",
+      "page": "page_2",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w027",
+      "hiragana": "いち",
+      "spanish": "uno",
+      "page": "page_2",
+      "topics": [
+        "numbers"
+      ]
+    },
+    {
+      "id": "w028",
+      "hiragana": "いちご",
+      "spanish": "frutilla",
+      "page": "page_2",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w029",
+      "hiragana": "うち",
+      "spanish": "casa / hogar",
+      "page": "page_2",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w030",
+      "hiragana": "うけつけ",
+      "spanish": "recepción",
+      "page": "page_2",
+      "topics": [
+        "work_daily_life",
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w031",
+      "hiragana": "おとこ",
+      "spanish": "hombre",
+      "page": "page_2",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w032",
+      "hiragana": "くつ",
+      "spanish": "zapatos",
+      "page": "page_2",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w033",
+      "hiragana": "くつした",
+      "spanish": "medias / calcetines",
+      "page": "page_2",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w034",
+      "hiragana": "ことし",
+      "spanish": "este año",
+      "page": "page_3",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w035",
+      "hiragana": "した",
+      "spanish": "abajo / debajo",
+      "page": "page_3",
+      "topics": [
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w036",
+      "hiragana": "しごと",
+      "spanish": "trabajo",
+      "page": "page_3",
+      "topics": [
+        "work_daily_life"
+      ]
+    },
+    {
+      "id": "w037",
+      "hiragana": "だいがく",
+      "spanish": "universidad",
+      "page": "page_3",
+      "topics": [
+        "home_places_buildings",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w038",
+      "hiragana": "ち",
+      "spanish": "sangre",
+      "page": "page_3",
+      "topics": [
+        "body"
+      ]
+    },
+    {
+      "id": "w039",
+      "hiragana": "ちかてつ",
+      "spanish": "subte / metro",
+      "page": "page_3",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w040",
+      "hiragana": "つき",
+      "spanish": "luna",
+      "page": "page_3",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w041",
+      "hiragana": "つくえ",
+      "spanish": "escritorio / mesa",
+      "page": "page_3",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w042",
+      "hiragana": "て",
+      "spanish": "mano",
+      "page": "page_3",
+      "topics": [
+        "body"
+      ]
+    },
+    {
+      "id": "w043",
+      "hiragana": "さかな",
+      "spanish": "pez / pescado",
+      "page": "page_4",
+      "topics": [
+        "animals",
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w044",
+      "hiragana": "なつ",
+      "spanish": "verano",
+      "page": "page_4",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w045",
+      "hiragana": "にく",
+      "spanish": "carne",
+      "page": "page_4",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w046",
+      "hiragana": "くに",
+      "spanish": "país",
+      "page": "page_4",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w047",
+      "hiragana": "にじ",
+      "spanish": "arcoíris",
+      "page": "page_4",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w048",
+      "hiragana": "いぬ",
+      "spanish": "perro",
+      "page": "page_4",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w049",
+      "hiragana": "ねこ",
+      "spanish": "gato",
+      "page": "page_4",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w050",
+      "hiragana": "おかね",
+      "spanish": "dinero",
+      "page": "page_4",
+      "topics": [
+        "work_daily_life"
+      ]
+    },
+    {
+      "id": "w051",
+      "hiragana": "はい",
+      "spanish": "sí",
+      "page": "page_4",
+      "topics": [
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w052",
+      "hiragana": "はし",
+      "spanish": "palillos",
+      "page": "page_4",
+      "topics": [
+        "everyday_objects",
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w053",
+      "hiragana": "はな",
+      "spanish": "flor",
+      "page": "page_4",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w054",
+      "hiragana": "たばこ",
+      "spanish": "tabaco / cigarrillo",
+      "page": "page_4",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w055",
+      "hiragana": "はなび",
+      "spanish": "fuegos artificiales",
+      "page": "page_4",
+      "topics": [
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w056",
+      "hiragana": "ひと",
+      "spanish": "persona",
+      "page": "page_4",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w057",
+      "hiragana": "ふね",
+      "spanish": "barco",
+      "page": "page_4",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w058",
+      "hiragana": "ぶたにく",
+      "spanish": "carne de cerdo",
+      "page": "page_4",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w059",
+      "hiragana": "へび",
+      "spanish": "serpiente",
+      "page": "page_4",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w060",
+      "hiragana": "ほし",
+      "spanish": "estrella",
+      "page": "page_4",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w061",
+      "hiragana": "うま",
+      "spanish": "caballo",
+      "page": "page_5",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w062",
+      "hiragana": "たまご",
+      "spanish": "huevo",
+      "page": "page_5",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w063",
+      "hiragana": "まち",
+      "spanish": "ciudad / pueblo",
+      "page": "page_5",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w064",
+      "hiragana": "なまえ",
+      "spanish": "nombre",
+      "page": "page_5",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w065",
+      "hiragana": "うみ",
+      "spanish": "mar",
+      "page": "page_5",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w066",
+      "hiragana": "かみ",
+      "spanish": "papel",
+      "page": "page_5",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w067",
+      "hiragana": "みず",
+      "spanish": "agua",
+      "page": "page_5",
+      "topics": [
+        "food_drink",
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w068",
+      "hiragana": "みせ",
+      "spanish": "tienda / negocio",
+      "page": "page_5",
+      "topics": [
+        "work_daily_life",
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w069",
+      "hiragana": "てがみ",
+      "spanish": "carta",
+      "page": "page_5",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w070",
+      "hiragana": "はさみ",
+      "spanish": "tijeras",
+      "page": "page_5",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w071",
+      "hiragana": "むし",
+      "spanish": "insecto / bicho",
+      "page": "page_5",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w072",
+      "hiragana": "め",
+      "spanish": "ojo",
+      "page": "page_5",
+      "topics": [
+        "body"
+      ]
+    },
+    {
+      "id": "w073",
+      "hiragana": "あめ",
+      "spanish": "lluvia",
+      "page": "page_5",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w074",
+      "hiragana": "めがね",
+      "spanish": "anteojos / gafas",
+      "page": "page_5",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w075",
+      "hiragana": "くも",
+      "spanish": "nube",
+      "page": "page_5",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w076",
+      "hiragana": "ともだち",
+      "spanish": "amigo / amiga",
+      "page": "page_5",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w077",
+      "hiragana": "やさい",
+      "spanish": "verduras / vegetales",
+      "page": "page_5",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w078",
+      "hiragana": "へや",
+      "spanish": "habitación / cuarto",
+      "page": "page_5",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w079",
+      "hiragana": "やま",
+      "spanish": "montaña",
+      "page": "page_5",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w080",
+      "hiragana": "やすみ",
+      "spanish": "descanso / vacaciones / día libre",
+      "page": "page_5",
+      "topics": [
+        "work_daily_life",
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w081",
+      "hiragana": "ゆき",
+      "spanish": "nieve",
+      "page": "page_5",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w082",
+      "hiragana": "ふゆ",
+      "spanish": "invierno",
+      "page": "page_5",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w083",
+      "hiragana": "そら",
+      "spanish": "cielo",
+      "page": "page_6",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w084",
+      "hiragana": "つり",
+      "spanish": "pesca",
+      "page": "page_6",
+      "topics": [
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w085",
+      "hiragana": "とり",
+      "spanish": "pájaro",
+      "page": "page_6",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w086",
+      "hiragana": "とりにく",
+      "spanish": "carne de pollo",
+      "page": "page_6",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w087",
+      "hiragana": "さる",
+      "spanish": "mono",
+      "page": "page_6",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w088",
+      "hiragana": "つる",
+      "spanish": "grulla",
+      "page": "page_6",
+      "topics": [
+        "animals"
+      ]
+    },
+    {
+      "id": "w089",
+      "hiragana": "ひる",
+      "spanish": "mediodía / día",
+      "page": "page_6",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w090",
+      "hiragana": "くるま",
+      "spanish": "auto / coche",
+      "page": "page_6",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w091",
+      "hiragana": "くろ",
+      "spanish": "negro",
+      "page": "page_6",
+      "topics": [
+        "colors"
+      ]
+    },
+    {
+      "id": "w092",
+      "hiragana": "しろ",
+      "spanish": "blanco",
+      "page": "page_6",
+      "topics": [
+        "colors"
+      ]
+    },
+    {
+      "id": "w093",
+      "hiragana": "かわ",
+      "spanish": "río",
+      "page": "page_6",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w094",
+      "hiragana": "わたし",
+      "spanish": "yo",
+      "page": "page_6",
+      "topics": [
+        "people_relationships",
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w095",
+      "hiragana": "おんがく",
+      "spanish": "música",
+      "page": "page_6",
+      "topics": [
+        "hobbies_leisure",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w096",
+      "hiragana": "おんな",
+      "spanish": "mujer",
+      "page": "page_6",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w097",
+      "hiragana": "ごはん",
+      "spanish": "arroz / comida",
+      "page": "page_6",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w098",
+      "hiragana": "あさごはん",
+      "spanish": "desayuno",
+      "page": "page_6",
+      "topics": [
+        "food_drink",
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w099",
+      "hiragana": "ひるごはん",
+      "spanish": "almuerzo",
+      "page": "page_6",
+      "topics": [
+        "food_drink",
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w100",
+      "hiragana": "よる",
+      "spanish": "noche",
+      "page": "page_6",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w101",
+      "hiragana": "ばんごはん",
+      "spanish": "cena",
+      "page": "page_6",
+      "topics": [
+        "food_drink",
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w102",
+      "hiragana": "せん",
+      "spanish": "mil",
+      "page": "page_6",
+      "topics": [
+        "numbers"
+      ]
+    },
+    {
+      "id": "w103",
+      "hiragana": "かばん",
+      "spanish": "bolso / cartera",
+      "page": "page_7",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w104",
+      "hiragana": "えんぴつ",
+      "spanish": "lápiz",
+      "page": "page_7",
+      "topics": [
+        "everyday_objects",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w105",
+      "hiragana": "しんぶん",
+      "spanish": "diario / periódico",
+      "page": "page_7",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w106",
+      "hiragana": "ほん",
+      "spanish": "libro",
+      "page": "page_7",
+      "topics": [
+        "everyday_objects",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w107",
+      "hiragana": "にほん",
+      "spanish": "Japón",
+      "page": "page_7",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w108",
+      "hiragana": "にほんご",
+      "spanish": "japonés",
+      "page": "page_7",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w109",
+      "hiragana": "りんご",
+      "spanish": "manzana",
+      "page": "page_7",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w110",
+      "hiragana": "でんわ",
+      "spanish": "teléfono",
+      "page": "page_7",
+      "topics": [
+        "study_language_communication",
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w111",
+      "hiragana": "しんかんせん",
+      "spanish": "tren bala",
+      "page": "page_7",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w112",
+      "hiragana": "ぎゅうにく",
+      "spanish": "carne vacuna / carne de res",
+      "page": "page_8",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w113",
+      "hiragana": "ぎゅうにゅう",
+      "spanish": "leche",
+      "page": "page_8",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w114",
+      "hiragana": "きょう",
+      "spanish": "hoy",
+      "page": "page_8",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w115",
+      "hiragana": "きょうしつ",
+      "spanish": "aula / salón de clases",
+      "page": "page_8",
+      "topics": [
+        "study_language_communication",
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w116",
+      "hiragana": "べんきょう",
+      "spanish": "estudio",
+      "page": "page_8",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w117",
+      "hiragana": "ゆうびんきょく",
+      "spanish": "correo / oficina de correos",
+      "page": "page_8",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w118",
+      "hiragana": "いしゃ",
+      "spanish": "médico",
+      "page": "page_8",
+      "topics": [
+        "people_relationships"
+      ]
+    },
+    {
+      "id": "w119",
+      "hiragana": "かいしゃ",
+      "spanish": "empresa / compañía",
+      "page": "page_8",
+      "topics": [
+        "work_daily_life",
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w120",
+      "hiragana": "じどうしゃ",
+      "spanish": "automóvil",
+      "page": "page_8",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w121",
+      "hiragana": "しゃしん",
+      "spanish": "foto / fotografía",
+      "page": "page_8",
+      "topics": [
+        "everyday_objects",
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w122",
+      "hiragana": "でんしゃ",
+      "spanish": "tren",
+      "page": "page_8",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w123",
+      "hiragana": "じてんしゃ",
+      "spanish": "bicicleta",
+      "page": "page_8",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w124",
+      "hiragana": "しゅくだい",
+      "spanish": "tarea",
+      "page": "page_8",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w125",
+      "hiragana": "びじゅつかん",
+      "spanish": "museo de arte",
+      "page": "page_8",
+      "topics": [
+        "home_places_buildings",
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w126",
+      "hiragana": "じしょ",
+      "spanish": "diccionario",
+      "page": "page_8",
+      "topics": [
+        "study_language_communication",
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w127",
+      "hiragana": "しょくどう",
+      "spanish": "comedor / cafetería",
+      "page": "page_8",
+      "topics": [
+        "home_places_buildings",
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w128",
+      "hiragana": "としょかん",
+      "spanish": "biblioteca",
+      "page": "page_8",
+      "topics": [
+        "home_places_buildings",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w129",
+      "hiragana": "たんじょうび",
+      "spanish": "cumpleaños",
+      "page": "page_8",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w130",
+      "hiragana": "おちゃ",
+      "spanish": "té",
+      "page": "page_8",
+      "topics": [
+        "food_drink"
+      ]
+    },
+    {
+      "id": "w131",
+      "hiragana": "ひゃく",
+      "spanish": "cien",
+      "page": "page_8",
+      "topics": [
+        "numbers"
+      ]
+    },
+    {
+      "id": "w132",
+      "hiragana": "びょういん",
+      "spanish": "hospital",
+      "page": "page_8",
+      "topics": [
+        "home_places_buildings"
+      ]
+    },
+    {
+      "id": "w133",
+      "hiragana": "きょうし",
+      "spanish": "docente / profesor",
+      "page": "page_8",
+      "topics": [
+        "people_relationships",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w134",
+      "hiragana": "いいえ",
+      "spanish": "no",
+      "page": "page_9",
+      "topics": [
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w135",
+      "hiragana": "えいが",
+      "spanish": "película",
+      "page": "page_9",
+      "topics": [
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w136",
+      "hiragana": "えいご",
+      "spanish": "inglés",
+      "page": "page_9",
+      "topics": [
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w137",
+      "hiragana": "くうこう",
+      "spanish": "aeropuerto",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "transport"
+      ]
+    },
+    {
+      "id": "w138",
+      "hiragana": "こうこう",
+      "spanish": "escuela secundaria",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w139",
+      "hiragana": "がくせい",
+      "spanish": "estudiante",
+      "page": "page_9",
+      "topics": [
+        "people_relationships",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w140",
+      "hiragana": "すいえい",
+      "spanish": "natación",
+      "page": "page_9",
+      "topics": [
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w141",
+      "hiragana": "けいたい",
+      "spanish": "celular / móvil",
+      "page": "page_9",
+      "topics": [
+        "everyday_objects",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w142",
+      "hiragana": "とけい",
+      "spanish": "reloj",
+      "page": "page_9",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w143",
+      "hiragana": "どうぞ",
+      "spanish": "por favor / adelante / aquí tiene",
+      "page": "page_9",
+      "topics": [
+        "basic_expressions_directions"
+      ]
+    },
+    {
+      "id": "w144",
+      "hiragana": "きのう",
+      "spanish": "ayer",
+      "page": "page_9",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w145",
+      "hiragana": "ひこうき",
+      "spanish": "avión",
+      "page": "page_9",
+      "topics": [
+        "transport"
+      ]
+    },
+    {
+      "id": "w146",
+      "hiragana": "どようび",
+      "spanish": "sábado",
+      "page": "page_9",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w147",
+      "hiragana": "れいぞうこ",
+      "spanish": "heladera / refrigerador",
+      "page": "page_9",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w148",
+      "hiragana": "えいがかん",
+      "spanish": "cine",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w149",
+      "hiragana": "こうえん",
+      "spanish": "parque",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "hobbies_leisure"
+      ]
+    },
+    {
+      "id": "w150",
+      "hiragana": "ぎんこう",
+      "spanish": "banco",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "work_daily_life"
+      ]
+    },
+    {
+      "id": "w151",
+      "hiragana": "あさって",
+      "spanish": "pasado mañana",
+      "page": "page_9",
+      "topics": [
+        "time_calendar"
+      ]
+    },
+    {
+      "id": "w152",
+      "hiragana": "がっこう",
+      "spanish": "escuela",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w153",
+      "hiragana": "きって",
+      "spanish": "sello / estampilla",
+      "page": "page_9",
+      "topics": [
+        "everyday_objects"
+      ]
+    },
+    {
+      "id": "w154",
+      "hiragana": "ざっし",
+      "spanish": "revista",
+      "page": "page_9",
+      "topics": [
+        "everyday_objects",
+        "study_language_communication"
+      ]
+    },
+    {
+      "id": "w155",
+      "hiragana": "はっぱ",
+      "spanish": "hoja",
+      "page": "page_9",
+      "topics": [
+        "nature_weather_landscape"
+      ]
+    },
+    {
+      "id": "w156",
+      "hiragana": "しっぽ",
+      "spanish": "cola",
+      "page": "page_9",
+      "topics": [
+        "body",
+        "animals"
+      ]
+    },
+    {
+      "id": "w157",
+      "hiragana": "きっさてん",
+      "spanish": "cafetería",
+      "page": "page_9",
+      "topics": [
+        "home_places_buildings",
+        "food_drink"
+      ]
+    }
+  ]
+}

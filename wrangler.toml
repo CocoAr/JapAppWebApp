@@ -1,0 +1,10 @@
+name = "jap-vocab-web"
+compatibility_date = "2024-11-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jap_vocab_db"
+# Replace with the id from `wrangler d1 create jap_vocab_db` before deploying remotely.
+database_id = "00000000-0000-0000-0000-000000000001"
+migrations_dir = "migrations"

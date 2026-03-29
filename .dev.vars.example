@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local `wrangler pages dev` (do not commit .dev.vars).
+# Use a long random string (32+ characters) in production via `wrangler pages secret put SESSION_SECRET`.
+
+SESSION_SECRET=dev-only-change-me-to-a-long-random-string-please-32chars
