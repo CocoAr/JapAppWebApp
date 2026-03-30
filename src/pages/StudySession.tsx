@@ -9,7 +9,7 @@ import {
 } from "../lib/api";
 import { shuffle } from "../lib/shuffle";
 import { useAuth } from "../context/AuthContext";
-import { weakWords } from "../lib/progress";
+import { weakWords, weakWordsForPage } from "../lib/progress";
 
 type StudyPhase = "prompt" | "revealWeak" | "revealKnownSelfCheck";
 
@@ -54,6 +54,11 @@ export function StudySession() {
       const all = vocabulary.words;
       setWords(shuffle([...all]).slice(0, Math.min(15, all.length)));
       listLockedRef.current = true;
+      return;
+    }
+    if (mode === "weakPage" && category && progress) {
+      setWords(shuffle(weakWordsForPage(category, progress)));
+      listLockedRef.current = true;
     }
   }, [mode, category, progress]);
 
@@ -77,15 +82,15 @@ export function StudySession() {
   const isLast = words.length > 0 && index >= words.length - 1;
 
   useEffect(() => {
-    if (mode !== "page" && mode !== "topic") return;
+    if (mode !== "page" && mode !== "topic" && mode !== "weakPage") return;
     if (!category) return;
     if (startedRef.current) return;
     startedRef.current = true;
-    const m = mode;
     const cat = category;
-    apiCategoryStarted(m, cat)
+    const apiMode = mode === "weakPage" ? "page" : mode;
+    apiCategoryStarted(apiMode, cat)
       .then(() => {
-        mergeCategoryStarted(m, cat);
+        mergeCategoryStarted(apiMode, cat);
       })
       .catch(() => {
         /* non-fatal */
@@ -95,6 +100,10 @@ export function StudySession() {
   const resolveLabel = useCallback(() => {
     if (mode === "page" && category) {
       return vocabulary.pages.find((p) => p.id === category)?.label ?? category;
+    }
+    if (mode === "weakPage" && category) {
+      const label = vocabulary.pages.find((p) => p.id === category)?.label ?? category;
+      return `${label} — palabras débiles`;
     }
     if (mode === "topic" && category) {
       return vocabulary.topics.find((t) => t.id === category)?.label ?? category;
@@ -111,6 +120,9 @@ export function StudySession() {
       const score = total > 0 ? Math.round((k / total) * 100) : 0;
       try {
         if (mode === "page" && category) {
+          await apiPostSession("page", category, score);
+          mergeCategorySession("page", category, score, true);
+        } else if (mode === "weakPage" && category) {
           await apiPostSession("page", category, score);
           mergeCategorySession("page", category, score, true);
         } else if (mode === "topic" && category) {
@@ -242,7 +254,8 @@ export function StudySession() {
     return () => window.removeEventListener("keydown", onKey);
   }, [phase, onKnew, onUnknown, goNext, onSelfCorrect, onSelfWrong, navigate]);
 
-  if (!mode || (mode !== "weak" && mode !== "random" && !category)) {
+  const needsCategory = mode === "page" || mode === "topic" || mode === "weakPage";
+  if (!mode || (needsCategory && !category)) {
     return (
       <div className="card">
         <p>Sesión inválida.</p>
@@ -257,11 +270,15 @@ export function StudySession() {
     return (
       <div className="card">
         <p>
-          {mode === "weak"
-            ? "Cargando palabras débiles…"
-            : mode === "random"
-              ? "No hay palabras en el vocabulario."
-              : "No hay palabras para esta sesión."}
+          {mode === "weakPage" && !progress
+            ? "Cargando progreso…"
+            : mode === "weak"
+              ? "Cargando palabras débiles…"
+              : mode === "weakPage"
+                ? "No tenés palabras débiles en este nivel."
+                : mode === "random"
+                  ? "No hay palabras en el vocabulario."
+                  : "No hay palabras para esta sesión."}
         </p>
         {mode !== "weak" && mode !== "random" ? (
           <button type="button" className="btn btn-primary" onClick={() => navigate(-1)}>

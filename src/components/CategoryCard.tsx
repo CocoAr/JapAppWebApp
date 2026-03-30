@@ -6,9 +6,10 @@ type Props = {
   lastScore: number | null;
   started: boolean;
   onClick: () => void;
+  disabled?: boolean;
 };
 
-export function CategoryCard({ title, mastery, lastScore, started, onClick }: Props) {
+export function CategoryCard({ title, mastery, lastScore, started, onClick, disabled }: Props) {
   const bg = !started ? cardGrey : masteryBackground(mastery);
   const last =
     lastScore === null || lastScore === undefined ? "Últ.: --" : `Últ.: ${Math.round(lastScore)}%`;
@@ -18,6 +19,7 @@ export function CategoryCard({ title, mastery, lastScore, started, onClick }: Pr
       type="button"
       className={`category-card ${!started ? "category-card--grey" : ""}`}
       onClick={onClick}
+      disabled={disabled}
       style={{ background: bg }}
     >
       <span className="category-card-title">{title}</span>

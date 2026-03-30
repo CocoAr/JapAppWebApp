@@ -31,3 +31,16 @@ export function weakWords(progress: ProgressPayload | null): VocabWord[] {
   }
   return out;
 }
+
+/** Weak words that belong to a given level (page). */
+export function weakWordsForPage(pageId: string, progress: ProgressPayload | null): VocabWord[] {
+  return getWordsForPage(pageId).filter((w) => getWordStatus(w.id, progress) === "weak");
+}
+
+/** 0–100: higher when fewer weak words remain in that page (same card scale as Por nivel). */
+export function weakPageMasteryPercent(pageId: string, progress: ProgressPayload | null): number {
+  const list = getWordsForPage(pageId);
+  if (list.length === 0) return 0;
+  const weak = weakWordsForPage(pageId, progress).length;
+  return Math.round((100 * (list.length - weak)) / list.length);
+}

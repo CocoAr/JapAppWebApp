@@ -10,6 +10,10 @@ export function Menu() {
           <span className="menu-tile-title">Por nivel</span>
           <span className="muted">Palabras por página del material</span>
         </Link>
+        <Link to="/app/train/weak-page" className="menu-tile">
+          <span className="menu-tile-title">Palabras débiles por nivel</span>
+          <span className="muted">Solo las que no sabés, por cada nivel</span>
+        </Link>
         <Link to="/app/train/topic" className="menu-tile">
           <span className="menu-tile-title">Por tema</span>
           <span className="muted">Agrupadas por tema</span>

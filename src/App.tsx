@@ -8,6 +8,7 @@ import { Menu } from "./pages/Menu";
 import { TrainByPage } from "./pages/TrainByPage";
 import { TrainByTopic } from "./pages/TrainByTopic";
 import { TrainWeak } from "./pages/TrainWeak";
+import { TrainWeakByPage } from "./pages/TrainWeakByPage";
 import { StudySession } from "./pages/StudySession";
 import { SessionSummary } from "./pages/SessionSummary";
 import { Account } from "./pages/Account";
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="train/page" element={<TrainByPage />} />
             <Route path="train/topic" element={<TrainByTopic />} />
             <Route path="train/weak" element={<TrainWeak />} />
+            <Route path="train/weak-page" element={<TrainWeakByPage />} />
             <Route path="session" element={<StudySession />} />
             <Route path="summary" element={<SessionSummary />} />
             <Route path="account" element={<Account />} />

@@ -52,6 +52,11 @@ export function SessionSummary() {
             Otro nivel
           </button>
         ) : null}
+        {mode === "weakPage" ? (
+          <button type="button" className="btn btn-primary" onClick={() => navigate("/app/train/weak-page")}>
+            Otro nivel (débiles)
+          </button>
+        ) : null}
         {mode === "topic" ? (
           <button type="button" className="btn btn-primary" onClick={() => navigate("/app/train/topic")}>
             Otro tema
