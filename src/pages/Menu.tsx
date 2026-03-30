@@ -20,7 +20,7 @@ export function Menu() {
         </Link>
         <Link to="/app/train/weak" className="menu-tile">
           <span className="menu-tile-title">Palabras débiles</span>
-          <span className="muted">Hasta 10 al azar</span>
+          <span className="muted">Hasta 10 palabras marcadas como "No lo sabía"</span>
         </Link>
       </div>
     </div>
