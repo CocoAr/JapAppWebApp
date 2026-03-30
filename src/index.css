@@ -217,15 +217,23 @@ a:hover {
 
 .menu-grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
 }
 
 .menu-tile {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  padding: 1.25rem;
+  padding: 0.95rem 0.75rem;
+  min-width: 0;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
