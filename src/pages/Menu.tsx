@@ -14,13 +14,13 @@ export function Menu() {
           <span className="menu-tile-title">Por tema</span>
           <span className="muted">Agrupadas por tema</span>
         </Link>
-        <Link to="/app/train/weak" className="menu-tile">
-          <span className="menu-tile-title">Palabras débiles</span>
-          <span className="muted">Hasta 10 al azar</span>
-        </Link>
         <Link to="/app/session?mode=random" className="menu-tile">
           <span className="menu-tile-title">Palabras al azar</span>
           <span className="muted">15 palabras únicas de todo el vocabulario</span>
+        </Link>
+        <Link to="/app/train/weak" className="menu-tile">
+          <span className="menu-tile-title">Palabras débiles</span>
+          <span className="muted">Hasta 10 al azar</span>
         </Link>
       </div>
     </div>

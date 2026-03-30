@@ -20,8 +20,8 @@ export function Layout() {
           <Link to="/app">Menú</Link>
           <Link to="/app/train/page">Por nivel</Link>
           <Link to="/app/train/topic">Por tema</Link>
-          <Link to="/app/train/weak">Débiles</Link>
           <Link to="/app/session?mode=random">Al azar</Link>
+          <Link to="/app/train/weak">Débiles</Link>
           <Link to="/app/account">Cuenta</Link>
         </nav>
         <div className="topbar-user">
