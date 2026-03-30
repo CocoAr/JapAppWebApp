@@ -48,6 +48,12 @@ export function StudySession() {
       const w = shuffle(weakWords(progress));
       setWords(w.slice(0, Math.min(10, w.length)));
       listLockedRef.current = true;
+      return;
+    }
+    if (mode === "random") {
+      const all = vocabulary.words;
+      setWords(shuffle([...all]).slice(0, Math.min(15, all.length)));
+      listLockedRef.current = true;
     }
   }, [mode, category, progress]);
 
@@ -92,6 +98,9 @@ export function StudySession() {
     }
     if (mode === "topic" && category) {
       return vocabulary.topics.find((t) => t.id === category)?.label ?? category;
+    }
+    if (mode === "random") {
+      return "Palabras al azar";
     }
     return "Palabras débiles";
   }, [mode, category]);
@@ -233,7 +242,7 @@ export function StudySession() {
     return () => window.removeEventListener("keydown", onKey);
   }, [phase, onKnew, onUnknown, goNext, onSelfCorrect, onSelfWrong, navigate]);
 
-  if (!mode || (mode !== "weak" && !category)) {
+  if (!mode || (mode !== "weak" && mode !== "random" && !category)) {
     return (
       <div className="card">
         <p>Sesión inválida.</p>
@@ -247,8 +256,14 @@ export function StudySession() {
   if (words.length === 0) {
     return (
       <div className="card">
-        <p>{mode === "weak" ? "Cargando palabras débiles…" : "No hay palabras para esta sesión."}</p>
-        {mode !== "weak" ? (
+        <p>
+          {mode === "weak"
+            ? "Cargando palabras débiles…"
+            : mode === "random"
+              ? "No hay palabras en el vocabulario."
+              : "No hay palabras para esta sesión."}
+        </p>
+        {mode !== "weak" && mode !== "random" ? (
           <button type="button" className="btn btn-primary" onClick={() => navigate(-1)}>
             Volver
           </button>

@@ -62,6 +62,11 @@ export function SessionSummary() {
             Palabras débiles
           </button>
         ) : null}
+        {mode === "random" ? (
+          <button type="button" className="btn btn-primary" onClick={() => navigate("/app/session?mode=random")}>
+            Otra sesión al azar
+          </button>
+        ) : null}
         <Link to="/app" className="btn btn-ghost">
           Menú principal
         </Link>

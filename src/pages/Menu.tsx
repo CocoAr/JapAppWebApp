@@ -18,6 +18,10 @@ export function Menu() {
           <span className="menu-tile-title">Palabras débiles</span>
           <span className="muted">Hasta 10 al azar</span>
         </Link>
+        <Link to="/app/session?mode=random" className="menu-tile">
+          <span className="menu-tile-title">Palabras al azar</span>
+          <span className="muted">15 palabras únicas de todo el vocabulario</span>
+        </Link>
       </div>
     </div>
   );
