@@ -47,6 +47,8 @@ export interface ProgressPayload {
     page: Record<string, { started: boolean; lastSessionScore: number | null }>;
     topic: Record<string, { started: boolean; lastSessionScore: number | null }>;
   };
+  /** True after the user dismissed the full-vocabulary celebration (persisted server-side). */
+  celebrationShown: boolean;
 }
 
 export const apiRegister = (username: string, pin: string) =>
@@ -59,7 +61,16 @@ export const apiLogout = () => api<{ ok: boolean }>("/api/logout", { method: "PO
 
 export const apiMe = () => api<{ user: User }>("/api/me");
 
-export const apiGetProgress = () => api<ProgressPayload>("/api/progress");
+export async function apiGetProgress(): Promise<ProgressPayload> {
+  const p = await api<ProgressPayload & { celebrationShown?: boolean }>("/api/progress");
+  return {
+    ...p,
+    celebrationShown: p.celebrationShown ?? false,
+  };
+}
+
+export const apiPostVocabCelebrationSeen = () =>
+  api<{ ok: boolean }>("/api/progress/vocab-celebration-seen", { method: "POST" });
 
 export const apiPostWord = (wordId: string, status: "known" | "weak") =>
   api<{ ok: boolean }>("/api/progress/word", { method: "POST", body: JSON.stringify({ wordId, status }) });

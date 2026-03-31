@@ -1,5 +1,6 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { VocabCelebrationHost } from "./VocabCelebrationHost";
 
 export function Layout() {
   const { user, logout } = useAuth();
@@ -12,6 +13,7 @@ export function Layout() {
 
   return (
     <div className="shell">
+      <VocabCelebrationHost />
       <header className="topbar">
         <Link to="/app" className="brand">
           Jap Vocab

@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { vocabulary, getWordsForPage, getWordsForTopic, type VocabWord } from "../data/vocabulary";
-import {
-  apiCategoryStarted,
-  apiPostSession,
-  apiPostWord,
-  ApiError,
-} from "../lib/api";
+import { apiCategoryStarted, apiPostSession, apiPostWord, ApiError } from "../lib/api";
 import { shuffle } from "../lib/shuffle";
 import { useAuth } from "../context/AuthContext";
-import { weakWords, weakWordsForPage } from "../lib/progress";
+import {
+  clearCelebrationAdvance,
+  isCelebrationModalOpen,
+  registerPendingCelebrationAdvance,
+} from "../lib/vocabCelebrationBridge";
+import { allVocabularyWordsKnown, weakWords, weakWordsForPage } from "../lib/progress";
 
 type StudyPhase = "prompt" | "revealWeak" | "revealKnownSelfCheck";
 
@@ -77,6 +77,10 @@ export function StudySession() {
     setError(null);
     startedRef.current = false;
   }, [mode, category]);
+
+  useEffect(() => {
+    return () => clearCelebrationAdvance();
+  }, []);
 
   const current = words[index];
   const isLast = words.length > 0 && index >= words.length - 1;
@@ -187,19 +191,34 @@ export function StudySession() {
   }, [phase, current, mergeWordProgress]);
 
   const onSelfCorrect = useCallback(async () => {
-    if (phase !== "revealKnownSelfCheck" || !current) return;
+    if (phase !== "revealKnownSelfCheck" || !current || !progress) return;
     try {
       await apiPostWord(current.id, "known");
       mergeWordProgress(current.id, "known");
       const newK = knownCount + 1;
       setKnownCount(newK);
       setError(null);
+      const mergedWords = { ...progress.words, [current.id]: "known" as const };
+      const shouldCelebrate =
+        !progress.celebrationShown && allVocabularyWordsKnown(mergedWords);
+      if (shouldCelebrate) {
+        registerPendingCelebrationAdvance({ newK, unknownCount }, advanceToNextOrFinish);
+        return;
+      }
       advanceToNextOrFinish(newK, unknownCount);
     } catch (e) {
       if (e instanceof ApiError) setError(e.message);
       else setError("Error de red.");
     }
-  }, [phase, current, mergeWordProgress, knownCount, unknownCount, advanceToNextOrFinish]);
+  }, [
+    phase,
+    current,
+    progress,
+    mergeWordProgress,
+    knownCount,
+    unknownCount,
+    advanceToNextOrFinish,
+  ]);
 
   const onSelfWrong = useCallback(async () => {
     if (phase !== "revealKnownSelfCheck" || !current) return;
@@ -218,6 +237,10 @@ export function StudySession() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (isCelebrationModalOpen()) {
+        e.preventDefault();
+        return;
+      }
       if (e.key === "Escape") {
         e.preventDefault();
         navigate(-1);

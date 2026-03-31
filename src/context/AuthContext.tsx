@@ -8,6 +8,7 @@ import {
   type ProgressPayload,
   type User,
 } from "../lib/api";
+import { clearCelebrationAdvance } from "../lib/vocabCelebrationBridge";
 
 type AuthContextValue = {
   user: User | null;
@@ -22,6 +23,7 @@ type AuthContextValue = {
     started: boolean
   ) => void;
   mergeCategoryStarted: (mode: "page" | "topic", categoryId: string) => void;
+  mergeCelebrationShown: () => void;
   login: (username: string, pin: string) => Promise<void>;
   register: (username: string, pin: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -84,6 +86,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const mergeCelebrationShown = useCallback(() => {
+    setProgress((p) => (p ? { ...p, celebrationShown: true } : null));
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -126,6 +132,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const logout = useCallback(async () => {
+    clearCelebrationAdvance();
     await apiLogout();
     setUser(null);
     setProgress(null);
@@ -140,6 +147,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       mergeWordProgress,
       mergeCategorySession,
       mergeCategoryStarted,
+      mergeCelebrationShown,
       login,
       register,
       logout,
@@ -152,6 +160,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       mergeWordProgress,
       mergeCategorySession,
       mergeCategoryStarted,
+      mergeCelebrationShown,
       login,
       register,
       logout,

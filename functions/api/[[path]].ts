@@ -38,6 +38,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === "/api/progress" && request.method === "GET") {
       return handleGetProgress(env, request);
     }
+    if (path === "/api/progress/vocab-celebration-seen" && request.method === "POST") {
+      return handlePostVocabCelebrationSeen(env, request);
+    }
     if (path === "/api/progress/word" && request.method === "POST") {
       return handlePostWord(env, request);
     }
@@ -189,7 +192,21 @@ async function handleGetProgress(env: Env, request: Request): Promise<Response> 
     };
   }
 
-  return json({ words: wordMap, categories: categoryProgress });
+  const seenRow = await env.DB.prepare("SELECT vocab_celebration_seen FROM users WHERE id = ?")
+    .bind(user.id)
+    .first<{ vocab_celebration_seen: number }>();
+  const celebrationShown = (seenRow?.vocab_celebration_seen ?? 0) === 1;
+
+  return json({ words: wordMap, categories: categoryProgress, celebrationShown });
+}
+
+async function handlePostVocabCelebrationSeen(env: Env, request: Request): Promise<Response> {
+  const user = await requireUser(env, request);
+  if (!user) return jsonError("No autenticado.", 401);
+
+  await env.DB.prepare("UPDATE users SET vocab_celebration_seen = 1 WHERE id = ?").bind(user.id).run();
+
+  return json({ ok: true });
 }
 
 async function handlePostWord(env: Env, request: Request): Promise<Response> {

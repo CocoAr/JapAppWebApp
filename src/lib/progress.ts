@@ -1,5 +1,10 @@
 import type { ProgressPayload } from "./api";
-import { getWordById, getWordsForPage, getWordsForTopic, type VocabWord } from "../data/vocabulary";
+import { getWordById, getWordsForPage, getWordsForTopic, vocabulary, type VocabWord } from "../data/vocabulary";
+
+/** True when every word in the vocabulary has status `known` in the given map. */
+export function allVocabularyWordsKnown(words: Record<string, "known" | "weak">): boolean {
+  return vocabulary.words.every((w) => words[w.id] === "known");
+}
 
 export function getWordStatus(wordId: string, progress: ProgressPayload | null): "untried" | "known" | "weak" {
   const s = progress?.words[wordId];
