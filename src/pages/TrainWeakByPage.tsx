@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { vocabulary } from "../data/vocabulary";
-import { CategoryCard } from "../components/CategoryCard";
+import { WeakPageCategoryCard } from "../components/WeakPageCategoryCard";
 import { useAuth } from "../context/AuthContext";
-import { weakPageMasteryPercent, weakWordsForPage } from "../lib/progress";
+import { weakWordsForPage } from "../lib/progress";
 
 export function TrainWeakByPage() {
   const { progress } = useAuth();
@@ -15,21 +15,15 @@ export function TrainWeakByPage() {
       <div className="category-grid">
         {vocabulary.pages.map((p) => {
           const weakList = weakWordsForPage(p.id, progress);
-          const hasWeak = weakList.length > 0;
-          const meta = progress?.categories.page[p.id];
-          const started = hasWeak;
-          const mastery = weakPageMasteryPercent(p.id, progress);
-          const last = meta?.lastSessionScore ?? null;
           return (
-            <CategoryCard
+            <WeakPageCategoryCard
               key={p.id}
               title={p.label}
-              mastery={mastery}
-              lastScore={last}
-              started={started}
-              disabled={!hasWeak}
+              pageId={p.id}
+              weakCount={weakList.length}
+              progress={progress}
               onClick={() => {
-                if (!hasWeak) return;
+                if (weakList.length === 0) return;
                 navigate(`/app/session?mode=weakPage&category=${encodeURIComponent(p.id)}`);
               }}
             />

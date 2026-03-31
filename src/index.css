@@ -313,6 +313,41 @@ a:hover {
   margin-left: auto;
 }
 
+.weak-page-card {
+  justify-content: flex-start;
+  gap: 0.65rem;
+  min-height: 118px;
+}
+
+.weak-page-card-title {
+  padding-right: 0;
+}
+
+.weak-page-card-message {
+  width: 100%;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: #141414;
+}
+
+.weak-page-card-count {
+  font-weight: 800;
+  font-size: 1.22rem;
+  letter-spacing: -0.02em;
+}
+
+.weak-page-card--complete .weak-page-card-message {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.weak-page-card--complete:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
 .empty-card {
   max-width: 480px;
   display: flex;
