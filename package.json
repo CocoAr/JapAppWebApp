@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:api": "wrangler pages dev dist --compatibility-date=2024-11-01 --port 8788",
+    "dev:setup": "npm run db:migrate:local && npm run build",
     "build": "tsc --noEmit && vite build",
     "preview": "wrangler pages dev dist --compatibility-date=2024-11-01",
     "cf-typegen": "wrangler types",

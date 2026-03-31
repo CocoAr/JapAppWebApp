@@ -6,3 +6,10 @@ dist
 .DS_Store
 .env
 *.log
+.env.*
+!.env.example
+!.dev.vars.example
+coverage
+*.tmp
+*.swp
+Thumbs.db

@@ -41,12 +41,29 @@ Las migraciones viven en `migrations/`. Aplicá el esquema a la base local:
 npx wrangler d1 migrations apply jap_vocab_db --local
 ```
 
+Esto aplica también la migración de la celebración (`0002_vocab_celebration.sql`).
+
+### 3.1 Assets de celebración
+
+Asegurate de tener estos archivos en `public/assets/celebration/`:
+
+- `omedetou-congratulations.gif`
+- `good-or-don-t-be_6tqUK6cZ.mp3`
+
+Con eso, el popup + audio se cargan automáticamente cuando corresponda.
+
 ### 4. Compilar el frontend una vez
 
 La API de Wrangler sirve la carpeta `dist/` (assets construidos). Primero generá `dist`:
 
 ```bash
 npm run build
+```
+
+Atajo para pasos 3 + 4:
+
+```bash
+npm run dev:setup
 ```
 
 ### 5. Desarrollo en dos terminales
@@ -74,6 +91,7 @@ Si cambiás código en `functions/`, reiniciá `npm run dev:api`. Si cambiás so
 | Comando | Descripción |
 |--------|-------------|
 | `npm run build` | `tsc --noEmit` + build de Vite → `dist/` |
+| `npm run dev:setup` | Migraciones locales D1 + build inicial de `dist/` |
 | `npm run dev` | Solo Vite (necesita `dev:api` para `/api`) |
 | `npm run dev:api` | Wrangler Pages dev sobre `dist/` + Functions + D1 local |
 | `npm run preview` | Servir `dist` con Wrangler (sin Vite) |
@@ -98,6 +116,7 @@ Rutas implementadas:
 | `POST` | `/api/progress/word` | Actualizar estado de una palabra (`known` / `weak`) |
 | `POST` | `/api/progress/session` | Guardar resultado de sesión (modo `page` o `topic`) |
 | `POST` | `/api/progress/category-started` | Marcar categoría como iniciada (tarjetas no grises) |
+| `POST` | `/api/progress/vocab-celebration-seen` | Marcar como visto el popup de celebración global |
 
 `GET /api/categories/page` y `GET /api/categories/topic` están alias a `GET /api/progress` para compatibilidad con la especificación.
 
