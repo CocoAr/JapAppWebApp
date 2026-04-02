@@ -1,0 +1,32 @@
+Jap Vocab — Palabras por categoría (tema)
+Cada entrada: hiragana (traducción al español). Una palabra puede aparecer en más de un tema.
+
+PERSONAS: あい (amor) かぞく (familia) おとこ (hombre) ひと (persona) なまえ (nombre) ともだち (amigo / amiga) わたし (yo) おんな (mujer)
+
+PROFESIONES Y ROLES: しごと (trabajo) いしゃ (médico) きょうし (docente / profesor) がくせい (estudiante)
+
+CUERPO: かお (cara) あし (pie / pierna) ち (sangre) て (mano) め (ojo)
+
+ANIMALES: うさぎ (conejo) うし (vaca) さかな (pez / pescado) いぬ (perro) ねこ (gato) へび (serpiente) うま (caballo) むし (insecto / bicho) とり (pájaro) さる (mono) つる (grulla) しっぽ (cola)
+
+NATURALEZA Y CLIMA: き (árbol) いし (piedra) つき (luna) にじ (arcoíris) はな (flor) ほし (estrella) うみ (mar) あめ (lluvia) くも (nube) やま (montaña) ゆき (nieve) そら (cielo) かわ (río) はっぱ (hoja)
+
+COMIDA Y BEBIDA: あじ (sabor) おかし (golosina / dulce) さけ (alcohol / sake) すし (sushi) いちご (frutilla) にく (carne) ぶたにく (carne de cerdo) たまご (huevo) みず (agua) やさい (verduras / vegetales) とりにく (carne de pollo) ごはん (arroz / comida) あさごはん (desayuno) ひるごはん (almuerzo) ばんごはん (cena) りんご (manzana) ぎゅうにく (carne vacuna / carne de res) ぎゅうにゅう (leche de vaca) おちゃ (té)
+
+OBJETOS COTIDIANOS: え (dibujo / imagen) かぎ (llave) いす (silla) かさ (paraguas) くつ (zapatos) くつした (medias / calcetines) つくえ (escritorio / mesa) おかね (dinero) はし (palillos) たばこ (tabaco / cigarrillo) かみ (papel) はさみ (tijeras) めがね (anteojos / gafas) かばん (bolso / cartera) えんぴつ (lápiz) ほん (libro) でんわ (teléfono) しゃしん (foto / fotografía) じしょ (diccionario) けいたい (celular / móvil) とけい (reloj) れいぞうこ (heladera / refrigerador) きって (sello / estampilla) ざっし (revista)
+
+LUGARES E INSTITUCIONES: いえ (casa) うち (casa / hogar) うけつけ (recepción) だいがく (universidad) くに (país) まち (ciudad / pueblo) みせ (tienda / negocio) へや (habitación / cuarto) にほん (Japón) きょうしつ (aula / salón de clases) ゆうびんきょく (correo / oficina de correos) かいしゃ (empresa / compañía) びじゅつかん (museo de arte) しょくどう (comedor / cafetería) としょかん (biblioteca) びょういん (hospital) くうこう (aeropuerto) こうこう (escuela secundaria) えいがかん (cine) こうえん (parque) ぎんこう (banco) がっこう (escuela) きっさてん (cafetería)
+
+TRANSPORTE: ちかてつ (subte / metro) ふね (barco) くるま (auto / coche) しんかんせん (tren bala) じどうしゃ (automóvil) でんしゃ (tren) じてんしゃ (bicicleta) ひこうき (avión)
+
+ESTUDIO E IDIOMA: こえ (voz) がいこくご (idioma extranjero) てがみ (carta) しんぶん (diario / periódico) にほんご (idioma japonés) べんきょう (estudio) しゅくだい (tarea) えいご (idioma inglés)
+
+TIEMPO Y CALENDARIO: あさ (mañana) あした (mañana) ことし (este año) なつ (verano) やすみ (descanso / vacaciones / día libre) ふゆ (invierno) ひる (mediodía / día) よる (noche) きょう (hoy) たんじょうび (cumpleaños) きのう (ayer) どようび (sábado) あさって (pasado mañana)
+
+NUMEROS: ご (cinco) いち (uno) せん (mil) ひゃく (cien)
+
+EXPRESIONES Y POSICIONES: うえ (arriba) ここ (aquí) した (abajo / debajo) はい (sí) いいえ (no) どうぞ (por favor / adelante / aquí tiene)
+
+PASATIEMPOS Y OCIO: はなび (fuegos artificiales) つり (pesca) おんがく (música) えいが (película) すいえい (natación)
+
+COLORES: あお (azul) あか (rojo) くろ (negro) しろ (blanco)

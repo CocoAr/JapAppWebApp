@@ -100,7 +100,9 @@ Si cambiás código en `functions/`, reiniciá `npm run dev:api`. Si cambiás so
 
 ## Datos de vocabulario
 
-El dataset completo está en `src/data/vocabulary.json` (mismo contenido que el proyecto de escritorio original). Tipos y helpers: `src/data/vocabulary.ts`. La corrección **página 1, ítem 11: ここ → aquí** está incluida.
+El dataset completo está en `src/data/vocabulary.json`. Cada palabra tiene **un solo tema** (taxonomía en español, ver `scripts/vocab-taxonomy-data.mjs`). El build falla si una palabra tiene 0 o más de un tema (`npm run validate:vocab`). Migración de IDs de tema en D1: `migrations/0003_topic_taxonomy.sql` y `docs/TAXONOMY_MIGRATION.md`.
+
+Tipos y helpers: `src/data/vocabulary.ts`.
 
 ## API (Pages Functions)
 

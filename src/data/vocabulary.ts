@@ -17,6 +17,7 @@ export interface VocabWord {
   hiragana: string;
   spanish: string;
   page: string;
+  /** Exactly one topic id per word (see `scripts/vocab-taxonomy-data.mjs`). */
   topics: string[];
 }
 

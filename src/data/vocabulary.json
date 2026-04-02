@@ -39,64 +39,64 @@
   ],
   "topics": [
     {
-      "id": "people_relationships",
-      "label": "Personas y relaciones"
+      "id": "personas",
+      "label": "PERSONAS"
     },
     {
-      "id": "body",
-      "label": "Cuerpo"
+      "id": "profesiones_y_roles",
+      "label": "PROFESIONES Y ROLES"
     },
     {
-      "id": "home_places_buildings",
-      "label": "Hogar, lugares y edificios"
+      "id": "cuerpo",
+      "label": "CUERPO"
     },
     {
-      "id": "nature_weather_landscape",
-      "label": "Naturaleza, clima y paisaje"
+      "id": "animales",
+      "label": "ANIMALES"
     },
     {
-      "id": "animals",
-      "label": "Animales"
+      "id": "naturaleza_y_clima",
+      "label": "NATURALEZA Y CLIMA"
     },
     {
-      "id": "food_drink",
-      "label": "Comida y bebida"
+      "id": "comida_y_bebida",
+      "label": "COMIDA Y BEBIDA"
     },
     {
-      "id": "everyday_objects",
-      "label": "Objetos cotidianos"
+      "id": "objetos_cotidianos",
+      "label": "OBJETOS COTIDIANOS"
     },
     {
-      "id": "transport",
-      "label": "Transporte"
+      "id": "lugares_e_instituciones",
+      "label": "LUGARES E INSTITUCIONES"
     },
     {
-      "id": "study_language_communication",
-      "label": "Estudio, idioma y comunicación"
+      "id": "transporte",
+      "label": "TRANSPORTE"
     },
     {
-      "id": "time_calendar",
-      "label": "Tiempo y calendario"
+      "id": "estudio_e_idioma",
+      "label": "ESTUDIO E IDIOMA"
     },
     {
-      "id": "numbers",
-      "label": "Números"
+      "id": "tiempo_y_calendario",
+      "label": "TIEMPO Y CALENDARIO"
     },
     {
-      "id": "basic_expressions_directions",
-      "label": "Expresiones básicas y direcciones"
+      "id": "numeros",
+      "label": "NUMEROS"
     },
     {
-      "id": "work_daily_life",
-      "label": "Trabajo y vida diaria"
+      "id": "expresiones_y_posiciones",
+      "label": "EXPRESIONES Y POSICIONES"
     },
     {
-      "id": "hobbies_leisure",
-      "label": "Pasatiempos y ocio"
+      "id": "pasatiempos_y_ocio",
+      "label": "PASATIEMPOS Y OCIO"
     },
     {
-      "id": "colors",
-      "label": "Colores"
+      "id": "colores",
+      "label": "COLORES"
     }
   ],
   "words": [
@@ -106,8 +106,7 @@
       "spanish": "amor",
       "page": "page_1",
       "topics": [
-        "people_relationships",
-        "work_daily_life"
+        "personas"
       ]
     },
     {
@@ -116,7 +115,7 @@
       "spanish": "azul",
       "page": "page_1",
       "topics": [
-        "colors"
+        "colores"
       ]
     },
     {
@@ -125,7 +124,7 @@
       "spanish": "rojo",
       "page": "page_1",
       "topics": [
-        "colors"
+        "colores"
       ]
     },
     {
@@ -134,7 +133,7 @@
       "spanish": "casa",
       "page": "page_1",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -143,7 +142,7 @@
       "spanish": "arriba",
       "page": "page_1",
       "topics": [
-        "basic_expressions_directions"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -152,7 +151,7 @@
       "spanish": "dibujo / imagen",
       "page": "page_1",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -161,7 +160,7 @@
       "spanish": "cara",
       "page": "page_1",
       "topics": [
-        "body"
+        "cuerpo"
       ]
     },
     {
@@ -170,7 +169,7 @@
       "spanish": "árbol",
       "page": "page_1",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -179,7 +178,7 @@
       "spanish": "llave",
       "page": "page_1",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -188,7 +187,7 @@
       "spanish": "voz",
       "page": "page_1",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -197,8 +196,7 @@
       "spanish": "aquí",
       "page": "page_1",
       "topics": [
-        "basic_expressions_directions",
-        "home_places_buildings"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -207,7 +205,7 @@
       "spanish": "cinco",
       "page": "page_1",
       "topics": [
-        "numbers"
+        "numeros"
       ]
     },
     {
@@ -216,7 +214,7 @@
       "spanish": "idioma extranjero",
       "page": "page_1",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -225,7 +223,7 @@
       "spanish": "mañana",
       "page": "page_2",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -234,7 +232,7 @@
       "spanish": "pie / pierna",
       "page": "page_2",
       "topics": [
-        "body"
+        "cuerpo"
       ]
     },
     {
@@ -243,7 +241,7 @@
       "spanish": "sabor",
       "page": "page_2",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -252,7 +250,7 @@
       "spanish": "piedra",
       "page": "page_2",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -261,7 +259,7 @@
       "spanish": "silla",
       "page": "page_2",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -270,7 +268,7 @@
       "spanish": "conejo",
       "page": "page_2",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -279,7 +277,7 @@
       "spanish": "vaca",
       "page": "page_2",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -288,7 +286,7 @@
       "spanish": "golosina / dulce",
       "page": "page_2",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -297,7 +295,7 @@
       "spanish": "paraguas",
       "page": "page_2",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -306,7 +304,7 @@
       "spanish": "familia",
       "page": "page_2",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -315,7 +313,7 @@
       "spanish": "alcohol / sake",
       "page": "page_2",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -324,7 +322,7 @@
       "spanish": "sushi",
       "page": "page_2",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -333,7 +331,7 @@
       "spanish": "mañana",
       "page": "page_2",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -342,7 +340,7 @@
       "spanish": "uno",
       "page": "page_2",
       "topics": [
-        "numbers"
+        "numeros"
       ]
     },
     {
@@ -351,7 +349,7 @@
       "spanish": "frutilla",
       "page": "page_2",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -360,7 +358,7 @@
       "spanish": "casa / hogar",
       "page": "page_2",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -369,8 +367,7 @@
       "spanish": "recepción",
       "page": "page_2",
       "topics": [
-        "work_daily_life",
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -379,7 +376,7 @@
       "spanish": "hombre",
       "page": "page_2",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -388,7 +385,7 @@
       "spanish": "zapatos",
       "page": "page_2",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -397,7 +394,7 @@
       "spanish": "medias / calcetines",
       "page": "page_2",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -406,7 +403,7 @@
       "spanish": "este año",
       "page": "page_3",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -415,7 +412,7 @@
       "spanish": "abajo / debajo",
       "page": "page_3",
       "topics": [
-        "basic_expressions_directions"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -424,7 +421,7 @@
       "spanish": "trabajo",
       "page": "page_3",
       "topics": [
-        "work_daily_life"
+        "profesiones_y_roles"
       ]
     },
     {
@@ -433,8 +430,7 @@
       "spanish": "universidad",
       "page": "page_3",
       "topics": [
-        "home_places_buildings",
-        "study_language_communication"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -443,7 +439,7 @@
       "spanish": "sangre",
       "page": "page_3",
       "topics": [
-        "body"
+        "cuerpo"
       ]
     },
     {
@@ -452,7 +448,7 @@
       "spanish": "subte / metro",
       "page": "page_3",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -461,7 +457,7 @@
       "spanish": "luna",
       "page": "page_3",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -470,7 +466,7 @@
       "spanish": "escritorio / mesa",
       "page": "page_3",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -479,7 +475,7 @@
       "spanish": "mano",
       "page": "page_3",
       "topics": [
-        "body"
+        "cuerpo"
       ]
     },
     {
@@ -488,8 +484,7 @@
       "spanish": "pez / pescado",
       "page": "page_4",
       "topics": [
-        "animals",
-        "food_drink"
+        "animales"
       ]
     },
     {
@@ -498,7 +493,7 @@
       "spanish": "verano",
       "page": "page_4",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -507,7 +502,7 @@
       "spanish": "carne",
       "page": "page_4",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -516,7 +511,7 @@
       "spanish": "país",
       "page": "page_4",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -525,7 +520,7 @@
       "spanish": "arcoíris",
       "page": "page_4",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -534,7 +529,7 @@
       "spanish": "perro",
       "page": "page_4",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -543,7 +538,7 @@
       "spanish": "gato",
       "page": "page_4",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -552,7 +547,7 @@
       "spanish": "dinero",
       "page": "page_4",
       "topics": [
-        "work_daily_life"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -561,7 +556,7 @@
       "spanish": "sí",
       "page": "page_4",
       "topics": [
-        "basic_expressions_directions"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -570,8 +565,7 @@
       "spanish": "palillos",
       "page": "page_4",
       "topics": [
-        "everyday_objects",
-        "food_drink"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -580,7 +574,7 @@
       "spanish": "flor",
       "page": "page_4",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -589,7 +583,7 @@
       "spanish": "tabaco / cigarrillo",
       "page": "page_4",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -598,7 +592,7 @@
       "spanish": "fuegos artificiales",
       "page": "page_4",
       "topics": [
-        "hobbies_leisure"
+        "pasatiempos_y_ocio"
       ]
     },
     {
@@ -607,7 +601,7 @@
       "spanish": "persona",
       "page": "page_4",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -616,7 +610,7 @@
       "spanish": "barco",
       "page": "page_4",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -625,7 +619,7 @@
       "spanish": "carne de cerdo",
       "page": "page_4",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -634,7 +628,7 @@
       "spanish": "serpiente",
       "page": "page_4",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -643,7 +637,7 @@
       "spanish": "estrella",
       "page": "page_4",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -652,7 +646,7 @@
       "spanish": "caballo",
       "page": "page_5",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -661,7 +655,7 @@
       "spanish": "huevo",
       "page": "page_5",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -670,7 +664,7 @@
       "spanish": "ciudad / pueblo",
       "page": "page_5",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -679,7 +673,7 @@
       "spanish": "nombre",
       "page": "page_5",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -688,7 +682,7 @@
       "spanish": "mar",
       "page": "page_5",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -697,7 +691,7 @@
       "spanish": "papel",
       "page": "page_5",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -706,8 +700,7 @@
       "spanish": "agua",
       "page": "page_5",
       "topics": [
-        "food_drink",
-        "nature_weather_landscape"
+        "comida_y_bebida"
       ]
     },
     {
@@ -716,8 +709,7 @@
       "spanish": "tienda / negocio",
       "page": "page_5",
       "topics": [
-        "work_daily_life",
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -726,7 +718,7 @@
       "spanish": "carta",
       "page": "page_5",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -735,7 +727,7 @@
       "spanish": "tijeras",
       "page": "page_5",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -744,7 +736,7 @@
       "spanish": "insecto / bicho",
       "page": "page_5",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -753,7 +745,7 @@
       "spanish": "ojo",
       "page": "page_5",
       "topics": [
-        "body"
+        "cuerpo"
       ]
     },
     {
@@ -762,7 +754,7 @@
       "spanish": "lluvia",
       "page": "page_5",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -771,7 +763,7 @@
       "spanish": "anteojos / gafas",
       "page": "page_5",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -780,7 +772,7 @@
       "spanish": "nube",
       "page": "page_5",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -789,7 +781,7 @@
       "spanish": "amigo / amiga",
       "page": "page_5",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -798,7 +790,7 @@
       "spanish": "verduras / vegetales",
       "page": "page_5",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -807,7 +799,7 @@
       "spanish": "habitación / cuarto",
       "page": "page_5",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -816,7 +808,7 @@
       "spanish": "montaña",
       "page": "page_5",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -825,8 +817,7 @@
       "spanish": "descanso / vacaciones / día libre",
       "page": "page_5",
       "topics": [
-        "work_daily_life",
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -835,7 +826,7 @@
       "spanish": "nieve",
       "page": "page_5",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -844,7 +835,7 @@
       "spanish": "invierno",
       "page": "page_5",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -853,7 +844,7 @@
       "spanish": "cielo",
       "page": "page_6",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -862,7 +853,7 @@
       "spanish": "pesca",
       "page": "page_6",
       "topics": [
-        "hobbies_leisure"
+        "pasatiempos_y_ocio"
       ]
     },
     {
@@ -871,7 +862,7 @@
       "spanish": "pájaro",
       "page": "page_6",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -880,7 +871,7 @@
       "spanish": "carne de pollo",
       "page": "page_6",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -889,7 +880,7 @@
       "spanish": "mono",
       "page": "page_6",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -898,7 +889,7 @@
       "spanish": "grulla",
       "page": "page_6",
       "topics": [
-        "animals"
+        "animales"
       ]
     },
     {
@@ -907,7 +898,7 @@
       "spanish": "mediodía / día",
       "page": "page_6",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -916,7 +907,7 @@
       "spanish": "auto / coche",
       "page": "page_6",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -925,7 +916,7 @@
       "spanish": "negro",
       "page": "page_6",
       "topics": [
-        "colors"
+        "colores"
       ]
     },
     {
@@ -934,7 +925,7 @@
       "spanish": "blanco",
       "page": "page_6",
       "topics": [
-        "colors"
+        "colores"
       ]
     },
     {
@@ -943,7 +934,7 @@
       "spanish": "río",
       "page": "page_6",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -952,8 +943,7 @@
       "spanish": "yo",
       "page": "page_6",
       "topics": [
-        "people_relationships",
-        "basic_expressions_directions"
+        "personas"
       ]
     },
     {
@@ -962,8 +952,7 @@
       "spanish": "música",
       "page": "page_6",
       "topics": [
-        "hobbies_leisure",
-        "study_language_communication"
+        "pasatiempos_y_ocio"
       ]
     },
     {
@@ -972,7 +961,7 @@
       "spanish": "mujer",
       "page": "page_6",
       "topics": [
-        "people_relationships"
+        "personas"
       ]
     },
     {
@@ -981,7 +970,7 @@
       "spanish": "arroz / comida",
       "page": "page_6",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -990,8 +979,7 @@
       "spanish": "desayuno",
       "page": "page_6",
       "topics": [
-        "food_drink",
-        "time_calendar"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1000,8 +988,7 @@
       "spanish": "almuerzo",
       "page": "page_6",
       "topics": [
-        "food_drink",
-        "time_calendar"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1010,7 +997,7 @@
       "spanish": "noche",
       "page": "page_6",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1019,8 +1006,7 @@
       "spanish": "cena",
       "page": "page_6",
       "topics": [
-        "food_drink",
-        "time_calendar"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1029,7 +1015,7 @@
       "spanish": "mil",
       "page": "page_6",
       "topics": [
-        "numbers"
+        "numeros"
       ]
     },
     {
@@ -1038,7 +1024,7 @@
       "spanish": "bolso / cartera",
       "page": "page_7",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1047,8 +1033,7 @@
       "spanish": "lápiz",
       "page": "page_7",
       "topics": [
-        "everyday_objects",
-        "study_language_communication"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1057,7 +1042,7 @@
       "spanish": "diario / periódico",
       "page": "page_7",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -1066,8 +1051,7 @@
       "spanish": "libro",
       "page": "page_7",
       "topics": [
-        "everyday_objects",
-        "study_language_communication"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1076,7 +1060,7 @@
       "spanish": "Japón",
       "page": "page_7",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1085,7 +1069,7 @@
       "spanish": "idioma japonés",
       "page": "page_7",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -1094,7 +1078,7 @@
       "spanish": "manzana",
       "page": "page_7",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1103,8 +1087,7 @@
       "spanish": "teléfono",
       "page": "page_7",
       "topics": [
-        "study_language_communication",
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1113,7 +1096,7 @@
       "spanish": "tren bala",
       "page": "page_7",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -1122,7 +1105,7 @@
       "spanish": "carne vacuna / carne de res",
       "page": "page_8",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1131,7 +1114,7 @@
       "spanish": "leche de vaca",
       "page": "page_8",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1140,7 +1123,7 @@
       "spanish": "hoy",
       "page": "page_8",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1149,8 +1132,7 @@
       "spanish": "aula / salón de clases",
       "page": "page_8",
       "topics": [
-        "study_language_communication",
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1159,7 +1141,7 @@
       "spanish": "estudio",
       "page": "page_8",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -1168,7 +1150,7 @@
       "spanish": "correo / oficina de correos",
       "page": "page_8",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1177,7 +1159,7 @@
       "spanish": "médico",
       "page": "page_8",
       "topics": [
-        "people_relationships"
+        "profesiones_y_roles"
       ]
     },
     {
@@ -1186,8 +1168,7 @@
       "spanish": "empresa / compañía",
       "page": "page_8",
       "topics": [
-        "work_daily_life",
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1196,7 +1177,7 @@
       "spanish": "automóvil",
       "page": "page_8",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -1205,8 +1186,7 @@
       "spanish": "foto / fotografía",
       "page": "page_8",
       "topics": [
-        "everyday_objects",
-        "hobbies_leisure"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1215,7 +1195,7 @@
       "spanish": "tren",
       "page": "page_8",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -1224,7 +1204,7 @@
       "spanish": "bicicleta",
       "page": "page_8",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -1233,7 +1213,7 @@
       "spanish": "tarea",
       "page": "page_8",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -1242,8 +1222,7 @@
       "spanish": "museo de arte",
       "page": "page_8",
       "topics": [
-        "home_places_buildings",
-        "hobbies_leisure"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1252,8 +1231,7 @@
       "spanish": "diccionario",
       "page": "page_8",
       "topics": [
-        "study_language_communication",
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1262,8 +1240,7 @@
       "spanish": "comedor / cafetería",
       "page": "page_8",
       "topics": [
-        "home_places_buildings",
-        "food_drink"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1272,8 +1249,7 @@
       "spanish": "biblioteca",
       "page": "page_8",
       "topics": [
-        "home_places_buildings",
-        "study_language_communication"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1282,7 +1258,7 @@
       "spanish": "cumpleaños",
       "page": "page_8",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1291,7 +1267,7 @@
       "spanish": "té",
       "page": "page_8",
       "topics": [
-        "food_drink"
+        "comida_y_bebida"
       ]
     },
     {
@@ -1300,7 +1276,7 @@
       "spanish": "cien",
       "page": "page_8",
       "topics": [
-        "numbers"
+        "numeros"
       ]
     },
     {
@@ -1309,7 +1285,7 @@
       "spanish": "hospital",
       "page": "page_8",
       "topics": [
-        "home_places_buildings"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1318,8 +1294,7 @@
       "spanish": "docente / profesor",
       "page": "page_8",
       "topics": [
-        "people_relationships",
-        "study_language_communication"
+        "profesiones_y_roles"
       ]
     },
     {
@@ -1328,7 +1303,7 @@
       "spanish": "no",
       "page": "page_9",
       "topics": [
-        "basic_expressions_directions"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -1337,7 +1312,7 @@
       "spanish": "película",
       "page": "page_9",
       "topics": [
-        "hobbies_leisure"
+        "pasatiempos_y_ocio"
       ]
     },
     {
@@ -1346,7 +1321,7 @@
       "spanish": "idioma inglés",
       "page": "page_9",
       "topics": [
-        "study_language_communication"
+        "estudio_e_idioma"
       ]
     },
     {
@@ -1355,8 +1330,7 @@
       "spanish": "aeropuerto",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "transport"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1365,8 +1339,7 @@
       "spanish": "escuela secundaria",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "study_language_communication"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1375,8 +1348,7 @@
       "spanish": "estudiante",
       "page": "page_9",
       "topics": [
-        "people_relationships",
-        "study_language_communication"
+        "profesiones_y_roles"
       ]
     },
     {
@@ -1385,7 +1357,7 @@
       "spanish": "natación",
       "page": "page_9",
       "topics": [
-        "hobbies_leisure"
+        "pasatiempos_y_ocio"
       ]
     },
     {
@@ -1394,8 +1366,7 @@
       "spanish": "celular / móvil",
       "page": "page_9",
       "topics": [
-        "everyday_objects",
-        "study_language_communication"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1404,7 +1375,7 @@
       "spanish": "reloj",
       "page": "page_9",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1413,7 +1384,7 @@
       "spanish": "por favor / adelante / aquí tiene",
       "page": "page_9",
       "topics": [
-        "basic_expressions_directions"
+        "expresiones_y_posiciones"
       ]
     },
     {
@@ -1422,7 +1393,7 @@
       "spanish": "ayer",
       "page": "page_9",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1431,7 +1402,7 @@
       "spanish": "avión",
       "page": "page_9",
       "topics": [
-        "transport"
+        "transporte"
       ]
     },
     {
@@ -1440,7 +1411,7 @@
       "spanish": "sábado",
       "page": "page_9",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1449,7 +1420,7 @@
       "spanish": "heladera / refrigerador",
       "page": "page_9",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1458,8 +1429,7 @@
       "spanish": "cine",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "hobbies_leisure"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1468,8 +1438,7 @@
       "spanish": "parque",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "hobbies_leisure"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1478,8 +1447,7 @@
       "spanish": "banco",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "work_daily_life"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1488,7 +1456,7 @@
       "spanish": "pasado mañana",
       "page": "page_9",
       "topics": [
-        "time_calendar"
+        "tiempo_y_calendario"
       ]
     },
     {
@@ -1497,8 +1465,7 @@
       "spanish": "escuela",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "study_language_communication"
+        "lugares_e_instituciones"
       ]
     },
     {
@@ -1507,7 +1474,7 @@
       "spanish": "sello / estampilla",
       "page": "page_9",
       "topics": [
-        "everyday_objects"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1516,8 +1483,7 @@
       "spanish": "revista",
       "page": "page_9",
       "topics": [
-        "everyday_objects",
-        "study_language_communication"
+        "objetos_cotidianos"
       ]
     },
     {
@@ -1526,7 +1492,7 @@
       "spanish": "hoja",
       "page": "page_9",
       "topics": [
-        "nature_weather_landscape"
+        "naturaleza_y_clima"
       ]
     },
     {
@@ -1535,8 +1501,7 @@
       "spanish": "cola",
       "page": "page_9",
       "topics": [
-        "body",
-        "animals"
+        "animales"
       ]
     },
     {
@@ -1545,8 +1510,7 @@
       "spanish": "cafetería",
       "page": "page_9",
       "topics": [
-        "home_places_buildings",
-        "food_drink"
+        "lugares_e_instituciones"
       ]
     }
   ]
