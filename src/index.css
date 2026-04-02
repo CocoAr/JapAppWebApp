@@ -81,10 +81,65 @@ a:hover {
   color: var(--text);
 }
 
+.topbar-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
 .topbar-user {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.speech-auto-box {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: var(--bg);
+  max-width: 220px;
+  text-align: right;
+}
+
+.speech-auto-label {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+
+.speech-auto-btn {
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.speech-auto-btn--on {
+  background: #2d6a45;
+  border-color: #3d8a5c;
+}
+
+.speech-auto-btn--on:hover {
+  filter: brightness(1.06);
+}
+
+.speech-auto-btn--off {
+  background: #6b2d2d;
+  border-color: #8a4040;
+}
+
+.speech-auto-btn--off:hover {
+  filter: brightness(1.06);
 }
 
 .main {
@@ -391,31 +446,6 @@ a:hover {
 
 .session-progress {
   margin-bottom: 1rem;
-}
-
-.speech-pref-card {
-  margin-bottom: 1.25rem;
-  max-width: 640px;
-}
-
-.speech-pref-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.speech-pref-label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.speech-pref-hint {
-  margin: 0;
-  font-size: 0.88rem;
-  max-width: 42rem;
 }
 
 .hiragana-display {
