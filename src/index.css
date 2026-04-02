@@ -357,13 +357,65 @@ a:hover {
 }
 
 .study-wrap {
+  position: relative;
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
 }
 
+.study-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  margin-bottom: 0.35rem;
+}
+
+.study-header-row .session-progress {
+  margin-bottom: 0;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.study-speech-replay {
+  flex-shrink: 0;
+  padding: 0.4rem 0.55rem;
+  line-height: 0;
+}
+
+.study-speech-replay-icon {
+  display: block;
+}
+
 .session-progress {
   margin-bottom: 1rem;
+}
+
+.speech-pref-card {
+  margin-bottom: 1.25rem;
+  max-width: 640px;
+}
+
+.speech-pref-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.speech-pref-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.speech-pref-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  max-width: 42rem;
 }
 
 .hiragana-display {

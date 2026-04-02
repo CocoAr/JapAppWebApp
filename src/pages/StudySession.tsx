@@ -10,6 +10,8 @@ import {
   registerPendingCelebrationAdvance,
 } from "../lib/vocabCelebrationBridge";
 import { allVocabularyWordsKnown, weakWords, weakWordsForPage } from "../lib/progress";
+import { useSpeechPreference } from "../context/SpeechPreferenceContext";
+import { cancelJapaneseSpeech, speakJapaneseHiragana } from "../lib/speechJapanese";
 
 type StudyPhase = "prompt" | "revealWeak" | "revealKnownSelfCheck";
 
@@ -19,6 +21,7 @@ export function StudySession() {
   const category = searchParams.get("category");
   const navigate = useNavigate();
   const { progress, mergeWordProgress, mergeCategorySession, mergeCategoryStarted } = useAuth();
+  const { autoSpeakJapanese } = useSpeechPreference();
 
   const [words, setWords] = useState<VocabWord[]>([]);
   const sessionKeyRef = useRef("");
@@ -68,6 +71,10 @@ export function StudySession() {
   const [unknownCount, setUnknownCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const startedRef = useRef(false);
+  const lastAutoSpeakKeyRef = useRef<string | null>(null);
+
+  const current = words[index];
+  const isLast = words.length > 0 && index >= words.length - 1;
 
   useEffect(() => {
     setIndex(0);
@@ -82,8 +89,23 @@ export function StudySession() {
     return () => clearCelebrationAdvance();
   }, []);
 
-  const current = words[index];
-  const isLast = words.length > 0 && index >= words.length - 1;
+  useEffect(() => {
+    return () => cancelJapaneseSpeech();
+  }, []);
+
+  useEffect(() => {
+    lastAutoSpeakKeyRef.current = null;
+  }, [autoSpeakJapanese]);
+
+  useEffect(() => {
+    if (!current || phase !== "prompt") return;
+    if (isCelebrationModalOpen()) return;
+    if (!autoSpeakJapanese) return;
+    const key = `${current.id}:${index}`;
+    if (lastAutoSpeakKeyRef.current === key) return;
+    lastAutoSpeakKeyRef.current = key;
+    speakJapaneseHiragana(current.hiragana);
+  }, [current?.id, current?.hiragana, index, phase, autoSpeakJapanese]);
 
   useEffect(() => {
     if (mode !== "page" && mode !== "topic" && mode !== "weakPage") return;
@@ -316,9 +338,25 @@ export function StudySession() {
 
   return (
     <div className="study-wrap">
-      <p className="muted session-progress">
-        {index + 1} / {words.length}
-      </p>
+      <div className="study-header-row">
+        <p className="muted session-progress">
+          {index + 1} / {words.length}
+        </p>
+        <button
+          type="button"
+          className="btn btn-ghost study-speech-replay"
+          onClick={() => speakJapaneseHiragana(current.hiragana)}
+          title="Repetir pronunciación"
+          aria-label="Repetir pronunciación en japonés"
+        >
+          <svg className="study-speech-replay-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden>
+            <path
+              fill="currentColor"
+              d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"
+            />
+          </svg>
+        </button>
+      </div>
       {error ? <p className="form-error">{error}</p> : null}
       <div className="hiragana-display">{current.hiragana}</div>
       {phase === "revealWeak" ? (

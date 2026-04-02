@@ -1,10 +1,32 @@
 import { Link } from "react-router-dom";
+import { useSpeechPreference } from "../context/SpeechPreferenceContext";
 
 export function Menu() {
+  const { autoSpeakJapanese, toggleAutoSpeakJapanese } = useSpeechPreference();
+
   return (
     <div>
       <h1 className="page-title">Menú principal</h1>
       <p className="muted page-lead">Elegí cómo querés practicar.</p>
+      <div className="card speech-pref-card">
+        <div className="speech-pref-row">
+          <div>
+            <span className="speech-pref-label">Pronunciación automática (japonés)</span>
+            <p className="muted speech-pref-hint">
+              Si está activada, al estudiar se lee en voz alta cada palabra nueva. Podés repetir la lectura con el
+              botón en la sesión aunque esto esté desactivado.
+            </p>
+          </div>
+          <button
+            type="button"
+            className={autoSpeakJapanese ? "btn btn-primary" : "btn"}
+            onClick={toggleAutoSpeakJapanese}
+            aria-pressed={autoSpeakJapanese}
+          >
+            {autoSpeakJapanese ? "Activada" : "Desactivada"}
+          </button>
+        </div>
+      </div>
       <div className="menu-grid">
         <Link to="/app/train/page" className="menu-tile">
           <span className="menu-tile-title">Por nivel</span>
