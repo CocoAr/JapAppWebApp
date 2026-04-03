@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { SpeechAutoToggle } from "../components/SpeechAutoToggle";
 
 export function Menu() {
   return (
     <div>
-      <h1 className="page-title">Menú principal</h1>
+      <div className="menu-page-head">
+        <h1 className="page-title menu-page-title">Menú principal</h1>
+        <SpeechAutoToggle />
+      </div>
       <p className="muted page-lead">Elegí cómo querés practicar.</p>
       <div className="menu-grid">
         <Link to="/app/train/page" className="menu-tile">
