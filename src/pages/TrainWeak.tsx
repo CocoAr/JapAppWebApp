@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { weakWords } from "../lib/progress";
+import { scriptBase, useScriptParam } from "../lib/script";
 
 export function TrainWeak() {
+  const script = useScriptParam();
+  const base = scriptBase(script);
   const { progress } = useAuth();
   const navigate = useNavigate();
-  const weak = weakWords(progress);
+  const weak = weakWords(progress, script);
   const empty = weak.length === 0;
 
   return (
@@ -18,7 +21,7 @@ export function TrainWeak() {
         <div className="card empty-card">
           <p>No tenés palabras débiles todavía.</p>
           <p className="muted">Cuando marques “No lo sabía” en una palabra, aparecerá acá.</p>
-          <Link to="/app/train/page" className="btn btn-primary">
+          <Link to={`${base}/train/page`} className="btn btn-primary">
             Ir a practicar por nivel
           </Link>
         </div>
@@ -28,7 +31,7 @@ export function TrainWeak() {
             Tenés <strong>{weak.length}</strong> palabra{weak.length === 1 ? "" : "s"} débil
             {weak.length === 1 ? "" : "es"}.
           </p>
-          <button type="button" className="btn btn-primary" onClick={() => navigate("/app/session?mode=weak")}>
+          <button type="button" className="btn btn-primary" onClick={() => navigate(`${base}/session?mode=weak`)}>
             Empezar sesión
           </button>
         </div>

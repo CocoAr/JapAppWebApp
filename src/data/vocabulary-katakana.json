@@ -1,0 +1,1239 @@
+{
+  "pages": [
+    {
+      "id": "kt_page_1",
+      "label": "Nivel K 1 — Vocales y K"
+    },
+    {
+      "id": "kt_page_2",
+      "label": "Nivel K 2 — S y T (parte 1)"
+    },
+    {
+      "id": "kt_page_3",
+      "label": "Nivel K 3 — S y T (parte 2)"
+    },
+    {
+      "id": "kt_page_4",
+      "label": "Nivel K 4 — N y H (parte 1)"
+    },
+    {
+      "id": "kt_page_5",
+      "label": "Nivel K 5 — N y H (parte 2)"
+    },
+    {
+      "id": "kt_page_6",
+      "label": "Nivel K 6 — M e Y"
+    },
+    {
+      "id": "kt_page_7",
+      "label": "Nivel K 7 — R, W y ン (parte 1)"
+    },
+    {
+      "id": "kt_page_8",
+      "label": "Nivel K 8 — R, W y ン (parte 2)"
+    },
+    {
+      "id": "kt_page_9",
+      "label": "Nivel K 9 — R, W y ン (parte 3)"
+    },
+    {
+      "id": "kt_page_10",
+      "label": "Nivel K 10 — Combinaciones especiales (ようおん)"
+    }
+  ],
+  "topics": [
+    {
+      "id": "kt_comida_y_bebida",
+      "label": "COMIDA Y BEBIDA"
+    },
+    {
+      "id": "kt_paises_y_regiones",
+      "label": "PAÍSES Y REGIONES"
+    },
+    {
+      "id": "kt_deportes",
+      "label": "DEPORTES"
+    },
+    {
+      "id": "kt_ropa_y_accesorios",
+      "label": "ROPA Y ACCESORIOS"
+    },
+    {
+      "id": "kt_transporte",
+      "label": "TRANSPORTE"
+    },
+    {
+      "id": "kt_hogar_y_muebles",
+      "label": "HOGAR Y MUEBLES"
+    },
+    {
+      "id": "kt_objetos_cotidianos",
+      "label": "OBJETOS COTIDIANOS"
+    },
+    {
+      "id": "kt_tecnologia_y_medios",
+      "label": "TECNOLOGÍA Y MEDIOS"
+    },
+    {
+      "id": "kt_estudio_y_trabajo",
+      "label": "ESTUDIO Y TRABAJO"
+    },
+    {
+      "id": "kt_comercio_y_servicios",
+      "label": "COMERCIO Y SERVICIOS"
+    },
+    {
+      "id": "kt_ocio_y_cultura",
+      "label": "OCIO Y CULTURA"
+    },
+    {
+      "id": "kt_misc",
+      "label": "VARIOS"
+    }
+  ],
+  "words": [
+    {
+      "id": "kw001",
+      "katakana": "カカオ",
+      "spanish": "cacao",
+      "page": "kt_page_1",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw002",
+      "katakana": "キウイ",
+      "spanish": "kiwi",
+      "page": "kt_page_1",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw003",
+      "katakana": "ケーキ",
+      "spanish": "torta / pastel",
+      "page": "kt_page_1",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw004",
+      "katakana": "ココア",
+      "spanish": "cocoa / cacao caliente",
+      "page": "kt_page_1",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw005",
+      "katakana": "サーカス",
+      "spanish": "circo",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw006",
+      "katakana": "スキー",
+      "spanish": "esquí",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw007",
+      "katakana": "キス",
+      "spanish": "beso",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_misc"
+      ]
+    },
+    {
+      "id": "kw008",
+      "katakana": "スイス",
+      "spanish": "Suiza",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw009",
+      "katakana": "アイス",
+      "spanish": "hielo",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw010",
+      "katakana": "ステーキ",
+      "spanish": "bife / steak",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw011",
+      "katakana": "スーツ",
+      "spanish": "traje",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw012",
+      "katakana": "スカート",
+      "spanish": "pollera",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw013",
+      "katakana": "クイズ",
+      "spanish": "quiz / cuestionario",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw014",
+      "katakana": "セーター",
+      "spanish": "suéter / pulóver",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw015",
+      "katakana": "ソーセージ",
+      "spanish": "salchicha",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw016",
+      "katakana": "タクシー",
+      "spanish": "taxi",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_transporte"
+      ]
+    },
+    {
+      "id": "kw017",
+      "katakana": "ギター",
+      "spanish": "guitarra",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw018",
+      "katakana": "チーズ",
+      "spanish": "queso",
+      "page": "kt_page_2",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw019",
+      "katakana": "テスト",
+      "spanish": "examen / prueba",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw020",
+      "katakana": "デート",
+      "spanish": "cita",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_misc"
+      ]
+    },
+    {
+      "id": "kw021",
+      "katakana": "デザート",
+      "spanish": "postre",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw022",
+      "katakana": "ドア",
+      "spanish": "puerta",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw023",
+      "katakana": "ドイツ",
+      "spanish": "Alemania",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw024",
+      "katakana": "カード",
+      "spanish": "tarjeta",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw025",
+      "katakana": "クッキー",
+      "spanish": "galletita",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw026",
+      "katakana": "サッカー",
+      "spanish": "fútbol",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw027",
+      "katakana": "カッター",
+      "spanish": "cúter",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw028",
+      "katakana": "スイッチ",
+      "spanish": "interruptor",
+      "page": "kt_page_3",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw029",
+      "katakana": "カナダ",
+      "spanish": "Canadá",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw030",
+      "katakana": "テニス",
+      "spanish": "tenis",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw031",
+      "katakana": "カヌー",
+      "spanish": "canoa",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw032",
+      "katakana": "ネクタイ",
+      "spanish": "corbata",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw033",
+      "katakana": "ノート",
+      "spanish": "cuaderno",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw034",
+      "katakana": "バイク",
+      "spanish": "moto",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_transporte"
+      ]
+    },
+    {
+      "id": "kw035",
+      "katakana": "バス",
+      "spanish": "colectivo / micro",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_transporte"
+      ]
+    },
+    {
+      "id": "kw036",
+      "katakana": "バター",
+      "spanish": "manteca",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw037",
+      "katakana": "バナナ",
+      "spanish": "banana",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw038",
+      "katakana": "バッグ",
+      "spanish": "bolso / cartera",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw039",
+      "katakana": "バスケット",
+      "spanish": "básquet",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw040",
+      "katakana": "スーパー",
+      "spanish": "supermercado / súper",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw041",
+      "katakana": "デパート",
+      "spanish": "tienda departamental",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw042",
+      "katakana": "コーヒー",
+      "spanish": "café",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw043",
+      "katakana": "ピザ",
+      "spanish": "pizza",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw044",
+      "katakana": "ピアノ",
+      "spanish": "piano",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw045",
+      "katakana": "ナイフ",
+      "spanish": "cuchillo",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw046",
+      "katakana": "スープ",
+      "spanish": "sopa",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw047",
+      "katakana": "カップ",
+      "spanish": "taza",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw048",
+      "katakana": "コップ",
+      "spanish": "vaso",
+      "page": "kt_page_4",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw049",
+      "katakana": "ベッド",
+      "spanish": "cama",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw050",
+      "katakana": "ペット",
+      "spanish": "mascota",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_misc"
+      ]
+    },
+    {
+      "id": "kw051",
+      "katakana": "ホッケー",
+      "spanish": "hockey",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw052",
+      "katakana": "ポスト",
+      "spanish": "buzón",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw053",
+      "katakana": "ポテト",
+      "spanish": "papas fritas",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw054",
+      "katakana": "ポケット",
+      "spanish": "bolsillo",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw055",
+      "katakana": "スポーツ",
+      "spanish": "deportes",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw056",
+      "katakana": "パスポート",
+      "spanish": "pasaporte",
+      "page": "kt_page_5",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw057",
+      "katakana": "トマト",
+      "spanish": "tomate",
+      "page": "kt_page_6",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw058",
+      "katakana": "ゲーム",
+      "spanish": "juego",
+      "page": "kt_page_6",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw059",
+      "katakana": "けしゴム",
+      "spanish": "goma de borrar",
+      "page": "kt_page_6",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw060",
+      "katakana": "ハム",
+      "spanish": "jamón",
+      "page": "kt_page_6",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw061",
+      "katakana": "メキシコ",
+      "spanish": "México",
+      "page": "kt_page_6",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw062",
+      "katakana": "ライス",
+      "spanish": "arroz",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw063",
+      "katakana": "ラジオ",
+      "spanish": "radio",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw064",
+      "katakana": "クラス",
+      "spanish": "clase",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw065",
+      "katakana": "サラダ",
+      "spanish": "ensalada",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw066",
+      "katakana": "カメラ",
+      "spanish": "cámara",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw067",
+      "katakana": "イギリス",
+      "spanish": "Inglaterra / Reino Unido",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw068",
+      "katakana": "イタリア",
+      "spanish": "Italia",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw069",
+      "katakana": "チリ",
+      "spanish": "Chile",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw070",
+      "katakana": "アメリカ",
+      "spanish": "Estados Unidos",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw071",
+      "katakana": "オーストラリア",
+      "spanish": "Australia",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw072",
+      "katakana": "クリスマス",
+      "spanish": "Navidad",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw073",
+      "katakana": "アイスクリーム",
+      "spanish": "helado",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw074",
+      "katakana": "ウルグアイ",
+      "spanish": "Uruguay",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw075",
+      "katakana": "ビル",
+      "spanish": "edificio",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw076",
+      "katakana": "ビール",
+      "spanish": "cerveza",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw077",
+      "katakana": "テーブル",
+      "spanish": "mesa",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw078",
+      "katakana": "ホテル",
+      "spanish": "hotel",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw079",
+      "katakana": "パイナップル",
+      "spanish": "ananá",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw080",
+      "katakana": "ミルク",
+      "spanish": "leche",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw081",
+      "katakana": "メール",
+      "spanish": "mail / correo electrónico",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw082",
+      "katakana": "ブラジル",
+      "spanish": "Brasil",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw083",
+      "katakana": "レジ",
+      "spanish": "caja / caja registradora",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw084",
+      "katakana": "レタス",
+      "spanish": "lechuga",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw085",
+      "katakana": "レポート",
+      "spanish": "informe / reporte",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw086",
+      "katakana": "エスカレーター",
+      "spanish": "escalera mecánica",
+      "page": "kt_page_7",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw087",
+      "katakana": "エレベーター",
+      "spanish": "ascensor",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw088",
+      "katakana": "カレー",
+      "spanish": "curry",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw089",
+      "katakana": "テレビ",
+      "spanish": "televisor / tele",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw090",
+      "katakana": "トイレ",
+      "spanish": "baño",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw091",
+      "katakana": "ロシア",
+      "spanish": "Rusia",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw092",
+      "katakana": "ロビー",
+      "spanish": "lobby / hall",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw093",
+      "katakana": "ワイン",
+      "spanish": "vino",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw094",
+      "katakana": "アルゼンチン",
+      "spanish": "Argentina",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw095",
+      "katakana": "インド",
+      "spanish": "India",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw096",
+      "katakana": "インターネット",
+      "spanish": "internet",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw097",
+      "katakana": "エンジニア",
+      "spanish": "ingeniero / ingeniera",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw098",
+      "katakana": "オレンジ",
+      "spanish": "naranja",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw099",
+      "katakana": "カレンダー",
+      "spanish": "calendario",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw100",
+      "katakana": "コンビニ",
+      "spanish": "kiosco / mini súper / tienda 24 hs",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw101",
+      "katakana": "スプーン",
+      "spanish": "cuchara",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw102",
+      "katakana": "スペイン",
+      "spanish": "España",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw103",
+      "katakana": "ズボン",
+      "spanish": "pantalón",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw104",
+      "katakana": "ハンバーグ",
+      "spanish": "hamburguesa al plato / medallón de carne",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw105",
+      "katakana": "ハンバーガー",
+      "spanish": "hamburguesa",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw106",
+      "katakana": "バレンタイン",
+      "spanish": "San Valentín",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_ocio_y_cultura"
+      ]
+    },
+    {
+      "id": "kw107",
+      "katakana": "パソコン",
+      "spanish": "computadora / compu",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    },
+    {
+      "id": "kw108",
+      "katakana": "パンツ",
+      "spanish": "calzoncillo / ropa interior",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw109",
+      "katakana": "ピンポン",
+      "spanish": "ping-pong / tenis de mesa",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_deportes"
+      ]
+    },
+    {
+      "id": "kw110",
+      "katakana": "フランス",
+      "spanish": "Francia",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_paises_y_regiones"
+      ]
+    },
+    {
+      "id": "kw111",
+      "katakana": "プレゼント",
+      "spanish": "regalo",
+      "page": "kt_page_8",
+      "topics": [
+        "kt_misc"
+      ]
+    },
+    {
+      "id": "kw112",
+      "katakana": "ボタン",
+      "spanish": "botón",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw113",
+      "katakana": "ボールペン",
+      "spanish": "birome",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_objetos_cotidianos"
+      ]
+    },
+    {
+      "id": "kw114",
+      "katakana": "メロン",
+      "spanish": "melón",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw115",
+      "katakana": "レモン",
+      "spanish": "limón",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw116",
+      "katakana": "レストラン",
+      "spanish": "restaurante",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw117",
+      "katakana": "でんしレンジ",
+      "spanish": "microondas",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw118",
+      "katakana": "トイレットペーパー",
+      "spanish": "papel higiénico",
+      "page": "kt_page_9",
+      "topics": [
+        "kt_hogar_y_muebles"
+      ]
+    },
+    {
+      "id": "kw119",
+      "katakana": "キャベツ",
+      "spanish": "repollo",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw120",
+      "katakana": "バーベキュー",
+      "spanish": "barbacoa / parrillada",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw121",
+      "katakana": "シャツ",
+      "spanish": "camisa",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw122",
+      "katakana": "Tシャツ",
+      "spanish": "remera",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_ropa_y_accesorios"
+      ]
+    },
+    {
+      "id": "kw123",
+      "katakana": "シャープペンシル",
+      "spanish": "portaminas / lápiz mecánico",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_estudio_y_trabajo"
+      ]
+    },
+    {
+      "id": "kw124",
+      "katakana": "ジュース",
+      "spanish": "jugo",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw125",
+      "katakana": "チョコレート",
+      "spanish": "chocolate",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_comida_y_bebida"
+      ]
+    },
+    {
+      "id": "kw126",
+      "katakana": "メニュー",
+      "spanish": "menú",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_comercio_y_servicios"
+      ]
+    },
+    {
+      "id": "kw127",
+      "katakana": "コンピューター",
+      "spanish": "computadora",
+      "page": "kt_page_10",
+      "topics": [
+        "kt_tecnologia_y_medios"
+      ]
+    }
+  ]
+}

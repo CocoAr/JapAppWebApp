@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { vocabulary } from "../data/vocabulary";
+import { getVocabulary } from "../data/vocabulary";
 import { CategoryCard } from "../components/CategoryCard";
 import { useAuth } from "../context/AuthContext";
 import { masteryPercentForTopic } from "../lib/progress";
+import { useScriptParam } from "../lib/script";
 
 export function TrainByTopic() {
+  const script = useScriptParam();
+  const vocabulary = getVocabulary(script);
   const { progress } = useAuth();
   const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ export function TrainByTopic() {
         {vocabulary.topics.map((t) => {
           const meta = progress?.categories.topic[t.id];
           const started = meta?.started === true;
-          const mastery = masteryPercentForTopic(t.id, progress);
+          const mastery = masteryPercentForTopic(t.id, progress, script);
           const last = meta?.lastSessionScore ?? null;
           return (
             <CategoryCard
@@ -25,7 +28,9 @@ export function TrainByTopic() {
               mastery={mastery}
               lastScore={last}
               started={started}
-              onClick={() => navigate(`/app/session?mode=topic&category=${encodeURIComponent(t.id)}`)}
+              onClick={() =>
+                navigate(`/app/${script}/session?mode=topic&category=${encodeURIComponent(t.id)}`)
+              }
             />
           );
         })}

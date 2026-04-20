@@ -41,14 +41,19 @@ export interface User {
   username: string;
 }
 
+export interface CelebrationShown {
+  hiragana: boolean;
+  katakana: boolean;
+}
+
 export interface ProgressPayload {
   words: Record<string, "known" | "weak">;
   categories: {
     page: Record<string, { started: boolean; lastSessionScore: number | null }>;
     topic: Record<string, { started: boolean; lastSessionScore: number | null }>;
   };
-  /** True after the user dismissed the full-vocabulary celebration (persisted server-side). */
-  celebrationShown: boolean;
+  /** After the user dismissed the full-vocabulary celebration per script (persisted server-side). */
+  celebrationShown: CelebrationShown;
 }
 
 export const apiRegister = (username: string, pin: string) =>
@@ -62,15 +67,30 @@ export const apiLogout = () => api<{ ok: boolean }>("/api/logout", { method: "PO
 export const apiMe = () => api<{ user: User }>("/api/me");
 
 export async function apiGetProgress(): Promise<ProgressPayload> {
-  const p = await api<ProgressPayload & { celebrationShown?: boolean }>("/api/progress");
+  const p = await api<
+    ProgressPayload & {
+      celebrationShown?: CelebrationShown | boolean;
+    }
+  >("/api/progress");
+  const raw = p.celebrationShown;
+  const celebrationShown: CelebrationShown =
+    typeof raw === "boolean"
+      ? { hiragana: raw, katakana: false }
+      : {
+          hiragana: raw?.hiragana ?? false,
+          katakana: raw?.katakana ?? false,
+        };
   return {
     ...p,
-    celebrationShown: p.celebrationShown ?? false,
+    celebrationShown,
   };
 }
 
-export const apiPostVocabCelebrationSeen = () =>
-  api<{ ok: boolean }>("/api/progress/vocab-celebration-seen", { method: "POST" });
+export const apiPostVocabCelebrationSeen = (script: "hiragana" | "katakana") =>
+  api<{ ok: boolean }>("/api/progress/vocab-celebration-seen", {
+    method: "POST",
+    body: JSON.stringify({ script }),
+  });
 
 export const apiPostWord = (wordId: string, status: "known" | "weak") =>
   api<{ ok: boolean }>("/api/progress/word", { method: "POST", body: JSON.stringify({ wordId, status }) });

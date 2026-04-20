@@ -1,5 +1,6 @@
 import { masteryBackground } from "../lib/colors";
 import type { ProgressPayload } from "../lib/api";
+import type { Script } from "../data/vocabulary";
 import { weakPageMasteryPercent } from "../lib/progress";
 
 type Props = {
@@ -7,12 +8,13 @@ type Props = {
   pageId: string;
   weakCount: number;
   progress: ProgressPayload | null;
+  script: Script;
   onClick: () => void;
 };
 
-export function WeakPageCategoryCard({ title, pageId, weakCount, progress, onClick }: Props) {
+export function WeakPageCategoryCard({ title, pageId, weakCount, progress, script, onClick }: Props) {
   const hasWeak = weakCount > 0;
-  const mastery = weakPageMasteryPercent(pageId, progress);
+  const mastery = weakPageMasteryPercent(pageId, progress, script);
   const bg = hasWeak ? masteryBackground(mastery) : masteryBackground(100);
 
   return (

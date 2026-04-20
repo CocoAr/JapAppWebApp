@@ -1,4 +1,7 @@
-import raw from "./vocabulary.json";
+import hiraganaRaw from "./vocabulary.json";
+import katakanaRaw from "./vocabulary-katakana.json";
+
+export type Script = "hiragana" | "katakana";
 
 export type WordStatus = "untried" | "known" | "weak";
 
@@ -14,11 +17,12 @@ export interface VocabTopic {
 
 export interface VocabWord {
   id: string;
-  hiragana: string;
   spanish: string;
   page: string;
-  /** Exactly one topic id per word (see `scripts/vocab-taxonomy-data.mjs`). */
+  /** Exactly one topic id per word */
   topics: string[];
+  hiragana?: string;
+  katakana?: string;
 }
 
 export interface VocabularyData {
@@ -27,30 +31,56 @@ export interface VocabularyData {
   words: VocabWord[];
 }
 
-export const vocabulary = raw as VocabularyData;
+const hiraganaData = hiraganaRaw as VocabularyData;
+const katakanaData = katakanaRaw as VocabularyData;
 
-const wordsByPage = new Map<string, VocabWord[]>();
-const wordsByTopic = new Map<string, VocabWord[]>();
+type Built = {
+  data: VocabularyData;
+  wordsByPage: Map<string, VocabWord[]>;
+  wordsByTopic: Map<string, VocabWord[]>;
+};
 
-for (const w of vocabulary.words) {
-  const pl = wordsByPage.get(w.page) ?? [];
-  pl.push(w);
-  wordsByPage.set(w.page, pl);
-  for (const tid of w.topics) {
-    const tl = wordsByTopic.get(tid) ?? [];
-    tl.push(w);
-    wordsByTopic.set(tid, tl);
+function buildIndexes(data: VocabularyData): Built {
+  const wordsByPage = new Map<string, VocabWord[]>();
+  const wordsByTopic = new Map<string, VocabWord[]>();
+  for (const w of data.words) {
+    const pl = wordsByPage.get(w.page) ?? [];
+    pl.push(w);
+    wordsByPage.set(w.page, pl);
+    for (const tid of w.topics) {
+      const tl = wordsByTopic.get(tid) ?? [];
+      tl.push(w);
+      wordsByTopic.set(tid, tl);
+    }
   }
+  return { data, wordsByPage, wordsByTopic };
 }
 
-export function getWordsForPage(pageId: string): VocabWord[] {
-  return wordsByPage.get(pageId) ?? [];
+const built = {
+  hiragana: buildIndexes(hiraganaData),
+  katakana: buildIndexes(katakanaData),
+};
+
+export function getVocabulary(script: Script): VocabularyData {
+  return built[script].data;
 }
 
-export function getWordsForTopic(topicId: string): VocabWord[] {
-  return wordsByTopic.get(topicId) ?? [];
+/** Hiragana dataset (backward compat for scripts that default to hiragana). */
+export const vocabulary = hiraganaData;
+
+export function getWordsForPage(pageId: string, script: Script): VocabWord[] {
+  return built[script].wordsByPage.get(pageId) ?? [];
 }
 
-export function getWordById(id: string): VocabWord | undefined {
-  return vocabulary.words.find((w) => w.id === id);
+export function getWordsForTopic(topicId: string, script: Script): VocabWord[] {
+  return built[script].wordsByTopic.get(topicId) ?? [];
+}
+
+export function getWordById(id: string, script: Script): VocabWord | undefined {
+  return built[script].data.words.find((w) => w.id === id);
+}
+
+/** Japanese surface form for study UI and TTS */
+export function wordJapanese(w: VocabWord): string {
+  return (w.katakana ?? w.hiragana ?? "").trim();
 }

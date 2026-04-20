@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { vocabulary, getWordsForPage, getWordsForTopic, type VocabWord } from "../data/vocabulary";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import {
+  getVocabulary,
+  getWordsForPage,
+  getWordsForTopic,
+  wordJapanese,
+  type Script,
+  type VocabWord,
+} from "../data/vocabulary";
 import { apiCategoryStarted, apiPostSession, apiPostWord, ApiError } from "../lib/api";
 import { shuffle } from "../lib/shuffle";
 import { useAuth } from "../context/AuthContext";
@@ -11,11 +18,14 @@ import {
 } from "../lib/vocabCelebrationBridge";
 import { allVocabularyWordsKnown, weakWords, weakWordsForPage } from "../lib/progress";
 import { useSpeechPreference } from "../context/SpeechPreferenceContext";
-import { cancelJapaneseSpeech, speakJapaneseHiragana } from "../lib/speechJapanese";
+import { cancelJapaneseSpeech, speakJapaneseReading } from "../lib/speechJapanese";
+import { scriptBase } from "../lib/script";
 
 type StudyPhase = "prompt" | "revealWeak" | "revealKnownSelfCheck";
 
 export function StudySession() {
+  const { script: scriptParam } = useParams();
+  const script = (scriptParam === "hiragana" || scriptParam === "katakana" ? scriptParam : null) as Script | null;
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode");
   const category = searchParams.get("category");
@@ -23,12 +33,16 @@ export function StudySession() {
   const { progress, mergeWordProgress, mergeCategorySession, mergeCategoryStarted } = useAuth();
   const { autoSpeakJapanese } = useSpeechPreference();
 
+  const vocabulary = script ? getVocabulary(script) : null;
+  const base = script ? scriptBase(script) : "/app";
+
   const [words, setWords] = useState<VocabWord[]>([]);
   const sessionKeyRef = useRef("");
   const listLockedRef = useRef(false);
 
   useEffect(() => {
-    const sk = `${mode ?? ""}:${category ?? ""}`;
+    if (!script || !vocabulary) return;
+    const sk = `${script}:${mode ?? ""}:${category ?? ""}`;
     if (sessionKeyRef.current !== sk) {
       sessionKeyRef.current = sk;
       listLockedRef.current = false;
@@ -38,17 +52,17 @@ export function StudySession() {
     if (listLockedRef.current) return;
 
     if (mode === "page" && category) {
-      setWords(shuffle(getWordsForPage(category)));
+      setWords(shuffle(getWordsForPage(category, script)));
       listLockedRef.current = true;
       return;
     }
     if (mode === "topic" && category) {
-      setWords(shuffle(getWordsForTopic(category)));
+      setWords(shuffle(getWordsForTopic(category, script)));
       listLockedRef.current = true;
       return;
     }
     if (mode === "weak" && progress) {
-      const w = shuffle(weakWords(progress));
+      const w = shuffle(weakWords(progress, script));
       setWords(w.slice(0, Math.min(10, w.length)));
       listLockedRef.current = true;
       return;
@@ -60,10 +74,10 @@ export function StudySession() {
       return;
     }
     if (mode === "weakPage" && category && progress) {
-      setWords(shuffle(weakWordsForPage(category, progress)));
+      setWords(shuffle(weakWordsForPage(category, progress, script)));
       listLockedRef.current = true;
     }
-  }, [mode, category, progress]);
+  }, [mode, category, progress, script, vocabulary]);
 
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState<StudyPhase>("prompt");
@@ -83,7 +97,7 @@ export function StudySession() {
     setUnknownCount(0);
     setError(null);
     startedRef.current = false;
-  }, [mode, category]);
+  }, [mode, category, script]);
 
   useEffect(() => {
     return () => clearCelebrationAdvance();
@@ -97,19 +111,21 @@ export function StudySession() {
     lastAutoSpeakKeyRef.current = null;
   }, [autoSpeakJapanese]);
 
+  const jp = current ? wordJapanese(current) : "";
+
   useEffect(() => {
-    if (!current || phase !== "prompt") return;
+    if (!current || phase !== "prompt" || !script) return;
     if (isCelebrationModalOpen()) return;
     if (!autoSpeakJapanese) return;
     const key = `${current.id}:${index}`;
     if (lastAutoSpeakKeyRef.current === key) return;
     lastAutoSpeakKeyRef.current = key;
-    speakJapaneseHiragana(current.hiragana);
-  }, [current?.id, current?.hiragana, index, phase, autoSpeakJapanese]);
+    speakJapaneseReading(jp);
+  }, [current?.id, index, phase, autoSpeakJapanese, jp, script]);
 
   useEffect(() => {
     if (mode !== "page" && mode !== "topic" && mode !== "weakPage") return;
-    if (!category) return;
+    if (!category || !script) return;
     if (startedRef.current) return;
     startedRef.current = true;
     const cat = category;
@@ -121,9 +137,10 @@ export function StudySession() {
       .catch(() => {
         /* non-fatal */
       });
-  }, [mode, category, mergeCategoryStarted]);
+  }, [mode, category, mergeCategoryStarted, script]);
 
   const resolveLabel = useCallback(() => {
+    if (!vocabulary || !script) return "";
     if (mode === "page" && category) {
       return vocabulary.pages.find((p) => p.id === category)?.label ?? category;
     }
@@ -138,7 +155,7 @@ export function StudySession() {
       return "Palabras al azar";
     }
     return "Palabras débiles";
-  }, [mode, category]);
+  }, [mode, category, script, vocabulary]);
 
   const finishSession = useCallback(
     async (k: number, u: number) => {
@@ -159,7 +176,7 @@ export function StudySession() {
         if (e instanceof ApiError) setError(e.message);
         else setError("No se pudo guardar el resultado.");
       }
-      navigate("/app/summary", {
+      navigate(`${base}/summary`, {
         replace: true,
         state: {
           total,
@@ -169,10 +186,11 @@ export function StudySession() {
           mode,
           categoryId: category,
           categoryLabel: resolveLabel(),
+          script,
         },
       });
     },
-    [mode, category, navigate, mergeCategorySession, resolveLabel]
+    [mode, category, navigate, mergeCategorySession, resolveLabel, base, script]
   );
 
   const advanceToNextOrFinish = useCallback(
@@ -192,14 +210,13 @@ export function StudySession() {
     advanceToNextOrFinish(knownCount, unknownCount);
   }, [phase, advanceToNextOrFinish, knownCount, unknownCount]);
 
-  /** Lo sabía: solo muestra la respuesta y la autocomprobación (sin guardar aún). */
   const onKnew = useCallback(() => {
     if (phase !== "prompt" || !current) return;
     setPhase("revealKnownSelfCheck");
   }, [phase, current]);
 
   const onUnknown = useCallback(async () => {
-    if (phase !== "prompt" || !current) return;
+    if (phase !== "prompt" || !current || !script) return;
     try {
       await apiPostWord(current.id, "weak");
       mergeWordProgress(current.id, "weak");
@@ -210,10 +227,10 @@ export function StudySession() {
       if (e instanceof ApiError) setError(e.message);
       else setError("Error de red.");
     }
-  }, [phase, current, mergeWordProgress]);
+  }, [phase, current, mergeWordProgress, script]);
 
   const onSelfCorrect = useCallback(async () => {
-    if (phase !== "revealKnownSelfCheck" || !current || !progress) return;
+    if (phase !== "revealKnownSelfCheck" || !current || !progress || !script) return;
     try {
       await apiPostWord(current.id, "known");
       mergeWordProgress(current.id, "known");
@@ -221,8 +238,10 @@ export function StudySession() {
       setKnownCount(newK);
       setError(null);
       const mergedWords = { ...progress.words, [current.id]: "known" as const };
+      const shown = progress.celebrationShown;
+      const alreadyDismissed = script === "hiragana" ? shown.hiragana : shown.katakana;
       const shouldCelebrate =
-        !progress.celebrationShown && allVocabularyWordsKnown(mergedWords);
+        !alreadyDismissed && allVocabularyWordsKnown(mergedWords, script);
       if (shouldCelebrate) {
         registerPendingCelebrationAdvance({ newK, unknownCount }, advanceToNextOrFinish);
         return;
@@ -240,10 +259,11 @@ export function StudySession() {
     knownCount,
     unknownCount,
     advanceToNextOrFinish,
+    script,
   ]);
 
   const onSelfWrong = useCallback(async () => {
-    if (phase !== "revealKnownSelfCheck" || !current) return;
+    if (phase !== "revealKnownSelfCheck" || !current || !script) return;
     try {
       await apiPostWord(current.id, "weak");
       mergeWordProgress(current.id, "weak");
@@ -255,7 +275,7 @@ export function StudySession() {
       if (e instanceof ApiError) setError(e.message);
       else setError("Error de red.");
     }
-  }, [phase, current, mergeWordProgress, knownCount, unknownCount, advanceToNextOrFinish]);
+  }, [phase, current, mergeWordProgress, knownCount, unknownCount, advanceToNextOrFinish, script]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -299,12 +319,23 @@ export function StudySession() {
     return () => window.removeEventListener("keydown", onKey);
   }, [phase, onKnew, onUnknown, goNext, onSelfCorrect, onSelfWrong, navigate]);
 
+  if (!script || !vocabulary) {
+    return (
+      <div className="card">
+        <p>Sesión inválida.</p>
+        <button type="button" className="btn btn-primary" onClick={() => navigate("/app")}>
+          Volver al inicio
+        </button>
+      </div>
+    );
+  }
+
   const needsCategory = mode === "page" || mode === "topic" || mode === "weakPage";
   if (!mode || (needsCategory && !category)) {
     return (
       <div className="card">
         <p>Sesión inválida.</p>
-        <button type="button" className="btn btn-primary" onClick={() => navigate("/app")}>
+        <button type="button" className="btn btn-primary" onClick={() => navigate(base)}>
           Volver al menú
         </button>
       </div>
@@ -315,12 +346,12 @@ export function StudySession() {
     return (
       <div className="card">
         <p>
-          {mode === "weakPage" && !progress
+          {!progress && (mode === "weak" || mode === "weakPage")
             ? "Cargando progreso…"
-            : mode === "weak"
-              ? "Cargando palabras débiles…"
-              : mode === "weakPage"
-                ? "No tenés palabras débiles en este nivel."
+            : mode === "weakPage"
+              ? "No tenés palabras débiles en este nivel."
+              : mode === "weak"
+                ? "No tenés palabras débiles para practicar."
                 : mode === "random"
                   ? "No hay palabras en el vocabulario."
                   : "No hay palabras para esta sesión."}
@@ -345,7 +376,7 @@ export function StudySession() {
         <button
           type="button"
           className="btn btn-ghost study-speech-replay"
-          onClick={() => speakJapaneseHiragana(current.hiragana)}
+          onClick={() => speakJapaneseReading(jp)}
           title="Repetir pronunciación"
           aria-label="Repetir pronunciación en japonés"
         >
@@ -358,7 +389,7 @@ export function StudySession() {
         </button>
       </div>
       {error ? <p className="form-error">{error}</p> : null}
-      <div className="hiragana-display">{current.hiragana}</div>
+      <div className="hiragana-display">{jp}</div>
       {phase === "revealWeak" ? (
         <div className="reveal">
           <p className="spanish-reveal">{current.spanish}</p>

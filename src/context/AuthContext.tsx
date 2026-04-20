@@ -23,7 +23,7 @@ type AuthContextValue = {
     started: boolean
   ) => void;
   mergeCategoryStarted: (mode: "page" | "topic", categoryId: string) => void;
-  mergeCelebrationShown: () => void;
+  mergeCelebrationShown: (script: "hiragana" | "katakana") => void;
   login: (username: string, pin: string) => Promise<void>;
   register: (username: string, pin: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -86,8 +86,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const mergeCelebrationShown = useCallback(() => {
-    setProgress((p) => (p ? { ...p, celebrationShown: true } : null));
+  const mergeCelebrationShown = useCallback((script: "hiragana" | "katakana") => {
+    setProgress((p) =>
+      p
+        ? {
+            ...p,
+            celebrationShown: { ...p.celebrationShown, [script]: true },
+          }
+        : null
+    );
   }, []);
 
   useEffect(() => {

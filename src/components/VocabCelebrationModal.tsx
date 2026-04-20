@@ -5,9 +5,10 @@ type Props = {
   open: boolean;
   onContinue: () => void;
   savingError: string | null;
+  scriptLabel: string;
 };
 
-export function VocabCelebrationModal({ open, onContinue, savingError }: Props) {
+export function VocabCelebrationModal({ open, onContinue, savingError, scriptLabel }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export function VocabCelebrationModal({ open, onContinue, savingError }: Props) 
     <div className="vocab-celebration-backdrop" role="dialog" aria-modal="true" aria-labelledby="vocab-celebration-title">
       <div className="vocab-celebration-panel">
         <h2 id="vocab-celebration-title" className="vocab-celebration-title">
-          ¡Omedetou! Completaste todo el vocabulario
+          ¡Omedetou! Completaste todo el vocabulario ({scriptLabel})
         </h2>
         <div className="vocab-celebration-media">
           <img

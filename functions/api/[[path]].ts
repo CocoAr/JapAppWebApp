@@ -192,10 +192,15 @@ async function handleGetProgress(env: Env, request: Request): Promise<Response> 
     };
   }
 
-  const seenRow = await env.DB.prepare("SELECT vocab_celebration_seen FROM users WHERE id = ?")
+  const seenRow = await env.DB.prepare(
+    "SELECT vocab_celebration_seen, vocab_celebration_katakana_seen FROM users WHERE id = ?"
+  )
     .bind(user.id)
-    .first<{ vocab_celebration_seen: number }>();
-  const celebrationShown = (seenRow?.vocab_celebration_seen ?? 0) === 1;
+    .first<{ vocab_celebration_seen: number; vocab_celebration_katakana_seen: number | null }>();
+  const celebrationShown = {
+    hiragana: (seenRow?.vocab_celebration_seen ?? 0) === 1,
+    katakana: (seenRow?.vocab_celebration_katakana_seen ?? 0) === 1,
+  };
 
   return json({ words: wordMap, categories: categoryProgress, celebrationShown });
 }
@@ -204,7 +209,22 @@ async function handlePostVocabCelebrationSeen(env: Env, request: Request): Promi
   const user = await requireUser(env, request);
   if (!user) return jsonError("No autenticado.", 401);
 
-  await env.DB.prepare("UPDATE users SET vocab_celebration_seen = 1 WHERE id = ?").bind(user.id).run();
+  let body: { script?: string };
+  try {
+    body = (await request.json()) as { script?: string };
+  } catch {
+    return jsonError("Invalid JSON", 400);
+  }
+  const script = body.script;
+  if (script !== "hiragana" && script !== "katakana") {
+    return jsonError("script debe ser hiragana o katakana.", 400);
+  }
+
+  if (script === "hiragana") {
+    await env.DB.prepare("UPDATE users SET vocab_celebration_seen = 1 WHERE id = ?").bind(user.id).run();
+  } else {
+    await env.DB.prepare("UPDATE users SET vocab_celebration_katakana_seen = 1 WHERE id = ?").bind(user.id).run();
+  }
 
   return json({ ok: true });
 }

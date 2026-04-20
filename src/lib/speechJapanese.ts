@@ -4,7 +4,7 @@ export function isSpeechSynthesisAvailable(): boolean {
   return typeof window !== "undefined" && typeof window.speechSynthesis !== "undefined";
 }
 
-/** Speak hiragana with Japanese voice. Cancels any ongoing utterance first. */
+/** Speak Japanese text (hiragana or katakana) with a Japanese voice. Cancels any ongoing utterance first. */
 export function speakJapaneseHiragana(text: string): void {
   if (!isSpeechSynthesisAvailable()) return;
   const trimmed = text.trim();
@@ -14,6 +14,11 @@ export function speakJapaneseHiragana(text: string): void {
   u.lang = "ja-JP";
   u.rate = 0.92;
   window.speechSynthesis.speak(u);
+}
+
+/** Alias: same TTS path for katakana loanwords. */
+export function speakJapaneseReading(text: string): void {
+  speakJapaneseHiragana(text);
 }
 
 export function cancelJapaneseSpeech(): void {
