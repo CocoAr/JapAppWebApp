@@ -8,7 +8,7 @@ import {
   loadKatakanaTypeMasteredIds,
   loadKatakanaTypeSettings,
 } from "../lib/katakanaTypeStorage";
-import { charsInWord, getKatakanaKeyboardRows } from "../lib/katakanaKeyboardLayout";
+import { charsInWord, getKatakanaKeyboardSections } from "../lib/katakanaKeyboardLayout";
 import { playKatakanaTypeError, playKatakanaTypeSuccess } from "../lib/katakanaTypeSounds";
 import { speakJapaneseReading } from "../lib/speechJapanese";
 import { shuffle } from "../lib/shuffle";
@@ -32,7 +32,7 @@ export function KatakanaTypeSession() {
   const [emptyPool, setEmptyPool] = useState(false);
 
   const settings = user ? loadKatakanaTypeSettings(user.id) : null;
-  const keyboardRows = useMemo(() => getKatakanaKeyboardRows(), []);
+  const keyboardSections = useMemo(() => getKatakanaKeyboardSections(), []);
 
   useEffect(() => {
     if (!user) return;
@@ -109,28 +109,34 @@ export function KatakanaTypeSession() {
 
   if (emptyPool) {
     return (
-      <div className="card">
-        <h1 className="page-title">¡Listo!</h1>
-        <p className="muted">Ya escribiste correctamente todas las palabras del vocabulario en este modo.</p>
-        <Link to={`${base}/type`} className="btn btn-primary">
-          Volver al panel
-        </Link>
+      <div className="kt-stack-page">
+        <div className="card kt-panel kt-panel--center">
+          <h1 className="page-title">¡Listo!</h1>
+          <p className="muted kt-panel-blurb">Ya escribiste correctamente todas las palabras del vocabulario en este modo.</p>
+          <Link to={`${base}/type`} className="btn btn-primary btn-large">
+            Volver al panel
+          </Link>
+        </div>
       </div>
     );
   }
 
   if (roundFinished) {
     return (
-      <div className="card">
-        <h1 className="page-title">Ronda terminada</h1>
-        <p className="muted">Practicaste {words.length} palabra{words.length === 1 ? "" : "s"} en esta sesión.</p>
-        <div className="katakana-type-actions">
-          <Link to={`${base}/type`} className="btn btn-primary">
-            Volver al panel
-          </Link>
-          <Link to={base} className="btn btn-ghost">
-            Menú Katakana
-          </Link>
+      <div className="kt-stack-page">
+        <div className="card kt-panel kt-panel--center">
+          <h1 className="page-title">Ronda terminada</h1>
+          <p className="muted kt-panel-blurb">
+            Practicaste {words.length} palabra{words.length === 1 ? "" : "s"} en esta sesión.
+          </p>
+          <div className="kt-panel-footer kt-panel-footer--center">
+            <Link to={`${base}/type`} className="btn btn-primary btn-large">
+              Volver al panel
+            </Link>
+            <Link to={base} className="btn btn-ghost">
+              Menú Katakana
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -138,8 +144,10 @@ export function KatakanaTypeSession() {
 
   if (!current) {
     return (
-      <div className="card">
-        <p>Cargando…</p>
+      <div className="kt-stack-page">
+        <div className="card kt-panel kt-panel--center">
+          <p className="muted">Cargando…</p>
+        </div>
       </div>
     );
   }
@@ -147,65 +155,69 @@ export function KatakanaTypeSession() {
   const slots = [...answer];
 
   return (
-    <div
-      className={`katakana-type-session-wrap ${flash === "ok" ? "katakana-type-flash--ok" : ""} ${flash === "err" ? "katakana-type-flash--err" : ""}`}
-    >
-      <div className="katakana-type-session-head">
-        <p className="muted session-progress">
-          Palabra {idx + 1} de {words.length}
-        </p>
-        {settings.volumeEnabled ? (
-          <button
-            type="button"
-            className="btn btn-ghost study-speech-replay"
-            onClick={() => speakJapaneseReading(jp)}
-            title="Escuchar pronunciación"
-          >
-            Escuchar
-          </button>
-        ) : null}
-      </div>
-
-      <p className="katakana-type-spanish-prompt">{current.spanish}</p>
-
-      {settings.showLetterCount ? (
-        <div className="katakana-type-slots" aria-hidden>
-          {slots.map((_, i) => (
-            <span key={i} className="katakana-type-slot" />
-          ))}
+    <div className="katakana-session-shell">
+      <div
+        className={`katakana-session-card ${flash === "ok" ? "katakana-type-flash--ok" : ""} ${flash === "err" ? "katakana-type-flash--err" : ""}`}
+      >
+        <div className="katakana-type-session-head">
+          <span className="katakana-session-badge">
+            Palabra {idx + 1} / {words.length}
+          </span>
+          {settings.volumeEnabled ? (
+            <button
+              type="button"
+              className="btn btn-ghost katakana-session-audio"
+              onClick={() => speakJapaneseReading(jp)}
+              title="Escuchar pronunciación"
+            >
+              Escuchar
+            </button>
+          ) : null}
         </div>
-      ) : null}
 
-      <div className="katakana-type-input-display" aria-live="polite">
-        {input || <span className="katakana-type-input-placeholder">…</span>}
-      </div>
+        <p className="katakana-type-spanish-prompt">{current.spanish}</p>
 
-      {!settings.unlimitedAttempts ? (
-        <p className="muted katakana-type-attempts">
-          Intentos incorrectos en esta palabra: {wrongCount} / {MAX_ATTEMPTS}
+        {settings.showLetterCount ? (
+          <div className="katakana-type-slots" aria-hidden>
+            {slots.map((_, i) => (
+              <span key={i} className="katakana-type-slot" />
+            ))}
+          </div>
+        ) : null}
+
+        <div className="katakana-type-input-display" aria-live="polite">
+          {input || <span className="katakana-type-input-placeholder">Escribí con el teclado de abajo…</span>}
+        </div>
+
+        {!settings.unlimitedAttempts ? (
+          <p className="katakana-type-attempts">
+            Intentos incorrectos: <strong>{wrongCount}</strong> / {MAX_ATTEMPTS}
+          </p>
+        ) : (
+          <p className="katakana-type-attempts katakana-type-attempts--muted">Sin límite de intentos</p>
+        )}
+
+        <div className="katakana-type-continue-row">
+          <button type="button" className="btn btn-primary btn-large katakana-btn-cta" onClick={onContinuar}>
+            Continuar
+          </button>
+        </div>
+
+        <div className="katakana-keyboard-wrap">
+          <KatakanaKeyboard
+            sections={keyboardSections}
+            highlightChars={highlightSet}
+            onKey={(ch) => setInput((s) => s + ch)}
+            onBackspace={() => setInput((s) => s.slice(0, -1))}
+          />
+        </div>
+
+        <p className="muted hints katakana-type-hint">
+          <Link to={`${base}/type`}>Opciones</Link>
+          {" · "}
+          <Link to={base}>Menú Katakana</Link>
         </p>
-      ) : (
-        <p className="muted katakana-type-attempts">Chances ilimitadas</p>
-      )}
-
-      <div className="katakana-type-continue-row">
-        <button type="button" className="btn btn-primary btn-large" onClick={onContinuar}>
-          Continuar
-        </button>
       </div>
-
-      <KatakanaKeyboard
-        rows={keyboardRows}
-        highlightChars={highlightSet}
-        onKey={(ch) => setInput((s) => s + ch)}
-        onBackspace={() => setInput((s) => s.slice(0, -1))}
-      />
-
-      <p className="muted hints katakana-type-hint">
-        <Link to={`${base}/type`}>Cambiar opciones</Link>
-        {" · "}
-        <Link to={base}>Menú</Link>
-      </p>
     </div>
   );
 }

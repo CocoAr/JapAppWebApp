@@ -1,5 +1,8 @@
-# Optional: set secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in the repo.
-# Edit project_name to match your Cloudflare Pages project.
+# Deploy: push a main → build → wrangler pages deploy
+# Secrets requeridos en el repo: CLOUDFLARE_API_TOKEN (Pages:Edit + cuenta)
+# Opcional: CLOUDFLARE_ACCOUNT_ID (recomendado si el token es de usuario)
+#
+# Migraciones D1 remotas NO se ejecutan aquí: corré `npm run db:migrate:remote` cuando agregues SQL.
 
 name: Deploy to Cloudflare Pages
 
@@ -7,26 +10,59 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: cloudflare-pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
-      - run: npm ci
+      - name: Print environment
+        run: |
+          set -e
+          echo "node: $(node -v)"
+          echo "npm: $(npm -v)"
+          echo "GITHUB_REF: ${GITHUB_REF}"
 
-      - run: npm run build
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=jap-vocab-web
+      - name: Wrangler version (local)
+        run: npx wrangler --version
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          set -e
+          test -f dist/index.html || (echo "::error::dist/index.html missing" && exit 1)
+          echo "dist contents:"
+          ls -la dist
+          du -sh dist
+
+      - name: Check Cloudflare token
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+            echo "::error::Secret CLOUDFLARE_API_TOKEN is empty. Add it in repo Settings → Secrets."
+            exit 1
+          fi
+          echo "CLOUDFLARE_API_TOKEN is set (length ok)"
+
+      - name: Deploy to Cloudflare Pages
+        run: npm run deploy:pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

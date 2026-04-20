@@ -8,7 +8,7 @@ export function TrainingMenu() {
   const label = script === "hiragana" ? "Hiragana" : "Katakana";
 
   const legacyGrid = (
-    <div className="menu-grid">
+    <div className={`menu-grid ${script === "katakana" ? "menu-grid--katakana-legacy" : ""}`}>
       <Link to={`${base}/train/page`} className="menu-tile">
         <span className="menu-tile-title">Por nivel</span>
         <span className="muted">Palabras por página del material</span>
@@ -33,28 +33,35 @@ export function TrainingMenu() {
   );
 
   return (
-    <div>
-      <div className="menu-page-head">
-        <h1 className="page-title menu-page-title">Menú principal — {label}</h1>
-        <SpeechAutoToggle />
-      </div>
-      <p className="muted page-lead">Elegí cómo querés practicar.</p>
+    <div className={script === "katakana" ? "katakana-training-root" : undefined}>
+      <header className={`training-menu-header ${script === "katakana" ? "training-menu-header--katakana" : ""}`}>
+        <div className="training-menu-title-block">
+          <h1 className="page-title training-menu-h1">Menú principal — {label}</h1>
+          <p className="muted page-lead training-menu-lead">Elegí cómo querés practicar.</p>
+        </div>
+        <SpeechAutoToggle compact={script === "katakana"} />
+      </header>
 
       {script === "katakana" ? (
-        <div className="katakana-menu-split">
-          <div className="katakana-menu-write-col">
-            <Link to={`${base}/type`} className="katakana-menu-write-tile">
-              <span className="katakana-menu-write-title">Escribe el vocabulario</span>
-              <span className="muted katakana-menu-write-desc">
-                Español → katakana con teclado en pantalla. Configuración y progreso propios.
-              </span>
-            </Link>
-          </div>
-          <div className="katakana-menu-legacy-col">
-            <h2 className="katakana-menu-section-title">Ejercicios viejos</h2>
-            <p className="muted katakana-menu-section-lead">Mismos ejercicios que hiragana</p>
+        <div className="katakana-landing">
+          <Link to={`${base}/type`} className="katakana-hero-card">
+            <span className="katakana-hero-kicker">Nuevo</span>
+            <span className="katakana-hero-title">Escribe el vocabulario</span>
+            <span className="katakana-hero-desc">
+              Español → katakana con teclado en pantalla. Progreso y opciones propias de este modo.
+            </span>
+            <span className="katakana-hero-cta">Abrir configuración →</span>
+          </Link>
+
+          <section className="katakana-legacy-panel" aria-labelledby="katakana-legacy-heading">
+            <div className="katakana-legacy-panel-head">
+              <h2 id="katakana-legacy-heading" className="katakana-legacy-title">
+                Ejercicios viejos
+              </h2>
+              <p className="muted katakana-legacy-sub">Mismos ejercicios que hiragana</p>
+            </div>
             {legacyGrid}
-          </div>
+          </section>
         </div>
       ) : (
         legacyGrid

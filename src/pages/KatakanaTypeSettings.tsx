@@ -11,7 +11,7 @@ import {
 import type { KatakanaTypeSettings } from "../lib/katakanaTypeTypes";
 import { scriptBase } from "../lib/script";
 
-function ToggleRow({
+function ToggleSwitch({
   label,
   description,
   on,
@@ -23,18 +23,23 @@ function ToggleRow({
   onToggle: () => void;
 }) {
   return (
-    <div className="katakana-type-option">
-      <div className="katakana-type-option-text">
-        <strong>{label}</strong>
-        <span className="muted katakana-type-option-desc">{description}</span>
+    <div className="kt-toggle-row">
+      <div className="kt-toggle-copy">
+        <span className="kt-toggle-label">{label}</span>
+        <span className="muted kt-toggle-desc">{description}</span>
       </div>
       <button
         type="button"
-        className={`katakana-type-toggle ${on ? "katakana-type-toggle--on" : "katakana-type-toggle--off"}`}
+        className={`kt-switch ${on ? "kt-switch--on" : "kt-switch--off"}`}
         onClick={onToggle}
         aria-pressed={on}
+        role="switch"
+        aria-checked={on}
       >
-        {on ? "Activado" : "Desactivado"}
+        <span className="kt-switch-track" aria-hidden>
+          <span className="kt-switch-thumb" />
+        </span>
+        <span className="kt-switch-text">{on ? "Activado" : "Desactivado"}</span>
       </button>
     </div>
   );
@@ -75,60 +80,70 @@ export function KatakanaTypeSettings() {
   const base = scriptBase("katakana");
 
   return (
-    <div>
-      <h1 className="page-title">Escribe el vocabulario</h1>
-      <p className="muted page-lead">
-        Configurá la sesión y presioná <strong>Comenzar</strong>. Se practican hasta 10 palabras seguidas que todavía no
-        escribiste bien en este modo.
-      </p>
+    <div className="kt-stack-page">
+      <div className="kt-stack-intro">
+        <h1 className="page-title kt-page-title">Escribe el vocabulario</h1>
+        <p className="muted kt-page-lead">
+          Configurá la sesión y empezá con <strong>Comenzar</strong>. En cada ronda practicás hasta 10 palabras que todavía
+          no escribiste bien en este modo.
+        </p>
+      </div>
 
-      <div className="card katakana-type-settings-card">
-        <h2 className="katakana-type-settings-heading">Progreso global</h2>
-        <div className="katakana-type-progress-wrap">
-          <div className="katakana-type-progress-bar" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
-            <div className="katakana-type-progress-fill" style={{ width: `${pct}%` }} />
+      <div className="card kt-panel">
+        <section className="kt-panel-section">
+          <h2 className="kt-section-title">Progreso global</h2>
+          <p className="muted kt-section-sub">Palabras escritas correctamente al menos una vez (este modo)</p>
+          <div className="kt-progress-block">
+            <div className="kt-progress-bar" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
+              <div className="kt-progress-fill" style={{ width: `${pct}%` }} />
+            </div>
+            <div className="kt-progress-meta">
+              <span className="kt-progress-count">
+                {masteredCount} <span className="kt-progress-of">/ {total}</span>
+              </span>
+              <span className="kt-progress-pct">{pct}%</span>
+            </div>
           </div>
-          <span className="katakana-type-progress-label">
-            {masteredCount} / {total} palabras ({pct}%)
-          </span>
-        </div>
+        </section>
 
-        <h2 className="katakana-type-settings-heading">Opciones</h2>
-        <div className="katakana-type-options">
-          <ToggleRow
-            label="Activar volumen"
-            description="Muestra un botón para escuchar la palabra en japonés (no se reproduce sola)."
-            on={settings.volumeEnabled}
-            onToggle={() => patch({ volumeEnabled: !settings.volumeEnabled })}
-          />
-          <ToggleRow
-            label="Mostrar cantidad de letras"
-            description="Muestra una ranura por cada letra de la respuesta."
-            on={settings.showLetterCount}
-            onToggle={() => patch({ showLetterCount: !settings.showLetterCount })}
-          />
-          <ToggleRow
-            label="Marcar letras en teclado"
-            description="Resalta en amarillo las teclas que forman la palabra."
-            on={settings.highlightKeyboardLetters}
-            onToggle={() => patch({ highlightKeyboardLetters: !settings.highlightKeyboardLetters })}
-          />
-          <ToggleRow
-            label="Chances ilimitadas por palabra"
-            description="Si está desactivado, después de 3 intentos incorrectos se pasa a la siguiente palabra."
-            on={settings.unlimitedAttempts}
-            onToggle={() => patch({ unlimitedAttempts: !settings.unlimitedAttempts })}
-          />
-        </div>
+        <section className="kt-panel-section kt-panel-section--options">
+          <h2 className="kt-section-title">Opciones</h2>
+          <div className="kt-toggle-list">
+            <ToggleSwitch
+              label="Activar volumen"
+              description="Mostrás un botón para escuchar la palabra en japonés (no suena solo al cambiar de palabra)."
+              on={settings.volumeEnabled}
+              onToggle={() => patch({ volumeEnabled: !settings.volumeEnabled })}
+            />
+            <ToggleSwitch
+              label="Mostrar cantidad de letras"
+              description="Una raya por cada carácter de la respuesta esperada."
+              on={settings.showLetterCount}
+              onToggle={() => patch({ showLetterCount: !settings.showLetterCount })}
+            />
+            <ToggleSwitch
+              label="Marcar letras en teclado"
+              description="Resaltá en amarillo las teclas que forman la palabra."
+              on={settings.highlightKeyboardLetters}
+              onToggle={() => patch({ highlightKeyboardLetters: !settings.highlightKeyboardLetters })}
+            />
+            <ToggleSwitch
+              label="Chances ilimitadas por palabra"
+              description="Si está desactivado, a los tres intentos incorrectos pasás a la siguiente palabra."
+              on={settings.unlimitedAttempts}
+              onToggle={() => patch({ unlimitedAttempts: !settings.unlimitedAttempts })}
+            />
+          </div>
+        </section>
 
-        <div className="katakana-type-actions">
-          <button type="button" className="btn btn-primary btn-large" onClick={() => navigate(`${base}/type/session`)}>
+        <footer className="kt-panel-footer">
+          <button type="button" className="btn btn-primary btn-large kt-btn-primary" onClick={() => navigate(`${base}/type/session`)}>
             Comenzar
           </button>
-          <Link to={base} className="btn btn-ghost">
+          <Link to={base} className="btn btn-ghost kt-btn-secondary">
             Volver al menú Katakana
           </Link>
-        </div>
+        </footer>
       </div>
     </div>
   );

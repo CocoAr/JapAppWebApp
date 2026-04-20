@@ -11,6 +11,7 @@
     "validate:katakana": "node scripts/validate-katakana.mjs",
     "vocab:apply-taxonomy": "node scripts/apply-vocab-taxonomy.mjs",
     "build": "tsc --noEmit && npm run validate:vocab && npm run validate:katakana && vite build",
+    "deploy:pages": "wrangler pages deploy dist --project-name=jap-vocab-web",
     "preview": "wrangler pages dev dist --compatibility-date=2024-11-01",
     "cf-typegen": "wrangler types",
     "db:migrate:local": "wrangler d1 migrations apply jap_vocab_db --local",

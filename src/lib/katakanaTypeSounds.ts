@@ -10,32 +10,34 @@ function ctx(): AudioContext | null {
   return audioCtx;
 }
 
-function beep(freq: number, durationMs: number, type: OscillatorType, gain = 0.12): void {
+function beep(freq: number, durationMs: number, type: OscillatorType, gain = 0.1): void {
   const c = ctx();
   if (!c) return;
   const osc = c.createOscillator();
   const g = c.createGain();
   osc.type = type;
   osc.frequency.value = freq;
-  g.gain.value = gain;
+  g.gain.value = 0.0001;
   osc.connect(g);
   g.connect(c.destination);
   const now = c.currentTime;
-  g.gain.setValueAtTime(gain, now);
-  g.gain.exponentialRampToValueAtTime(0.001, now + durationMs / 1000);
+  const peak = gain;
+  g.gain.setValueAtTime(0.0001, now);
+  g.gain.exponentialRampToValueAtTime(peak, now + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, now + durationMs / 1000);
   osc.start(now);
-  osc.stop(now + durationMs / 1000 + 0.02);
+  osc.stop(now + durationMs / 1000 + 0.03);
 }
 
-/** Sonido breve de error */
+/** Sonido breve de error (suave) */
 export function playKatakanaTypeError(): void {
-  beep(180, 220, "sawtooth", 0.1);
-  setTimeout(() => beep(140, 180, "sawtooth", 0.08), 80);
+  beep(165, 160, "triangle", 0.085);
+  setTimeout(() => beep(130, 140, "triangle", 0.065), 75);
 }
 
 /** Sonido agradable de acierto */
 export function playKatakanaTypeSuccess(): void {
-  beep(523.25, 90, "sine", 0.11);
-  setTimeout(() => beep(659.25, 110, "sine", 0.1), 70);
-  setTimeout(() => beep(783.99, 140, "sine", 0.09), 160);
+  beep(523.25, 85, "sine", 0.095);
+  setTimeout(() => beep(659.25, 100, "sine", 0.085), 65);
+  setTimeout(() => beep(783.99, 125, "sine", 0.075), 145);
 }
