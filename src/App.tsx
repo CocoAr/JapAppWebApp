@@ -15,6 +15,8 @@ import { TrainWeakByPage } from "./pages/TrainWeakByPage";
 import { StudySession } from "./pages/StudySession";
 import { SessionSummary } from "./pages/SessionSummary";
 import { Account } from "./pages/Account";
+import { KatakanaTypeSettings } from "./pages/KatakanaTypeSettings";
+import { KatakanaTypeSession } from "./pages/KatakanaTypeSession";
 
 export default function App() {
   return (
@@ -42,6 +44,8 @@ export default function App() {
                 <Route path="train/weak-page" element={<TrainWeakByPage />} />
                 <Route path="session" element={<StudySession />} />
                 <Route path="summary" element={<SessionSummary />} />
+                <Route path="type/session" element={<KatakanaTypeSession />} />
+                <Route path="type" element={<KatakanaTypeSettings />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
