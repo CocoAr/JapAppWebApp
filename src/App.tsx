@@ -15,6 +15,11 @@ import { TrainWeakByPage } from "./pages/TrainWeakByPage";
 import { StudySession } from "./pages/StudySession";
 import { SessionSummary } from "./pages/SessionSummary";
 import { Account } from "./pages/Account";
+import { CompletarLayout } from "./pages/completar/CompletarLayout";
+import { CompletarSettings } from "./pages/completar/CompletarSettings";
+import { CompletarSession } from "./pages/completar/CompletarSession";
+import { CompletarSummary } from "./pages/completar/CompletarSummary";
+import { CompletarTips } from "./pages/completar/CompletarTips";
 
 export default function App() {
   return (
@@ -34,6 +39,12 @@ export default function App() {
             >
               <Route index element={<ScriptPicker />} />
               <Route path="account" element={<Account />} />
+              <Route path="completar" element={<CompletarLayout />}>
+                <Route index element={<CompletarSettings />} />
+                <Route path="session" element={<CompletarSession />} />
+                <Route path="summary" element={<CompletarSummary />} />
+                <Route path="tips" element={<CompletarTips />} />
+              </Route>
               <Route path=":script" element={<ScriptOutlet />}>
                 <Route index element={<TrainingMenu />} />
                 <Route path="train/page" element={<TrainByPage />} />

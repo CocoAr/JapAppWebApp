@@ -14,6 +14,7 @@ export function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const script = scriptFromPath(location.pathname);
+  const inCompletar = location.pathname.startsWith("/app/completar");
 
   async function handleLogout() {
     await logout();
@@ -36,6 +37,11 @@ export function Layout() {
               <Link to={`/app/${script}/session?mode=random`}>Al azar</Link>
               <Link to={`/app/${script}/train/weak`}>Débiles</Link>
               <Link to={`/app/${script}/train/weak-page`}>Débiles × nivel</Link>
+            </>
+          ) : inCompletar ? (
+            <>
+              <Link to="/app/completar">Completar</Link>
+              <Link to="/app/completar/tips">Consejos</Link>
             </>
           ) : null}
           <Link to="/app/account">Cuenta</Link>

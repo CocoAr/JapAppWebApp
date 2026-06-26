@@ -104,6 +104,22 @@ El dataset completo está en `src/data/vocabulary.json`. Cada palabra tiene **un
 
 Tipos y helpers: `src/data/vocabulary.ts`.
 
+## Modo "Completar Vocabulario" (español → japonés)
+
+Tercer botón independiente en `/app`, además de Hiragana y Katakana. No comparte vocabulario ni progreso con esos modos.
+
+- **Fuente de verdad:** `completar_vocabulario_source.txt` (TSV en la raíz). Se convierte a `src/data/completar.json` con `npm run completar:build` y se valida en el build (`npm run validate:completar`).
+- **Mecánica:** se muestra el significado en español; el usuario escribe en **romaji** con el teclado normal y la app convierte en vivo a hiragana/katakana. La respuesta se evalúa en `exact` / `near` / `wrong` / `empty` sobre una *lectura* canónica (hiragana folded), tolerante a kana, katakana y vocales largas. Los errores mínimos se muestran como "¡Casi!".
+- **Pistas progresivas:** nota contextual → primer kana + cantidad → patrón parcial → opciones (palabras reales de la misma temática) → respuesta.
+- **Sesiones cortas:** 5 / 10 / 15 ítems (default 10), por temática o "todas".
+- **Resumen:** puntaje + lista de palabras recomendadas para escribir a mano (las que costaron o necesitaron ayuda).
+- **Consejos:** la sección 10 del material (`/app/completar/tips`) se muestra como contenido, no como quiz.
+- **Persistencia:** tabla D1 propia `completar_item_progress` (migración `0005_completar.sql`) + endpoints `GET /api/completar/progress` y `POST /api/completar/result`. El handler tolera que la migración no esté aplicada todavía (devuelve progreso vacío en vez de error).
+
+Rutas: `/app/completar`, `/app/completar/session?theme=<id>&size=10`, `/app/completar/summary`, `/app/completar/tips`.
+
+> Para producción, aplicá la migración nueva: `npm run db:migrate:remote` (incluye `0005_completar.sql`).
+
 ## API (Pages Functions)
 
 Rutas implementadas:
@@ -119,6 +135,8 @@ Rutas implementadas:
 | `POST` | `/api/progress/session` | Guardar resultado de sesión (modo `page` o `topic`) |
 | `POST` | `/api/progress/category-started` | Marcar categoría como iniciada (tarjetas no grises) |
 | `POST` | `/api/progress/vocab-celebration-seen` | Marcar como visto el popup de celebración global |
+| `GET` | `/api/completar/progress` | Progreso del modo Completar (independiente) |
+| `POST` | `/api/completar/result` | Guardar resultado de un ítem de Completar (`exact`/`near`/`wrong`) |
 
 `GET /api/categories/page` y `GET /api/categories/topic` están alias a `GET /api/progress` para compatibilidad con la especificación.
 

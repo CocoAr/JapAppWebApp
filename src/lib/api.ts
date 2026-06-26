@@ -106,3 +106,18 @@ export const apiCategoryStarted = (mode: "page" | "topic", categoryId: string) =
     method: "POST",
     body: JSON.stringify({ mode, categoryId }),
   });
+
+export type CompletarStatus = "exact" | "near" | "wrong";
+
+export interface CompletarProgressPayload {
+  items: Record<string, CompletarStatus>;
+}
+
+export const apiGetCompletarProgress = () =>
+  api<CompletarProgressPayload>("/api/completar/progress");
+
+export const apiPostCompletarResult = (itemId: string, status: CompletarStatus) =>
+  api<{ ok: boolean }>("/api/completar/result", {
+    method: "POST",
+    body: JSON.stringify({ itemId, status }),
+  });

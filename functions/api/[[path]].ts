@@ -56,6 +56,12 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === "/api/categories/topic" && request.method === "GET") {
       return handleGetProgress(env, request);
     }
+    if (path === "/api/completar/progress" && request.method === "GET") {
+      return handleGetCompletarProgress(env, request);
+    }
+    if (path === "/api/completar/result" && request.method === "POST") {
+      return handlePostCompletarResult(env, request);
+    }
 
     return jsonError("Not found", 404);
   } catch (e) {
@@ -287,6 +293,61 @@ async function handlePostSession(env: Env, request: Request): Promise<Response> 
        updated_at = excluded.updated_at`
   )
     .bind(user.id, mode, categoryId, score, now)
+    .run();
+
+  return json({ ok: true });
+}
+
+async function handleGetCompletarProgress(env: Env, request: Request): Promise<Response> {
+  const user = await requireUser(env, request);
+  if (!user) return jsonError("No autenticado.", 401);
+
+  // Defensive: if the 0005 migration has not been applied yet, return empty
+  // progress instead of a 500 so the mode still works before the DB is migrated.
+  try {
+    const rows = await env.DB.prepare(
+      "SELECT item_id, status FROM completar_item_progress WHERE user_id = ?"
+    )
+      .bind(user.id)
+      .all<{ item_id: string; status: string }>();
+
+    const items: Record<string, "exact" | "near" | "wrong"> = {};
+    for (const r of rows.results ?? []) {
+      if (r.status === "exact" || r.status === "near" || r.status === "wrong") {
+        items[r.item_id] = r.status;
+      }
+    }
+    return json({ items });
+  } catch (e) {
+    console.error("completar progress unavailable", e);
+    return json({ items: {} });
+  }
+}
+
+async function handlePostCompletarResult(env: Env, request: Request): Promise<Response> {
+  const user = await requireUser(env, request);
+  if (!user) return jsonError("No autenticado.", 401);
+
+  let body: { itemId?: string; status?: string };
+  try {
+    body = (await request.json()) as { itemId?: string; status?: string };
+  } catch {
+    return jsonError("Invalid JSON", 400);
+  }
+
+  const itemId = body.itemId?.trim() ?? "";
+  const status = body.status;
+  if (!itemId) return jsonError("itemId requerido.", 400);
+  if (status !== "exact" && status !== "near" && status !== "wrong") {
+    return jsonError("status inválido.", 400);
+  }
+
+  const now = Date.now();
+  await env.DB.prepare(
+    `INSERT INTO completar_item_progress (user_id, item_id, status, updated_at) VALUES (?, ?, ?, ?)
+     ON CONFLICT(user_id, item_id) DO UPDATE SET status = excluded.status, updated_at = excluded.updated_at`
+  )
+    .bind(user.id, itemId, status, now)
     .run();
 
   return json({ ok: true });

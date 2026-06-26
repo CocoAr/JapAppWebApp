@@ -1,0 +1,394 @@
+# Completar Vocabulario - fuente de datos para implementación
+
+Origen: machete_vocabulario_japones_l1_l8_actualizado.pdf.
+Uso: pegar este archivo en el repo para que el coding agent cree el tercer botón independiente "Completar Vocabulario".
+Incluye: secciones 1 a 8 como ejercicios y sección 10 como consejos/asociaciones.
+Excluye explícitamente: sección 9 "Frases armadas comunes" y sección 11 "Práctica intensiva: español -> japonés".
+
+Formato TSV. Separador: tabulador. Codificación: UTF-8.
+Columnas:
+type	section	theme_id	item_id	japanese	spanish_prompt	accepted_japanese	prompt_note	hint	kana_mode	tags
+
+Notas para el agente:
+- En ITEM, japanese es la respuesta principal esperada. accepted_japanese lista variantes válidas separadas por punto y coma.
+- Si accepted_japanese está vacío, aceptar solo japanese como exacto, además de tolerancias de scoring.
+- En TIP, no hacer quiz: mostrar como contenido de consejos/asociaciones.
+- Para ítems con 〜, aceptar con o sin 〜 cuando esté indicado.
+- En preguntas/frases, comparar ignorando espacios y puntuación final japonesa cuando sea razonable.
+- kana_mode es orientativo: hiragana, katakana, mixed, latin u other.
+
+
+type	section	theme_id	item_id	japanese	spanish_prompt	accepted_japanese	prompt_note	hint	kana_mode	tags
+ITEM	1	personas_familia_roles	cv1_001	わたし	yo		tema típico: わたしは〜です	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_002	あなた	vos / usted		se usa poco si ya se sabe el nombre	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_003	あの ひと	aquella persona		forma neutra	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_004	あの かた	aquella persona		forma más cortés	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_005	だれ	quién		pregunta común	interrogativo	hiragana	
+ITEM	1	personas_familia_roles	cv1_006	どなた	quién		más cortés que だれ	interrogativo	hiragana	
+ITEM	1	personas_familia_roles	cv1_007	〜さん	Sr./Sra./Srita.	〜さん;さん	sufijo respetuoso; aceptar con o sin 〜	sufijo	hiragana	
+ITEM	1	personas_familia_roles	cv1_008	〜ちゃん	sufijo afectivo	〜ちゃん;ちゃん	niños/cercanía; aceptar con o sin 〜	sufijo	hiragana	
+ITEM	1	personas_familia_roles	cv1_009	〜くん	sufijo para chicos/hombres jóvenes	〜くん;くん	también subordinados; aceptar con o sin 〜	sufijo	hiragana	
+ITEM	1	personas_familia_roles	cv1_010	〜じん	persona de nacionalidad	〜じん;じん	ej.: にほんじん; aceptar con o sin 〜	sufijo	hiragana	
+ITEM	1	personas_familia_roles	cv1_011	ひと	persona / gente		persona en general	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_012	ともだち	amigo(s)		ともだちに あいます	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_013	かれ	él / novio		según contexto	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_014	かのじょ	ella / novia		según contexto	persona básica	hiragana	
+ITEM	1	personas_familia_roles	cv1_015	かぞく	familia		grupo familiar	familia	hiragana	
+ITEM	1	personas_familia_roles	cv1_016	ひとりで	solo / una persona		modo: voy solo	persona/modo	hiragana	
+ITEM	1	personas_familia_roles	cv1_017	せんせい	profesor / maestro		para hablar de otro profesor	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_018	きょうし	profesor / maestro		para decir mi profesión	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_019	がくせい	estudiante		わたしは がくせいです	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_020	かいしゃいん	empleado de empresa		rol general	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_021	しゃいん	empleado de una empresa específica		IMC の しゃいん	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_022	ぎんこういん	empleado de banco		rol/profesión	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_023	いしゃ	médico		rol/profesión	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_024	けんきゅうしゃ	investigador		rol/profesión	roles	hiragana	
+ITEM	1	personas_familia_roles	cv1_025	ちち	mi padre		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_026	はは	mi madre		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_027	そふ	mi abuelo		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_028	そぼ	mi abuela		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_029	あに	mi hermano mayor		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_030	あね	mi hermana mayor		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_031	おとうと	mi hermano menor		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_032	いもうと	mi hermana menor		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_033	おっと	mi esposo		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_034	つま	mi esposa		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_035	むすこ	mi hijo		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_036	むすめ	mi hija		hablar de mi familia	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_037	りょうしん	mis padres		colectivo	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_038	きょうだい	mis hermanos		colectivo	familia propia	hiragana	
+ITEM	1	personas_familia_roles	cv1_039	こども	hijo(s) / niño(s)		general	familia	hiragana	
+ITEM	1	personas_familia_roles	cv1_040	おとうさん	padre / papá		familia de otro o al llamar al propio padre	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_041	おかあさん	madre / mamá		familia de otro o al llamar a la propia madre	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_042	おじいさん	abuelo		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_043	おばあさん	abuela		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_044	おにいさん	hermano mayor		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_045	おねえさん	hermana mayor		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_046	おとうとさん	hermano menor		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_047	いもうとさん	hermana menor		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_048	ごしゅじん	esposo de otra persona		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_049	おくさん	esposa de otra persona		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_050	むすこさん	hijo de otra persona		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_051	むすめさん	hija de otra persona		forma cortés	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_052	ごりょうしん	sus padres		ご + colectivo	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_053	ごきょうだい	sus hermanos		ご + colectivo	familia cortés	hiragana	
+ITEM	1	personas_familia_roles	cv1_054	おこさん	hijo(s) de otra persona		forma cortés	familia cortés	hiragana	
+ITEM	2	lugares_ubicacion	cv2_001	ここ	aquí		lugar cerca de mí	lugar/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_002	そこ	ahí		lugar cerca del oyente	lugar/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_003	あそこ	allí / allá		lejos de ambos	lugar/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_004	どこ	dónde		pregunta de lugar	interrogativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_005	こちら	por aquí / aquí / esta persona		cortés	cortés/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_006	そちら	por ahí / ahí		cortés	cortés/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_007	あちら	por allí / allí		cortés	cortés/demostrativo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_008	どちら	dónde / cuál / de qué país		cortés	interrogativo cortés	hiragana	
+ITEM	2	lugares_ubicacion	cv2_009	きょうしつ	aula		literalmente: sala de clase	lugar/estudio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_010	しょくどう	comedor		lugar para comer	lugar/comida	hiragana	
+ITEM	2	lugares_ubicacion	cv2_011	じむしょ	oficina		lugar de trabajo	lugar/trabajo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_012	かいぎしつ	sala de reuniones		かいぎ + しつ	lugar/trabajo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_013	うけつけ	recepción		en edificios	lugar/edificio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_014	ロビー	lobby / vestíbulo		entrada	katakana/lugar	katakana	
+ITEM	2	lugares_ubicacion	cv2_015	へや	habitación / cuarto		espacio interno	lugar/casa	hiragana	
+ITEM	2	lugares_ubicacion	cv2_016	トイレ	baño	トイレ;おてあらい	おてあらい es más cortés	lugar; variante cortés	katakana	
+ITEM	2	lugares_ubicacion	cv2_017	かいだん	escalera		edificio	lugar/edificio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_018	エレベーター	ascensor		edificio	katakana/lugar	katakana	
+ITEM	2	lugares_ubicacion	cv2_019	エスカレーター	escalera mecánica		edificio	katakana/lugar	katakana	
+ITEM	2	lugares_ubicacion	cv2_020	じどうはんばいき	máquina expendedora		edificio/calle	lugar/objeto	hiragana	
+ITEM	2	lugares_ubicacion	cv2_021	うりば	sección / sector de ventas		en tienda	tienda	hiragana	
+ITEM	2	lugares_ubicacion	cv2_022	ちか	subsuelo		piso bajo tierra	edificio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_023	〜かい	piso / planta	〜かい;かい;〜がい;がい	también puede aparecer como 〜がい; aceptar con o sin 〜	contador/piso	hiragana	
+ITEM	2	lugares_ubicacion	cv2_024	なんがい	qué piso		pregunta	interrogativo/piso	hiragana	
+ITEM	2	lugares_ubicacion	cv2_025	だいがく	universidad		institución	lugar/estudio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_026	びょういん	hospital		institución	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_027	かいしゃ	empresa		institución	lugar/trabajo	hiragana	
+ITEM	2	lugares_ubicacion	cv2_028	うち	casa		propia casa	lugar/casa	hiragana	
+ITEM	2	lugares_ubicacion	cv2_029	デパート	gran almacén / tienda departamental		compras	katakana/compras	katakana	
+ITEM	2	lugares_ubicacion	cv2_030	ぎんこう	banco		institución	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_031	ゆうびんきょく	correo		institución	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_032	としょかん	biblioteca		edificio	lugar/estudio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_033	びじゅつかん	museo de arte		edificio	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_034	がっこう	escuela		lugar de estudio	lugar/estudio	hiragana	
+ITEM	2	lugares_ubicacion	cv2_035	スーパー	supermercado		compras	katakana/compras	katakana	
+ITEM	2	lugares_ubicacion	cv2_036	えき	estación		transporte	lugar/transporte	hiragana	
+ITEM	2	lugares_ubicacion	cv2_037	みせ	tienda / negocio		compras	lugar/compras	hiragana	
+ITEM	2	lugares_ubicacion	cv2_038	にわ	jardín		casa/lugar	lugar/naturaleza	hiragana	
+ITEM	2	lugares_ubicacion	cv2_039	ところ	lugar		genérico	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_040	りょう	residencia / dormitorio		vivienda	lugar/vivienda	hiragana	
+ITEM	2	lugares_ubicacion	cv2_041	レストラン	restaurante		comida	katakana/comida	katakana	
+ITEM	2	lugares_ubicacion	cv2_042	まち	ciudad / pueblo		población	lugar	hiragana	
+ITEM	2	lugares_ubicacion	cv2_043	さくら	cerezo / flor de cerezo		naturaleza	naturaleza	hiragana	
+ITEM	2	lugares_ubicacion	cv2_044	やま	montaña		naturaleza	naturaleza	hiragana	
+ITEM	2	lugares_ubicacion	cv2_045	くに	país / su país	くに;おくに	おくには どちらですか	país; variante cortés	hiragana	
+ITEM	3	transporte_movimiento	cv3_001	ひこうき	avión		ひこうきで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_002	ふね	barco / buque		ふねで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_003	でんしゃ	tren eléctrico		でんしゃで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_004	ちかてつ	metro		ちかてつで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_005	しんかんせん	tren bala		しんかんせんで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_006	バス	autobús		バスで いきます	katakana/transporte	katakana	
+ITEM	3	transporte_movimiento	cv3_007	タクシー	taxi		タクシーで いきます	katakana/transporte	katakana	
+ITEM	3	transporte_movimiento	cv3_008	じてんしゃ	bicicleta		じてんしゃで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_009	くるま	auto		くるまで いきます	medio de transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_010	あるいて	a pie / caminando		no lleva で: あるいて いきます	movimiento	hiragana	
+ITEM	3	transporte_movimiento	cv3_011	きっぷ	boleto / billete		transporte	transporte	hiragana	
+ITEM	3	transporte_movimiento	cv3_012	プラットホーム	andén / plataforma		estación	katakana/transporte	katakana	
+ITEM	3	transporte_movimiento	cv3_013	〜ばんせん	plataforma/línea número〜	〜ばんせん;ばんせん	ej.: 3ばんせん; aceptar con o sin 〜	transporte/contador	hiragana	
+ITEM	3	transporte_movimiento	cv3_014	ふつう	tren ordinario / local		tipo de tren	tren	hiragana	
+ITEM	3	transporte_movimiento	cv3_015	きゅうこう	tren expreso		tipo de tren	tren	hiragana	
+ITEM	3	transporte_movimiento	cv3_016	とっきゅう	tren superexpreso		tipo de tren	tren	hiragana	
+ITEM	4	objetos_comida_diario	cv4_001	これ	esto		objeto cerca de mí	demostrativo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_002	それ	eso		objeto cerca del oyente	demostrativo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_003	あれ	aquello		lejos de ambos	demostrativo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_004	どれ	cuál		entre objetos	interrogativo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_005	この〜	este〜	この〜;この	siempre con sustantivo; aceptar con o sin 〜	demostrativo + sustantivo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_006	その〜	ese〜	その〜;その	siempre con sustantivo; aceptar con o sin 〜	demostrativo + sustantivo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_007	あの〜	aquel〜	あの〜;あの	siempre con sustantivo; aceptar con o sin 〜	demostrativo + sustantivo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_008	どの〜	cuál〜	どの〜;どの	siempre con sustantivo; aceptar con o sin 〜	interrogativo + sustantivo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_009	ほん	libro		lectura/estudio	lectura	hiragana	
+ITEM	4	objetos_comida_diario	cv4_010	じしょ	diccionario		estudio	estudio	hiragana	
+ITEM	4	objetos_comida_diario	cv4_011	ざっし	revista		lectura	lectura	hiragana	
+ITEM	4	objetos_comida_diario	cv4_012	しんぶん	periódico / diario		lectura	lectura	hiragana	
+ITEM	4	objetos_comida_diario	cv4_013	ノート	cuaderno		estudio	katakana/estudio	katakana	
+ITEM	4	objetos_comida_diario	cv4_014	てちょう	agenda		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_015	めいし	tarjeta de visita		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_016	カード	tarjeta		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_017	えんぴつ	lápiz		escritura	papelería	hiragana	
+ITEM	4	objetos_comida_diario	cv4_018	ボールペン	bolígrafo / birome		escritura	katakana/papelería	katakana	
+ITEM	4	objetos_comida_diario	cv4_019	シャープペンシル	portaminas		escritura	katakana/papelería	katakana	
+ITEM	4	objetos_comida_diario	cv4_020	かぎ	llave		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_021	とけい	reloj		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_022	かさ	paraguas		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_023	かばん	bolso / maleta		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_024	CD	CD	CD;シーディー	objeto; aceptar CD o シーディー	latin/katakana	other	
+ITEM	4	objetos_comida_diario	cv4_025	テレビ	televisor		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_026	ラジオ	radio		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_027	カメラ	cámara		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_028	コンピューター	computadora		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_029	パソコン	computadora personal		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_030	ケータイ	teléfono móvil / celular		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_031	つくえ	escritorio		mueble	mueble	hiragana	
+ITEM	4	objetos_comida_diario	cv4_032	いす	silla		mueble	mueble	hiragana	
+ITEM	4	objetos_comida_diario	cv4_033	メール	e-mail / correo electrónico		mensaje	katakana/mensaje	katakana	
+ITEM	4	objetos_comida_diario	cv4_034	ねんがじょう	tarjeta de Año Nuevo		correspondencia	correspondencia	hiragana	
+ITEM	4	objetos_comida_diario	cv4_035	パンチ	perforadora		papelería	katakana/papelería	katakana	
+ITEM	4	objetos_comida_diario	cv4_036	ホッチキス	grapadora		papelería	katakana/papelería	katakana	
+ITEM	4	objetos_comida_diario	cv4_037	セロテープ	cinta adhesiva		papelería	katakana/papelería	katakana	
+ITEM	4	objetos_comida_diario	cv4_038	けしゴム	goma de borrar		papelería	mixta/papelería	mixed	
+ITEM	4	objetos_comida_diario	cv4_039	かみ	papel		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_040	て	mano		cuerpo	cuerpo	hiragana	
+ITEM	4	objetos_comida_diario	cv4_041	はし	palillos		herramienta para comer	herramienta	hiragana	
+ITEM	4	objetos_comida_diario	cv4_042	スプーン	cuchara		herramienta	katakana/herramienta	katakana	
+ITEM	4	objetos_comida_diario	cv4_043	ナイフ	cuchillo		herramienta	katakana/herramienta	katakana	
+ITEM	4	objetos_comida_diario	cv4_044	フォーク	tenedor		herramienta	katakana/herramienta	katakana	
+ITEM	4	objetos_comida_diario	cv4_045	はさみ	tijeras		herramienta	herramienta	hiragana	
+ITEM	4	objetos_comida_diario	cv4_046	チョコレート	chocolate		comida	katakana/comida	katakana	
+ITEM	4	objetos_comida_diario	cv4_047	コーヒー	café		bebida	katakana/bebida	katakana	
+ITEM	4	objetos_comida_diario	cv4_048	ごはん	comida / arroz cocido		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_049	あさごはん	desayuno		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_050	ひるごはん	almuerzo		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_051	ばんごはん	cena		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_052	パン	pan		comida	katakana/comida	katakana	
+ITEM	4	objetos_comida_diario	cv4_053	たまご	huevo		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_054	にく	carne		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_055	さかな	pescado / pez		comida/animal	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_056	やさい	verduras		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_057	くだもの	frutas		comida	comida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_058	みず	agua		bebida	bebida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_059	おちゃ	té verde		bebida	bebida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_060	こうちゃ	té negro / inglés		bebida	bebida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_061	ぎゅうにゅう	leche		bebida	bebida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_062	ジュース	jugo / zumo		bebida	katakana/bebida	katakana	
+ITEM	4	objetos_comida_diario	cv4_063	ビール	cerveza		bebida	katakana/bebida	katakana	
+ITEM	4	objetos_comida_diario	cv4_064	おさけ	sake / bebida alcohólica		bebida	bebida	hiragana	
+ITEM	4	objetos_comida_diario	cv4_065	たばこ	cigarrillo		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_066	ワイン	vino		bebida	katakana/bebida	katakana	
+ITEM	4	objetos_comida_diario	cv4_067	てがみ	carta		correspondencia	correspondencia	hiragana	
+ITEM	4	objetos_comida_diario	cv4_068	レポート	informe / reporte		estudio/trabajo	katakana/estudio	katakana	
+ITEM	4	objetos_comida_diario	cv4_069	しゃしん	fotografía		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_070	ビデオ	video		cinta o aparato	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_071	しゅくだい	deberes / tarea		actividad	actividad	hiragana	
+ITEM	4	objetos_comida_diario	cv4_072	テニス	tenis		deporte	katakana/deporte	katakana	
+ITEM	4	objetos_comida_diario	cv4_073	サッカー	fútbol		deporte	katakana/deporte	katakana	
+ITEM	4	objetos_comida_diario	cv4_074	はな	flor		objeto/naturaleza	naturaleza	hiragana	
+ITEM	4	objetos_comida_diario	cv4_075	シャツ	camisa		ropa	katakana/ropa	katakana	
+ITEM	4	objetos_comida_diario	cv4_076	プレゼント	regalo		objeto	katakana/objeto	katakana	
+ITEM	4	objetos_comida_diario	cv4_077	にもつ	equipaje / paquete		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_078	おかね	dinero		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_079	おみやげ	souvenir / regalo de viaje		objeto	objeto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_080	たべもの	comida / alimentos		concepto	concepto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_081	せいかつ	vida diaria		concepto	concepto	hiragana	
+ITEM	4	objetos_comida_diario	cv4_082	しごと	trabajo / profesión		concepto	concepto	hiragana	
+ITEM	5	adjetivos	cv5_001	ハンサムな	guapo		adjetivo な	adjetivo な	mixed	
+ITEM	5	adjetivos	cv5_002	きれいな	hermoso / limpio		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_003	しずかな	silencioso / tranquilo		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_004	にぎやかな	concurrido / animado		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_005	ゆうめいな	famoso / célebre		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_006	しんせつな	amable / generoso		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_007	げんきな	sano / con ánimo		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_008	ひまな	estar libre de tiempo		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_009	べんりな	útil / práctico / conveniente		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_010	すてきな	bonito / lindo		adjetivo な	adjetivo な	hiragana	
+ITEM	5	adjetivos	cv5_011	おおきい	grande		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_012	ちいさい	pequeño		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_013	あたらしい	nuevo		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_014	ふるい	viejo / antiguo		no se usa para gente	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_015	いい	bueno	いい;よい	adjetivo い irregular; también よい	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_016	わるい	malo		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_017	あつい	caluroso / caliente		clima o temperatura	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_018	さむい	frío		clima o temperatura	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_019	つめたい	frío		al tacto	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_020	むずかしい	difícil		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_021	やさしい	fácil		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_022	たかい	caro / alto		precio o altura	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_023	やすい	barato		precio	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_024	ひくい	bajo		altura/estatura	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_025	おもしろい	interesante		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_026	おいしい	delicioso / sabroso		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_027	いそがしい	atareado / ocupado		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_028	たのしい	divertido / placentero		adjetivo い	adjetivo い	hiragana	
+ITEM	5	adjetivos	cv5_029	しろい	blanco		color	adjetivo い/color	hiragana	
+ITEM	5	adjetivos	cv5_030	くろい	negro		color	adjetivo い/color	hiragana	
+ITEM	5	adjetivos	cv5_031	あかい	rojo		color	adjetivo い/color	hiragana	
+ITEM	5	adjetivos	cv5_032	あおい	azul		color	adjetivo い/color	hiragana	
+ITEM	6	verbos_patrones	cv6_001	いきます	ir		[lugarへ/に] いきます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_002	きます	venir		[lugarへ/に] きます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_003	かえります	volver / regresar		[うちへ] かえります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_004	おきます	levantarse		[horaに] おきます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_005	ねます	dormir / acostarse		[horaに] ねます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_006	はたらきます	trabajar		[lugarで] はたらきます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_007	やすみます	descansar / faltar / estar de vacaciones		objeto no necesario	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_008	べんきょうします	estudiar		[にほんごを] べんきょうします	verbo します	hiragana	
+ITEM	6	verbos_patrones	cv6_009	おわります	terminar		[horaに] おわります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_010	たべます	comer		[ごはんを] たべます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_011	のみます	beber / tomar		[みずを] のみます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_012	すいます	fumar		[たばこを] すいます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_013	みます	ver / mirar		[テレビを] みます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_014	ききます	oír / escuchar		[ラジオを] ききます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_015	よみます	leer		[ほんを] よみます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_016	かきます	escribir		[てがみを] かきます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_017	かいます	comprar		[おみやげを] かいます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_018	とります	sacar		[しゃしんを] とります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_019	します	hacer / jugar		[しゅくだいを] します / [テニスを] します	verbo irregular	hiragana	
+ITEM	6	verbos_patrones	cv6_020	あいます	ver / encontrarse con		[ともだちに] あいます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_021	きります	cortar		[かみを] きります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_022	おくります	enviar		[メールを] おくります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_023	あげます	dar		[ひとに プレゼントを] あげます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_024	もらいます	recibir		[ひとに/から プレゼントを] もらいます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_025	かします	prestar		[ひとに おかねを] かします	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_026	かります	tomar prestado		[ひとに/から おかねを] かります	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_027	おしえます	enseñar		[ひとに にほんごを] おしえます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_028	ならいます	aprender		[ひとに/から にほんごを] ならいます	verbo en ます	hiragana	
+ITEM	6	verbos_patrones	cv6_029	かけます	hacer una llamada		[でんわを] かけます	verbo en ます	hiragana	
+ITEM	7	tiempo_fechas	cv7_001	いま	ahora		momento actual	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_002	ごぜん	de la mañana / a. m.		antes de mediodía	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_003	ごご	de la tarde / p. m.		después de mediodía	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_004	あさ	mañana		parte del día	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_005	ひる	mediodía / día		parte del día	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_006	ばん	noche	ばん;よる	también よる	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_007	けさ	esta mañana		hoy por la mañana	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_008	こんばん	esta noche		hoy a la noche	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_009	おととい	anteayer		dos días antes	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_010	きのう	ayer		un día antes	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_011	きょう	hoy		día actual	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_012	あした	mañana		día siguiente	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_013	あさって	pasado mañana		dos días después	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_014	せんしゅう	la semana pasada		pasado	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_015	こんしゅう	esta semana		presente	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_016	らいしゅう	la semana que viene		futuro	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_017	せんげつ	el mes pasado		pasado	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_018	こんげつ	este mes		presente	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_019	らいげつ	el mes que viene		futuro	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_020	きょねん	el año pasado		pasado	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_021	ことし	este año		presente	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_022	らいねん	el año que viene		futuro	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_023	まいあさ	todas las mañanas		frecuencia	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_024	まいばん	todas las noches		frecuencia	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_025	まいにち	todos los días		frecuencia	tiempo general	hiragana	
+ITEM	7	tiempo_fechas	cv7_026	やすみ	descanso / feriado		sustantivo	tiempo/sustantivo	hiragana	
+ITEM	7	tiempo_fechas	cv7_027	ひるやすみ	descanso del mediodía		sustantivo	tiempo/sustantivo	hiragana	
+ITEM	7	tiempo_fechas	cv7_028	〜じ	〜 hora(s)	〜じ;じ	ej.: よじ; aceptar con o sin 〜	contador/hora	hiragana	
+ITEM	7	tiempo_fechas	cv7_029	〜ふん	〜 minuto(s)	〜ふん;ふん;〜ぷん;ぷん	también 〜ぷん; ej.: ごふん / じゅっぷん	contador/minuto	hiragana	
+ITEM	7	tiempo_fechas	cv7_030	はん	media		ej.: 7じはん	hora	hiragana	
+ITEM	7	tiempo_fechas	cv7_031	なんじ	qué hora		pregunta	interrogativo/hora	hiragana	
+ITEM	7	tiempo_fechas	cv7_032	なんぷん	qué minuto		pregunta	interrogativo/minuto	hiragana	
+ITEM	7	tiempo_fechas	cv7_033	〜から	desde〜	〜から;から	inicio; aceptar con o sin 〜	partícula/tiempo	hiragana	
+ITEM	7	tiempo_fechas	cv7_034	〜まで	hasta〜	〜まで;まで	fin; aceptar con o sin 〜	partícula/tiempo	hiragana	
+ITEM	7	tiempo_fechas	cv7_035	〜と〜	〜 y 〜	〜と〜;と	conecta sustantivos; aceptar con o sin 〜	partícula/conector	hiragana	
+ITEM	7	tiempo_fechas	cv7_036	げつようび	lunes			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_037	かようび	martes			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_038	すいようび	miércoles			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_039	もくようび	jueves			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_040	きんようび	viernes			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_041	どようび	sábado			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_042	にちようび	domingo			día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_043	なんようび	qué día de la semana		pregunta	interrogativo/día de semana	hiragana	
+ITEM	7	tiempo_fechas	cv7_044	ついたち	día 1 / 1 día		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_045	ふつか	día 2 / 2 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_046	みっか	día 3 / 3 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_047	よっか	día 4 / 4 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_048	いつか	día 5 / 5 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_049	むいか	día 6 / 6 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_050	なのか	día 7 / 7 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_051	ようか	día 8 / 8 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_052	ここのか	día 9 / 9 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_053	とおか	día 10 / 10 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_054	じゅうよっか	día 14 / 14 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_055	はつか	día 20 / 20 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_056	にじゅうよっか	día 24 / 24 días		especial	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_057	〜にち	día〜 / 〜 días	〜にち;にち	forma común desde 11, excepto especiales; aceptar con o sin 〜	día del mes/duración	hiragana	
+ITEM	7	tiempo_fechas	cv7_058	なんにち	qué día del mes / cuántos días		pregunta	interrogativo/día del mes	hiragana	
+ITEM	7	tiempo_fechas	cv7_059	いつ	cuándo		pregunta	interrogativo/tiempo	hiragana	
+ITEM	7	tiempo_fechas	cv7_060	たんじょうび	cumpleaños		sustantivo	fecha	hiragana	
+ITEM	8	preguntas	cv8_001	〜ですか。	¿Es〜?	〜ですか。;ですか;〜ですか	convierte la oración en pregunta; aceptar con o sin 〜 y puntuación	pregunta/patrón	hiragana	
+ITEM	8	preguntas	cv8_002	はい	sí		respuesta básica	respuesta	hiragana	
+ITEM	8	preguntas	cv8_003	いいえ	no		respuesta básica	respuesta	hiragana	
+ITEM	8	preguntas	cv8_004	だれですか。	¿Quién es?		normal	pregunta	hiragana	
+ITEM	8	preguntas	cv8_005	どなたですか。	¿Quién es?		más cortés	pregunta cortés	hiragana	
+ITEM	8	preguntas	cv8_006	なんですか。	¿Qué es?		para objetos/cosas	pregunta	hiragana	
+ITEM	8	preguntas	cv8_007	これは なんですか。	¿Qué es esto?		これ/それ/あれ	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_008	だれのですか。	¿De quién es?		posesión con の	pregunta	hiragana	
+ITEM	8	preguntas	cv8_009	どれですか。	¿Cuál es?		entre objetos	pregunta	hiragana	
+ITEM	8	preguntas	cv8_010	どの〜ですか。	¿Cuál〜 es?	どの〜ですか。;どのですか。;どの〜ですか;どのですか	necesita sustantivo; aceptar con o sin 〜	pregunta + sustantivo	hiragana	
+ITEM	8	preguntas	cv8_011	どこですか。	¿Dónde está/es?		lugar normal	pregunta	hiragana	
+ITEM	8	preguntas	cv8_012	どちらですか。	¿Dónde/cuál/de qué país?		más cortés	pregunta cortés	hiragana	
+ITEM	8	preguntas	cv8_013	おくには どちらですか。	¿De qué país es?		frase fija	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_014	いくらですか。	¿Cuánto cuesta?		dinero	pregunta	hiragana	
+ITEM	8	preguntas	cv8_015	なんがいですか。	¿En qué piso está?		pisos	pregunta	hiragana	
+ITEM	8	preguntas	cv8_016	なんじですか。	¿Qué hora es?		hora	pregunta	hiragana	
+ITEM	8	preguntas	cv8_017	なんぷんですか。	¿Qué minuto?		minutos	pregunta	hiragana	
+ITEM	8	preguntas	cv8_018	なんようびですか。	¿Qué día de la semana?		semana	pregunta	hiragana	
+ITEM	8	preguntas	cv8_019	なんばんですか。	¿Qué número?		número	pregunta	hiragana	
+ITEM	8	preguntas	cv8_020	なんさいですか。	¿Cuántos años?		normal	pregunta	hiragana	
+ITEM	8	preguntas	cv8_021	おいくつですか。	¿Cuántos años?		más cortés	pregunta cortés	hiragana	
+ITEM	8	preguntas	cv8_022	いつですか。	¿Cuándo es?		fecha/tiempo	pregunta	hiragana	
+ITEM	8	preguntas	cv8_023	なんねんですか。	¿Qué año?		año	pregunta	hiragana	
+ITEM	8	preguntas	cv8_024	なんがつですか。	¿Qué mes?		mes	pregunta	hiragana	
+ITEM	8	preguntas	cv8_025	なんにちですか。	¿Qué día del mes?		día	pregunta	hiragana	
+ITEM	8	preguntas	cv8_026	どこへ いきますか。	¿A dónde vas?		destino	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_027	なんで いきますか。	¿En qué vas?		medio de transporte	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_028	だれと いきますか。	¿Con quién vas?		compañía	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_029	いつ いきますか。	¿Cuándo vas?		tiempo	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_030	なにを しますか。	¿Qué hacés?		acción con を	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_031	なにで たべますか。	¿Con qué comés?		herramienta con で	pregunta completa	hiragana	
+ITEM	8	preguntas	cv8_032	どんな〜ですか。	¿Qué clase de〜 es?	どんな〜ですか。;どんなですか。;どんな〜ですか;どんなですか	tipo/característica; aceptar con o sin 〜	pregunta + sustantivo	hiragana	
+ITEM	8	preguntas	cv8_033	どうですか。	¿Cómo es/qué tal?		opinión/estado	pregunta	hiragana	
+TIP	10	consejos_raices	tip10_001	かいしゃ → かいしゃいん → しゃいん	empresa → empleado de empresa → empleado de una empresa específica			かいしゃ = empresa; いん/しゃいん aparece en roles	mixed	roles
+TIP	10	consejos_raices	tip10_002	ぎんこう → ぎんこういん	banco → empleado de banco			lugar/institución + persona que trabaja ahí	mixed	roles
+TIP	10	consejos_raices	tip10_003	きょうし → きょうしつ	profesor → aula			comparten きょう; しつ = sala/cuarto	mixed	estudio
+TIP	10	consejos_raices	tip10_004	かいぎ → かいぎしつ	reunión → sala de reuniones			しつ = sala/cuarto	mixed	lugares
+TIP	10	consejos_raices	tip10_005	へや / しつ	habitación / sala			ambos son espacios internos; しつ aparece en palabras compuestas	mixed	lugares
+TIP	10	consejos_raices	tip10_006	としょかん / びじゅつかん	biblioteca / museo de arte			〜かん suele ser edificio/institución	mixed	lugares
+TIP	10	consejos_raices	tip10_007	だいがく / がくせい / がっこう	universidad / estudiante / escuela			grupo de palabras de estudio	mixed	estudio
+TIP	10	consejos_raices	tip10_008	べんきょうします / きょうし / きょうしつ	estudiar / profesor / aula			familia temática de estudio	mixed	estudio
+TIP	10	consejos_raices	tip10_009	でんしゃ / でんわ	tren eléctrico / teléfono			comparten でん; útil para recordar objetos eléctricos/comunicación	mixed	asociacion
+TIP	10	consejos_raices	tip10_010	しゃいん / でんしゃ / けんきゅうしゃ	empleado / tren / investigador			misma lectura しゃ, pero raíces distintas: no memorizar como una sola raíz	mixed	ojo
+TIP	10	consejos_raices	tip10_011	みます → みせてください	ver → muéstreme			ver y hacer ver/mostrar	mixed	verbos
+TIP	10	consejos_raices	tip10_012	かきます → てがみ / レポート	escribir → carta / reporte			objetos típicos con を	mixed	verbos
+TIP	10	consejos_raices	tip10_013	よみます → ほん / しんぶん / ざっし	leer → libro / diario / revista			lectura	mixed	verbos
+TIP	10	consejos_raices	tip10_014	たべます → たべもの / ごはん	comer → comida/alimentos / arroz-comida			grupo de comida	mixed	verbos
+TIP	10	consejos_raices	tip10_015	しょくどう → ごはん	comedor → comida			mismo campo semántico; no necesariamente misma lectura en kana	mixed	asociacion
+TIP	10	consejos_raices	tip10_016	なん + contador	なんじ, なんぷん, なんさい, なんがい, なんようび, なんばん, なんねん, なんがつ, なんにち			なん = qué/cuánto delante de contadores	mixed	preguntas
+TIP	10	consejos_raices	tip10_017	ど + serie interrogativa	どこ, どちら, どれ, どの, どう, どんな			preguntas de lugar, elección, modo o tipo	mixed	preguntas
+TIP	10	consejos_raices	tip10_018	これ/それ/あれ/どれ → この/その/あの/どの	esto/eso/aquello/cuál → este/ese/aquel/cuál + sustantivo			los segundos necesitan sustantivo	mixed	demostrativos
+TIP	10	consejos_raices	tip10_019	ここ/そこ/あそこ/どこ → こちら/そちら/あちら/どちら	aquí/ahí/allí/dónde → formas más corteses			también dirección, persona u opción	mixed	demostrativos
+TIP	10	consejos_raices	tip10_020	あげます / もらいます / かします / かります	dar / recibir / prestar / tomar prestado			todos involucran otra persona con に/から	mixed	verbos
+TIP	10	consejos_raices	tip10_021	やすみます / やすみ / やすい	descansar / descanso / barato			se parecen; ojo: やすい no es descanso	mixed	ojo
+TIP	10	consejos_raices	tip10_022	きます / きります	venir / cortar			se parecen; きります tiene り	mixed	ojo
