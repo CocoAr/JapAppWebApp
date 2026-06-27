@@ -13,12 +13,9 @@ import {
   apiPostCompletarLevelResult,
   type CompletarStatus,
 } from "../lib/api";
+import { isExactAtLevel, levelKey as key } from "../lib/completar/progress";
 
 const RANK: Record<CompletarStatus, number> = { wrong: 1, near: 2, exact: 3 };
-
-function key(itemId: string, level: number): string {
-  return `${itemId}:${level}`;
-}
 
 type CompletarProgressContextValue = {
   /** Best result per `${itemId}:${level}`. */
@@ -68,7 +65,7 @@ export function CompletarProgressProvider({ children }: { children: ReactNode })
   }, []);
 
   const isExactAt = useCallback(
-    (itemId: string, level: number) => levels[key(itemId, level)] === "exact",
+    (itemId: string, level: number) => isExactAtLevel(levels, itemId, level),
     [levels]
   );
 

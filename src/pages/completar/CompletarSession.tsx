@@ -23,16 +23,16 @@ export interface CompletarLogEntry {
 }
 
 const VALID_SIZES = [5, 10, 15];
-const HAS_JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
 
 function previewTarget(item: CompletarItem): "hiragana" | "katakana" {
   return item.kanaMode === "katakana" ? "katakana" : "hiragana";
 }
 
-function exampleFor(item: CompletarItem): { label: string; text: string } | null {
-  const note = item.promptNote?.trim();
-  if (!note) return null;
-  return { label: HAS_JAPANESE.test(note) ? "Ejemplo" : "Nota", text: note };
+/** Render an example string, bolding the segments wrapped in `**`. */
+function renderExample(example: string) {
+  return example.split("**").map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : <span key={i}>{part}</span>
+  );
 }
 
 export function CompletarSession() {
@@ -193,7 +193,6 @@ export function CompletarSession() {
           }
         : { cls: "bad", text: "Incorrecto! たいへんですね" };
 
-  const example = exampleFor(current);
   const tip = tipForItem(current);
 
   return (
@@ -284,14 +283,13 @@ export function CompletarSession() {
                 También válido: {current.accepted.filter((a) => a !== current.japanese).join(" · ")}
               </span>
             ) : null}
-            {example ? (
-              <span className="completar-example">
-                <strong>{example.label}:</strong> {example.text}
-              </span>
-            ) : null}
+            <span className="completar-example jp">
+              <span className="completar-example-label">Ejemplo:</span> {renderExample(current.example)}
+            </span>
             {tip ? (
               <span className="completar-consejo">
-                <strong>Consejo:</strong> {tip.note || tip.text}
+                <strong>Consejo:</strong> <span className="jp">{tip.text}</span>
+                {tip.note ? ` — ${tip.note}` : ""}
               </span>
             ) : null}
           </div>

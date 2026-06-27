@@ -1193,6 +1193,16 @@ a:hover {
   color: #dbe7ff;
 }
 
+.completar-example-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.completar-example strong {
+  color: #fff;
+  font-weight: 800;
+}
+
 .completar-consejo {
   color: #f4d06a;
 }

@@ -604,8 +604,8 @@ Producción activa: el usuario lee el significado en español y **escribe** la p
 ### Fuente de datos y pipeline
 
 - Fuente de verdad: `completar_vocabulario_source.txt` (TSV, raíz del repo). Secciones 1–8 = ejercicios (`ITEM`), sección 10 = consejos (`TIP`). Secciones 9 y 11 excluidas a propósito.
-- `scripts/build-completar.mjs` → genera `src/data/completar.json` (`npm run completar:build`).
-- `scripts/validate-completar.mjs` → gate de build (`npm run validate:completar`), encadenado en `npm run build`.
+- `scripts/build-completar.mjs` → genera `src/data/completar.json` (`npm run completar:build`). En el build se inyectan: `SPANISH_OVERRIDES` (consignas formal/informal), `EXAMPLES` (`scripts/completar-examples.mjs`, un ejemplo por ítem) y `TIP_ITEMS` (qué ítems agrupa cada consejo de la sección 10). Cobertura de ejemplos forzada (falla si falta alguno).
+- `scripts/validate-completar.mjs` → gate de build (`npm run validate:completar`), encadenado en `npm run build`. Verifica que cada ítem tenga `example` con exactamente un segmento en `**negrita**` y que `tipId` (si existe) apunte a un tip válido.
 - Dataset: 351 ítems en 8 temáticas + 22 tips.
 
 Esquema de ítem (`src/lib/completar/types.ts`):
@@ -615,9 +615,10 @@ interface CompletarItem {
   id: string;          // cv1_001 …
   themeId: string;     // personas_familia_roles, …
   japanese: string;    // respuesta principal
-  spanish: string;     // consigna mostrada
+  spanish: string;     // consigna mostrada (con aclaración formal/informal si aplica)
   accepted: string[];  // variantes válidas (incluye japanese)
-  promptNote: string;  // nota contextual (pista nivel 1)
+  example: string;     // frase de uso en kana, palabra envuelta en **negrita**
+  tipId: string | null;// consejo de raíces (sección 10) o null
   hint: string;        // categoría
   kanaMode: "hiragana" | "katakana" | "mixed" | "latin" | "other";
   tags: string;
@@ -671,14 +672,16 @@ El input acepta `-` para producir `ー` (ej.: `ko-hi-` → `コーヒー`).
 - **Incorrecto** → "Incorrecto! たいへんですね" (naranja).
 - **Vacío** → no cuenta como intento; nota sobria "Escribí una respuesta antes de comprobar." y se permanece en el input.
 - Solo hiragana/katakana en los textos japoneses visibles (sin kanji).
-- Tras responder se muestra siempre **"Ejemplo: …"** (desde `promptNote`; si la nota no contiene japonés se etiqueta "Nota:") y, cuando aplica, **"Consejo: …"** con la asociación de raíces (`tipForItem` mapea ítems a tips de la sección 10 por tokens del encadenamiento).
+- Tras responder se muestra **siempre un "Ejemplo: …"**: una frase corta de uso, en kana, con la palabra **en negrita** (`item.example`, con la palabra envuelta en `**`). Las "notas" en español del TSV se descartaron.
+- El **"Consejo: …"** aparece **solo** para palabras que pertenecen a una familia de raíces/significados de la sección 10 (`item.tipId`, asignado explícitamente en el build vía `TIP_ITEMS`). Las palabras sin familia no muestran consejo.
 
 ### Badges por nivel y agregación
 
 - Progreso real por **(ítem, nivel)**; nada de porcentajes derivados guardados.
-- Cada **parte** muestra badges 1–5: el badge del nivel `n` se pone **verde** solo si **todos** sus ítems están `exact` en ese nivel (`near`/`wrong` no cuentan).
-- Cada **temática** muestra badges 1–5 que **agregan** las partes: verde solo si todos los ítems de la temática están `exact` en ese nivel. Como se calcula en vivo desde el progreso por ítem, lo logrado en una sesión se refleja automáticamente en partes y temáticas.
-- Helpers puros y testeables: `isPartComplete`, `isThemeComplete`, `partExactCount`, `themeExactCount` (`data.ts`).
+- Niveles 1 (fácil) → 5 (difícil). Un `exact` en un nivel `L` **cuenta como completado para todos los niveles ≤ L** (si podés escribir la palabra desde cero, se asume que resolvés los más fáciles). Los badges cascadean hacia abajo (`isExactAtLevel` en `progress.ts`).
+- Cada **parte** muestra badges 1–5: el badge del nivel `n` se pone **verde** solo si **todos** sus ítems están `exact` en ese nivel (con cascada). `near`/`wrong` no cuentan.
+- Cada **temática** muestra badges 1–5 que **agregan** las partes: verde solo si todos los ítems de la temática están exact en ese nivel. Se calcula en vivo desde el progreso por ítem.
+- Helpers puros y testeables: `isExactAtLevel` (`progress.ts`); `isPartComplete`, `isThemeComplete`, `partExactCount`, `themeExactCount` (`data.ts`).
 
 ### Resumen y consejos
 

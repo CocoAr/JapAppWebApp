@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { EXAMPLES } from "./completar-examples.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -70,7 +71,62 @@ const SPANISH_OVERRIDES = {
   cv2_045: "país",
   cv5_018: "frío (clima)",
   cv5_019: "frío (al tacto)",
+  // formal / informal (cortés vs normal) que no estaban diferenciados
+  cv1_003: "aquella persona (normal)",
+  cv1_004: "aquella persona (forma cortés)",
+  cv2_005: "por aquí / esta persona (forma cortés)",
+  cv2_006: "por ahí / ahí (forma cortés)",
+  cv2_007: "por allí / allí (forma cortés)",
+  cv2_008: "dónde / cuál (forma cortés)",
+  cv8_004: "¿Quién es? (normal)",
+  cv8_005: "¿Quién es? (forma cortés)",
+  cv8_011: "¿Dónde está/es? (normal)",
+  cv8_012: "¿Dónde/cuál? (forma cortés)",
+  cv8_020: "¿Cuántos años? (normal)",
+  cv8_021: "¿Cuántos años? (forma cortés)",
 };
+
+/**
+ * Association tips (section 10) → the exact item ids each tip groups together.
+ * A consejo only shows for words that really belong to one of these root/meaning
+ * families; words not listed here get no consejo. When a word fits more than one
+ * tip, the lowest-numbered tip wins (see item→tip inversion below).
+ */
+const TIP_ITEMS = {
+  tip10_001: ["cv2_027", "cv1_020", "cv1_021"],
+  tip10_002: ["cv2_030", "cv1_022"],
+  tip10_003: ["cv1_018", "cv2_009"],
+  tip10_004: ["cv2_012"],
+  tip10_005: ["cv2_015"],
+  tip10_006: ["cv2_032", "cv2_033"],
+  tip10_007: ["cv2_025", "cv1_019", "cv2_034"],
+  tip10_008: ["cv6_008"],
+  tip10_009: ["cv3_003"],
+  tip10_010: ["cv1_024"],
+  tip10_011: ["cv6_013"],
+  tip10_012: ["cv6_016", "cv4_067", "cv4_068"],
+  tip10_013: ["cv6_015", "cv4_009", "cv4_012", "cv4_011"],
+  tip10_014: ["cv6_010", "cv4_080", "cv4_048"],
+  tip10_015: ["cv2_010"],
+  tip10_016: ["cv7_031", "cv7_032", "cv7_043", "cv7_058", "cv2_024"],
+  tip10_017: ["cv2_004", "cv2_008", "cv4_004", "cv4_008"],
+  tip10_018: ["cv4_001", "cv4_002", "cv4_003", "cv4_005", "cv4_006", "cv4_007"],
+  tip10_019: ["cv2_001", "cv2_002", "cv2_003", "cv2_005", "cv2_006", "cv2_007"],
+  tip10_020: ["cv6_023", "cv6_024", "cv6_025", "cv6_026"],
+  tip10_021: ["cv6_007", "cv7_026", "cv5_023"],
+  tip10_022: ["cv6_002", "cv6_021"],
+};
+
+/** item_id → tip_id (lowest-numbered tip wins on conflicts). */
+function buildItemTip() {
+  const map = {};
+  for (const tipId of Object.keys(TIP_ITEMS).sort()) {
+    for (const itemId of TIP_ITEMS[tipId]) {
+      if (!(itemId in map)) map[itemId] = tipId;
+    }
+  }
+  return map;
+}
 
 const COLUMNS = [
   "type",
@@ -117,6 +173,7 @@ function main() {
   const themeSeen = new Set();
   const items = [];
   const tips = [];
+  const itemTip = buildItemTip();
 
   for (const line of lines) {
     if (!line.startsWith("ITEM\t") && !line.startsWith("TIP\t")) continue;
@@ -133,13 +190,16 @@ function main() {
       }
       const kanaMode = KANA_MODES.has(row.kana_mode) ? row.kana_mode : "other";
       const spanish = SPANISH_OVERRIDES[row.item_id] ?? row.spanish_prompt;
+      const example = EXAMPLES[row.item_id];
+      if (!example) throw new Error(`Missing example for item ${row.item_id}`);
       items.push({
         id: row.item_id,
         themeId: row.theme_id,
         japanese: row.japanese,
         spanish,
         accepted: splitAccepted(row.japanese, row.accepted_japanese),
-        promptNote: row.prompt_note,
+        example,
+        tipId: itemTip[row.item_id] ?? null,
         hint: row.hint,
         kanaMode,
         tags: row.tags,
@@ -161,6 +221,16 @@ function main() {
     if (!itemIds.has(key)) {
       throw new Error(`SPANISH_OVERRIDES references unknown item_id "${key}"`);
     }
+  }
+  const tipIds = new Set(tips.map((t) => t.id));
+  for (const [tipId, ids] of Object.entries(TIP_ITEMS)) {
+    if (!tipIds.has(tipId)) throw new Error(`TIP_ITEMS references unknown tip "${tipId}"`);
+    for (const id of ids) {
+      if (!itemIds.has(id)) throw new Error(`TIP_ITEMS["${tipId}"] references unknown item "${id}"`);
+    }
+  }
+  for (const key of Object.keys(EXAMPLES)) {
+    if (!itemIds.has(key)) throw new Error(`EXAMPLES references unknown item_id "${key}"`);
   }
 
   const counts = {};

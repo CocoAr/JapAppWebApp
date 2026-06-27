@@ -16,8 +16,10 @@ export interface CompletarItem {
   spanish: string;
   /** All accepted written forms (includes `japanese`). */
   accepted: string[];
-  /** Contextual note (usage / example) — used as the first progressive hint. */
-  promptNote: string;
+  /** Kana-only usage example with the target word wrapped in `**` for bolding. */
+  example: string;
+  /** Association tip id (section 10), or null when the word has no related family. */
+  tipId: string | null;
   /** Short category hint (e.g. "verbo en ます"). */
   hint: string;
   kanaMode: KanaMode;

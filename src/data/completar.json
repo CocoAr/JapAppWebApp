@@ -58,7 +58,8 @@
       "accepted": [
         "わたし"
       ],
-      "promptNote": "tema típico: わたしは〜です",
+      "example": "**わたし**は がくせいです。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -71,7 +72,8 @@
       "accepted": [
         "あなた"
       ],
-      "promptNote": "se usa poco si ya se sabe el nombre",
+      "example": "**あなた**は せんせいですか。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -80,11 +82,12 @@
       "id": "cv1_003",
       "themeId": "personas_familia_roles",
       "japanese": "あの ひと",
-      "spanish": "aquella persona",
+      "spanish": "aquella persona (normal)",
       "accepted": [
         "あの ひと"
       ],
-      "promptNote": "forma neutra",
+      "example": "**あの ひと**は だれですか。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -93,11 +96,12 @@
       "id": "cv1_004",
       "themeId": "personas_familia_roles",
       "japanese": "あの かた",
-      "spanish": "aquella persona",
+      "spanish": "aquella persona (forma cortés)",
       "accepted": [
         "あの かた"
       ],
-      "promptNote": "forma más cortés",
+      "example": "**あの かた**は どなたですか。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -110,7 +114,8 @@
       "accepted": [
         "だれ"
       ],
-      "promptNote": "pregunta común",
+      "example": "あのひとは **だれ**ですか。",
+      "tipId": null,
       "hint": "interrogativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -123,7 +128,8 @@
       "accepted": [
         "どなた"
       ],
-      "promptNote": "más cortés que だれ",
+      "example": "あのかたは **どなた**ですか。",
+      "tipId": null,
       "hint": "interrogativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -137,7 +143,8 @@
         "〜さん",
         "さん"
       ],
-      "promptNote": "sufijo respetuoso; aceptar con o sin 〜",
+      "example": "たなか**さん**は せんせいです。",
+      "tipId": null,
       "hint": "sufijo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -151,7 +158,8 @@
         "〜ちゃん",
         "ちゃん"
       ],
-      "promptNote": "niños/cercanía; aceptar con o sin 〜",
+      "example": "はなこ**ちゃん**は ちいさいです。",
+      "tipId": null,
       "hint": "sufijo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -165,7 +173,8 @@
         "〜くん",
         "くん"
       ],
-      "promptNote": "también subordinados; aceptar con o sin 〜",
+      "example": "やまだ**くん**は がくせいです。",
+      "tipId": null,
       "hint": "sufijo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -179,7 +188,8 @@
         "〜じん",
         "じん"
       ],
-      "promptNote": "ej.: にほんじん; aceptar con o sin 〜",
+      "example": "わたしは にほん**じん**です。",
+      "tipId": null,
       "hint": "sufijo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -192,7 +202,8 @@
       "accepted": [
         "ひと"
       ],
-      "promptNote": "persona en general",
+      "example": "あの **ひと**は しんせつです。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -205,7 +216,8 @@
       "accepted": [
         "ともだち"
       ],
-      "promptNote": "ともだちに あいます",
+      "example": "**ともだち**に あいます。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -218,7 +230,8 @@
       "accepted": [
         "かれ"
       ],
-      "promptNote": "según contexto",
+      "example": "**かれ**は わたしの ともだちです。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -231,7 +244,8 @@
       "accepted": [
         "かのじょ"
       ],
-      "promptNote": "según contexto",
+      "example": "**かのじょ**は きれいです。",
+      "tipId": null,
       "hint": "persona básica",
       "kanaMode": "hiragana",
       "tags": ""
@@ -244,7 +258,8 @@
       "accepted": [
         "かぞく"
       ],
-      "promptNote": "grupo familiar",
+      "example": "**かぞく**と ごはんを たべます。",
+      "tipId": null,
       "hint": "familia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -257,7 +272,8 @@
       "accepted": [
         "ひとりで"
       ],
-      "promptNote": "modo: voy solo",
+      "example": "**ひとりで** いきます。",
+      "tipId": null,
       "hint": "persona/modo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -270,7 +286,8 @@
       "accepted": [
         "せんせい"
       ],
-      "promptNote": "para hablar de otro profesor",
+      "example": "やまださんは **せんせい**です。",
+      "tipId": null,
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -283,7 +300,8 @@
       "accepted": [
         "きょうし"
       ],
-      "promptNote": "para decir mi profesión",
+      "example": "わたしは **きょうし**です。",
+      "tipId": "tip10_003",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -296,7 +314,8 @@
       "accepted": [
         "がくせい"
       ],
-      "promptNote": "わたしは がくせいです",
+      "example": "わたしは **がくせい**です。",
+      "tipId": "tip10_007",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -309,7 +328,8 @@
       "accepted": [
         "かいしゃいん"
       ],
-      "promptNote": "rol general",
+      "example": "ちちは **かいしゃいん**です。",
+      "tipId": "tip10_001",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -322,7 +342,8 @@
       "accepted": [
         "しゃいん"
       ],
-      "promptNote": "IMC の しゃいん",
+      "example": "あのひとは **しゃいん**です。",
+      "tipId": "tip10_001",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -335,7 +356,8 @@
       "accepted": [
         "ぎんこういん"
       ],
-      "promptNote": "rol/profesión",
+      "example": "あねは **ぎんこういん**です。",
+      "tipId": "tip10_002",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -348,7 +370,8 @@
       "accepted": [
         "いしゃ"
       ],
-      "promptNote": "rol/profesión",
+      "example": "ちちは **いしゃ**です。",
+      "tipId": null,
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -361,7 +384,8 @@
       "accepted": [
         "けんきゅうしゃ"
       ],
-      "promptNote": "rol/profesión",
+      "example": "あには **けんきゅうしゃ**です。",
+      "tipId": "tip10_010",
       "hint": "roles",
       "kanaMode": "hiragana",
       "tags": ""
@@ -374,7 +398,8 @@
       "accepted": [
         "ちち"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**ちち**は ぎんこういんです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -387,7 +412,8 @@
       "accepted": [
         "はは"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**はは**は きょうしです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -400,7 +426,8 @@
       "accepted": [
         "そふ"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**そふ**は げんきです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -413,7 +440,8 @@
       "accepted": [
         "そぼ"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**そぼ**は やさしいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -426,7 +454,8 @@
       "accepted": [
         "あに"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**あに**は がくせいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -439,7 +468,8 @@
       "accepted": [
         "あね"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**あね**は かいしゃいんです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -452,7 +482,8 @@
       "accepted": [
         "おとうと"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**おとうと**は ちいさいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -465,7 +496,8 @@
       "accepted": [
         "いもうと"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**いもうと**は がくせいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -478,7 +510,8 @@
       "accepted": [
         "おっと"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**おっと**は いしゃです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -491,7 +524,8 @@
       "accepted": [
         "つま"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**つま**は せんせいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -504,7 +538,8 @@
       "accepted": [
         "むすこ"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**むすこ**は がくせいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -517,7 +552,8 @@
       "accepted": [
         "むすめ"
       ],
-      "promptNote": "hablar de mi familia",
+      "example": "**むすめ**は ちいさいです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -530,7 +566,8 @@
       "accepted": [
         "りょうしん"
       ],
-      "promptNote": "colectivo",
+      "example": "**りょうしん**は げんきです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -543,7 +580,8 @@
       "accepted": [
         "きょうだい"
       ],
-      "promptNote": "colectivo",
+      "example": "**きょうだい**は ふたりです。",
+      "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -556,7 +594,8 @@
       "accepted": [
         "こども"
       ],
-      "promptNote": "general",
+      "example": "**こども**が さんにん います。",
+      "tipId": null,
       "hint": "familia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -569,7 +608,8 @@
       "accepted": [
         "おとうさん"
       ],
-      "promptNote": "familia de otro o al llamar al propio padre",
+      "example": "たなかさんの **おとうさん**は せんせいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -582,7 +622,8 @@
       "accepted": [
         "おかあさん"
       ],
-      "promptNote": "familia de otro o al llamar a la propia madre",
+      "example": "たなかさんの **おかあさん**は やさしいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -595,7 +636,8 @@
       "accepted": [
         "おじいさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "あの **おじいさん**は げんきです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -608,7 +650,8 @@
       "accepted": [
         "おばあさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "あの **おばあさん**は しんせつです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -621,7 +664,8 @@
       "accepted": [
         "おにいさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **おにいさん**は がくせいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -634,7 +678,8 @@
       "accepted": [
         "おねえさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **おねえさん**は きれいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -647,7 +692,8 @@
       "accepted": [
         "おとうとさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **おとうとさん**は ちいさいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -660,7 +706,8 @@
       "accepted": [
         "いもうとさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **いもうとさん**は がくせいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -673,7 +720,8 @@
       "accepted": [
         "ごしゅじん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **ごしゅじん**は いしゃです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -686,7 +734,8 @@
       "accepted": [
         "おくさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **おくさん**は せんせいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -699,7 +748,8 @@
       "accepted": [
         "むすこさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **むすこさん**は がくせいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -712,7 +762,8 @@
       "accepted": [
         "むすめさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "たなかさんの **むすめさん**は きれいです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -725,7 +776,8 @@
       "accepted": [
         "ごりょうしん"
       ],
-      "promptNote": "ご + colectivo",
+      "example": "たなかさんの **ごりょうしん**は げんきです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -738,7 +790,8 @@
       "accepted": [
         "ごきょうだい"
       ],
-      "promptNote": "ご + colectivo",
+      "example": "たなかさんの **ごきょうだい**は ふたりです。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -751,7 +804,8 @@
       "accepted": [
         "おこさん"
       ],
-      "promptNote": "forma cortés",
+      "example": "**おこさん**は おいくつですか。",
+      "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -764,7 +818,8 @@
       "accepted": [
         "ここ"
       ],
-      "promptNote": "lugar cerca de mí",
+      "example": "**ここ**は きょうしつです。",
+      "tipId": "tip10_019",
       "hint": "lugar/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -777,7 +832,8 @@
       "accepted": [
         "そこ"
       ],
-      "promptNote": "lugar cerca del oyente",
+      "example": "**そこ**は としょかんです。",
+      "tipId": "tip10_019",
       "hint": "lugar/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -790,7 +846,8 @@
       "accepted": [
         "あそこ"
       ],
-      "promptNote": "lejos de ambos",
+      "example": "**あそこ**は ぎんこうです。",
+      "tipId": "tip10_019",
       "hint": "lugar/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -803,7 +860,8 @@
       "accepted": [
         "どこ"
       ],
-      "promptNote": "pregunta de lugar",
+      "example": "トイレは **どこ**ですか。",
+      "tipId": "tip10_017",
       "hint": "interrogativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -812,11 +870,12 @@
       "id": "cv2_005",
       "themeId": "lugares_ubicacion",
       "japanese": "こちら",
-      "spanish": "por aquí / aquí / esta persona",
+      "spanish": "por aquí / esta persona (forma cortés)",
       "accepted": [
         "こちら"
       ],
-      "promptNote": "cortés",
+      "example": "**こちら**は たなかさんです。",
+      "tipId": "tip10_019",
       "hint": "cortés/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -825,11 +884,12 @@
       "id": "cv2_006",
       "themeId": "lugares_ubicacion",
       "japanese": "そちら",
-      "spanish": "por ahí / ahí",
+      "spanish": "por ahí / ahí (forma cortés)",
       "accepted": [
         "そちら"
       ],
-      "promptNote": "cortés",
+      "example": "**そちら**へ どうぞ。",
+      "tipId": "tip10_019",
       "hint": "cortés/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -838,11 +898,12 @@
       "id": "cv2_007",
       "themeId": "lugares_ubicacion",
       "japanese": "あちら",
-      "spanish": "por allí / allí",
+      "spanish": "por allí / allí (forma cortés)",
       "accepted": [
         "あちら"
       ],
-      "promptNote": "cortés",
+      "example": "**あちら**は うけつけです。",
+      "tipId": "tip10_019",
       "hint": "cortés/demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -851,11 +912,12 @@
       "id": "cv2_008",
       "themeId": "lugares_ubicacion",
       "japanese": "どちら",
-      "spanish": "dónde / cuál / de qué país",
+      "spanish": "dónde / cuál (forma cortés)",
       "accepted": [
         "どちら"
       ],
-      "promptNote": "cortés",
+      "example": "おくには **どちら**ですか。",
+      "tipId": "tip10_017",
       "hint": "interrogativo cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -868,7 +930,8 @@
       "accepted": [
         "きょうしつ"
       ],
-      "promptNote": "literalmente: sala de clase",
+      "example": "**きょうしつ**で べんきょうします。",
+      "tipId": "tip10_003",
       "hint": "lugar/estudio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -881,7 +944,8 @@
       "accepted": [
         "しょくどう"
       ],
-      "promptNote": "lugar para comer",
+      "example": "**しょくどう**で ごはんを たべます。",
+      "tipId": "tip10_015",
       "hint": "lugar/comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -894,7 +958,8 @@
       "accepted": [
         "じむしょ"
       ],
-      "promptNote": "lugar de trabajo",
+      "example": "**じむしょ**で はたらきます。",
+      "tipId": null,
       "hint": "lugar/trabajo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -907,7 +972,8 @@
       "accepted": [
         "かいぎしつ"
       ],
-      "promptNote": "かいぎ + しつ",
+      "example": "**かいぎしつ**で かいぎを します。",
+      "tipId": "tip10_004",
       "hint": "lugar/trabajo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -920,7 +986,8 @@
       "accepted": [
         "うけつけ"
       ],
-      "promptNote": "en edificios",
+      "example": "**うけつけ**で ききます。",
+      "tipId": null,
       "hint": "lugar/edificio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -933,7 +1000,8 @@
       "accepted": [
         "ロビー"
       ],
-      "promptNote": "entrada",
+      "example": "**ロビー**で まちます。",
+      "tipId": null,
       "hint": "katakana/lugar",
       "kanaMode": "katakana",
       "tags": ""
@@ -946,7 +1014,8 @@
       "accepted": [
         "へや"
       ],
-      "promptNote": "espacio interno",
+      "example": "**へや**で ほんを よみます。",
+      "tipId": "tip10_005",
       "hint": "lugar/casa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -960,7 +1029,8 @@
         "トイレ",
         "おてあらい"
       ],
-      "promptNote": "おてあらい es más cortés",
+      "example": "**トイレ**は どこですか。",
+      "tipId": null,
       "hint": "lugar; variante cortés",
       "kanaMode": "katakana",
       "tags": ""
@@ -973,7 +1043,8 @@
       "accepted": [
         "かいだん"
       ],
-      "promptNote": "edificio",
+      "example": "**かいだん**は あそこです。",
+      "tipId": null,
       "hint": "lugar/edificio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -986,7 +1057,8 @@
       "accepted": [
         "エレベーター"
       ],
-      "promptNote": "edificio",
+      "example": "**エレベーター**で いきます。",
+      "tipId": null,
       "hint": "katakana/lugar",
       "kanaMode": "katakana",
       "tags": ""
@@ -999,7 +1071,8 @@
       "accepted": [
         "エスカレーター"
       ],
-      "promptNote": "edificio",
+      "example": "**エスカレーター**は あちらです。",
+      "tipId": null,
       "hint": "katakana/lugar",
       "kanaMode": "katakana",
       "tags": ""
@@ -1012,7 +1085,8 @@
       "accepted": [
         "じどうはんばいき"
       ],
-      "promptNote": "edificio/calle",
+      "example": "**じどうはんばいき**で ジュースを かいます。",
+      "tipId": null,
       "hint": "lugar/objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1025,7 +1099,8 @@
       "accepted": [
         "うりば"
       ],
-      "promptNote": "en tienda",
+      "example": "**うりば**は にかいです。",
+      "tipId": null,
       "hint": "tienda",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1038,7 +1113,8 @@
       "accepted": [
         "ちか"
       ],
-      "promptNote": "piso bajo tierra",
+      "example": "**ちか**に スーパーが あります。",
+      "tipId": null,
       "hint": "edificio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1054,7 +1130,8 @@
         "〜がい",
         "がい"
       ],
-      "promptNote": "también puede aparecer como 〜がい; aceptar con o sin 〜",
+      "example": "に**かい**に います。",
+      "tipId": null,
       "hint": "contador/piso",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1067,7 +1144,8 @@
       "accepted": [
         "なんがい"
       ],
-      "promptNote": "pregunta",
+      "example": "デパートは **なんがい**ですか。",
+      "tipId": "tip10_016",
       "hint": "interrogativo/piso",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1080,7 +1158,8 @@
       "accepted": [
         "だいがく"
       ],
-      "promptNote": "institución",
+      "example": "**だいがく**で べんきょうします。",
+      "tipId": "tip10_007",
       "hint": "lugar/estudio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1093,7 +1172,8 @@
       "accepted": [
         "びょういん"
       ],
-      "promptNote": "institución",
+      "example": "**びょういん**へ いきます。",
+      "tipId": null,
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1106,7 +1186,8 @@
       "accepted": [
         "かいしゃ"
       ],
-      "promptNote": "institución",
+      "example": "**かいしゃ**で はたらきます。",
+      "tipId": "tip10_001",
       "hint": "lugar/trabajo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1119,7 +1200,8 @@
       "accepted": [
         "うち"
       ],
-      "promptNote": "propia casa",
+      "example": "**うち**へ かえります。",
+      "tipId": null,
       "hint": "lugar/casa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1132,7 +1214,8 @@
       "accepted": [
         "デパート"
       ],
-      "promptNote": "compras",
+      "example": "**デパート**で かいます。",
+      "tipId": null,
       "hint": "katakana/compras",
       "kanaMode": "katakana",
       "tags": ""
@@ -1145,7 +1228,8 @@
       "accepted": [
         "ぎんこう"
       ],
-      "promptNote": "institución",
+      "example": "**ぎんこう**は どこですか。",
+      "tipId": "tip10_002",
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1158,7 +1242,8 @@
       "accepted": [
         "ゆうびんきょく"
       ],
-      "promptNote": "institución",
+      "example": "**ゆうびんきょく**で てがみを おくります。",
+      "tipId": null,
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1171,7 +1256,8 @@
       "accepted": [
         "としょかん"
       ],
-      "promptNote": "edificio",
+      "example": "**としょかん**で ほんを よみます。",
+      "tipId": "tip10_006",
       "hint": "lugar/estudio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1184,7 +1270,8 @@
       "accepted": [
         "びじゅつかん"
       ],
-      "promptNote": "edificio",
+      "example": "**びじゅつかん**で しゃしんを みます。",
+      "tipId": "tip10_006",
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1197,7 +1284,8 @@
       "accepted": [
         "がっこう"
       ],
-      "promptNote": "lugar de estudio",
+      "example": "**がっこう**へ いきます。",
+      "tipId": "tip10_007",
       "hint": "lugar/estudio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1210,7 +1298,8 @@
       "accepted": [
         "スーパー"
       ],
-      "promptNote": "compras",
+      "example": "**スーパー**で やさいを かいます。",
+      "tipId": null,
       "hint": "katakana/compras",
       "kanaMode": "katakana",
       "tags": ""
@@ -1223,7 +1312,8 @@
       "accepted": [
         "えき"
       ],
-      "promptNote": "transporte",
+      "example": "**えき**は あそこです。",
+      "tipId": null,
       "hint": "lugar/transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1236,7 +1326,8 @@
       "accepted": [
         "みせ"
       ],
-      "promptNote": "compras",
+      "example": "あの **みせ**は ゆうめいです。",
+      "tipId": null,
       "hint": "lugar/compras",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1249,7 +1340,8 @@
       "accepted": [
         "にわ"
       ],
-      "promptNote": "casa/lugar",
+      "example": "**にわ**に はなが あります。",
+      "tipId": null,
       "hint": "lugar/naturaleza",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1262,7 +1354,8 @@
       "accepted": [
         "ところ"
       ],
-      "promptNote": "genérico",
+      "example": "ここは しずかな **ところ**です。",
+      "tipId": null,
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1275,7 +1368,8 @@
       "accepted": [
         "りょう"
       ],
-      "promptNote": "vivienda",
+      "example": "**りょう**は あたらしいです。",
+      "tipId": null,
       "hint": "lugar/vivienda",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1288,7 +1382,8 @@
       "accepted": [
         "レストラン"
       ],
-      "promptNote": "comida",
+      "example": "**レストラン**で ばんごはんを たべます。",
+      "tipId": null,
       "hint": "katakana/comida",
       "kanaMode": "katakana",
       "tags": ""
@@ -1301,7 +1396,8 @@
       "accepted": [
         "まち"
       ],
-      "promptNote": "población",
+      "example": "この **まち**は にぎやかです。",
+      "tipId": null,
       "hint": "lugar",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1314,7 +1410,8 @@
       "accepted": [
         "さくら"
       ],
-      "promptNote": "naturaleza",
+      "example": "**さくら**が きれいです。",
+      "tipId": null,
       "hint": "naturaleza",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1327,7 +1424,8 @@
       "accepted": [
         "やま"
       ],
-      "promptNote": "naturaleza",
+      "example": "**やま**は たかいです。",
+      "tipId": null,
       "hint": "naturaleza",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1341,7 +1439,8 @@
         "くに",
         "おくに"
       ],
-      "promptNote": "おくには どちらですか",
+      "example": "あなたの **くに**は どこですか。",
+      "tipId": null,
       "hint": "país; variante cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1354,7 +1453,8 @@
       "accepted": [
         "ひこうき"
       ],
-      "promptNote": "ひこうきで いきます",
+      "example": "**ひこうき**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1367,7 +1467,8 @@
       "accepted": [
         "ふね"
       ],
-      "promptNote": "ふねで いきます",
+      "example": "**ふね**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1380,7 +1481,8 @@
       "accepted": [
         "でんしゃ"
       ],
-      "promptNote": "でんしゃで いきます",
+      "example": "**でんしゃ**で いきます。",
+      "tipId": "tip10_009",
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1393,7 +1495,8 @@
       "accepted": [
         "ちかてつ"
       ],
-      "promptNote": "ちかてつで いきます",
+      "example": "**ちかてつ**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1406,7 +1509,8 @@
       "accepted": [
         "しんかんせん"
       ],
-      "promptNote": "しんかんせんで いきます",
+      "example": "**しんかんせん**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1419,7 +1523,8 @@
       "accepted": [
         "バス"
       ],
-      "promptNote": "バスで いきます",
+      "example": "**バス**で いきます。",
+      "tipId": null,
       "hint": "katakana/transporte",
       "kanaMode": "katakana",
       "tags": ""
@@ -1432,7 +1537,8 @@
       "accepted": [
         "タクシー"
       ],
-      "promptNote": "タクシーで いきます",
+      "example": "**タクシー**で いきます。",
+      "tipId": null,
       "hint": "katakana/transporte",
       "kanaMode": "katakana",
       "tags": ""
@@ -1445,7 +1551,8 @@
       "accepted": [
         "じてんしゃ"
       ],
-      "promptNote": "じてんしゃで いきます",
+      "example": "**じてんしゃ**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1458,7 +1565,8 @@
       "accepted": [
         "くるま"
       ],
-      "promptNote": "くるまで いきます",
+      "example": "**くるま**で いきます。",
+      "tipId": null,
       "hint": "medio de transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1471,7 +1579,8 @@
       "accepted": [
         "あるいて"
       ],
-      "promptNote": "no lleva で: あるいて いきます",
+      "example": "**あるいて** いきます。",
+      "tipId": null,
       "hint": "movimiento",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1484,7 +1593,8 @@
       "accepted": [
         "きっぷ"
       ],
-      "promptNote": "transporte",
+      "example": "**きっぷ**を かいます。",
+      "tipId": null,
       "hint": "transporte",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1497,7 +1607,8 @@
       "accepted": [
         "プラットホーム"
       ],
-      "promptNote": "estación",
+      "example": "**プラットホーム**で まちます。",
+      "tipId": null,
       "hint": "katakana/transporte",
       "kanaMode": "katakana",
       "tags": ""
@@ -1511,7 +1622,8 @@
         "〜ばんせん",
         "ばんせん"
       ],
-      "promptNote": "ej.: 3ばんせん; aceptar con o sin 〜",
+      "example": "に**ばんせん**は どこですか。",
+      "tipId": null,
       "hint": "transporte/contador",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1524,7 +1636,8 @@
       "accepted": [
         "ふつう"
       ],
-      "promptNote": "tipo de tren",
+      "example": "**ふつう**で いきます。",
+      "tipId": null,
       "hint": "tren",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1537,7 +1650,8 @@
       "accepted": [
         "きゅうこう"
       ],
-      "promptNote": "tipo de tren",
+      "example": "**きゅうこう**で いきます。",
+      "tipId": null,
       "hint": "tren",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1550,7 +1664,8 @@
       "accepted": [
         "とっきゅう"
       ],
-      "promptNote": "tipo de tren",
+      "example": "**とっきゅう**で いきます。",
+      "tipId": null,
       "hint": "tren",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1563,7 +1678,8 @@
       "accepted": [
         "これ"
       ],
-      "promptNote": "objeto cerca de mí",
+      "example": "**これ**は ほんです。",
+      "tipId": "tip10_018",
       "hint": "demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1576,7 +1692,8 @@
       "accepted": [
         "それ"
       ],
-      "promptNote": "objeto cerca del oyente",
+      "example": "**それ**は なんですか。",
+      "tipId": "tip10_018",
       "hint": "demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1589,7 +1706,8 @@
       "accepted": [
         "あれ"
       ],
-      "promptNote": "lejos de ambos",
+      "example": "**あれ**は びょういんです。",
+      "tipId": "tip10_018",
       "hint": "demostrativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1602,7 +1720,8 @@
       "accepted": [
         "どれ"
       ],
-      "promptNote": "entre objetos",
+      "example": "あなたの かさは **どれ**ですか。",
+      "tipId": "tip10_017",
       "hint": "interrogativo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1616,7 +1735,8 @@
         "この〜",
         "この"
       ],
-      "promptNote": "siempre con sustantivo; aceptar con o sin 〜",
+      "example": "**この** ほんは おもしろいです。",
+      "tipId": "tip10_018",
       "hint": "demostrativo + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1630,7 +1750,8 @@
         "その〜",
         "その"
       ],
-      "promptNote": "siempre con sustantivo; aceptar con o sin 〜",
+      "example": "**その** かばんは たかいです。",
+      "tipId": "tip10_018",
       "hint": "demostrativo + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1644,7 +1765,8 @@
         "あの〜",
         "あの"
       ],
-      "promptNote": "siempre con sustantivo; aceptar con o sin 〜",
+      "example": "**あの** ひとは せんせいです。",
+      "tipId": "tip10_018",
       "hint": "demostrativo + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1658,7 +1780,8 @@
         "どの〜",
         "どの"
       ],
-      "promptNote": "siempre con sustantivo; aceptar con o sin 〜",
+      "example": "**どの** ほんが いいですか。",
+      "tipId": "tip10_017",
       "hint": "interrogativo + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1671,7 +1794,8 @@
       "accepted": [
         "ほん"
       ],
-      "promptNote": "lectura/estudio",
+      "example": "**ほん**を よみます。",
+      "tipId": "tip10_013",
       "hint": "lectura",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1684,7 +1808,8 @@
       "accepted": [
         "じしょ"
       ],
-      "promptNote": "estudio",
+      "example": "**じしょ**は べんりです。",
+      "tipId": null,
       "hint": "estudio",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1697,7 +1822,8 @@
       "accepted": [
         "ざっし"
       ],
-      "promptNote": "lectura",
+      "example": "**ざっし**を よみます。",
+      "tipId": "tip10_013",
       "hint": "lectura",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1710,7 +1836,8 @@
       "accepted": [
         "しんぶん"
       ],
-      "promptNote": "lectura",
+      "example": "**しんぶん**を よみます。",
+      "tipId": "tip10_013",
       "hint": "lectura",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1723,7 +1850,8 @@
       "accepted": [
         "ノート"
       ],
-      "promptNote": "estudio",
+      "example": "**ノート**に かきます。",
+      "tipId": null,
       "hint": "katakana/estudio",
       "kanaMode": "katakana",
       "tags": ""
@@ -1736,7 +1864,8 @@
       "accepted": [
         "てちょう"
       ],
-      "promptNote": "objeto",
+      "example": "**てちょう**に かきます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1749,7 +1878,8 @@
       "accepted": [
         "めいし"
       ],
-      "promptNote": "objeto",
+      "example": "**めいし**を もらいます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1762,7 +1892,8 @@
       "accepted": [
         "カード"
       ],
-      "promptNote": "objeto",
+      "example": "**カード**を もらいます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1775,7 +1906,8 @@
       "accepted": [
         "えんぴつ"
       ],
-      "promptNote": "escritura",
+      "example": "**えんぴつ**で かきます。",
+      "tipId": null,
       "hint": "papelería",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1788,7 +1920,8 @@
       "accepted": [
         "ボールペン"
       ],
-      "promptNote": "escritura",
+      "example": "**ボールペン**で かきます。",
+      "tipId": null,
       "hint": "katakana/papelería",
       "kanaMode": "katakana",
       "tags": ""
@@ -1801,7 +1934,8 @@
       "accepted": [
         "シャープペンシル"
       ],
-      "promptNote": "escritura",
+      "example": "**シャープペンシル**で かきます。",
+      "tipId": null,
       "hint": "katakana/papelería",
       "kanaMode": "katakana",
       "tags": ""
@@ -1814,7 +1948,8 @@
       "accepted": [
         "かぎ"
       ],
-      "promptNote": "objeto",
+      "example": "**かぎ**が あります。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1827,7 +1962,8 @@
       "accepted": [
         "とけい"
       ],
-      "promptNote": "objeto",
+      "example": "**とけい**を みます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1840,7 +1976,8 @@
       "accepted": [
         "かさ"
       ],
-      "promptNote": "objeto",
+      "example": "**かさ**を かります。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1853,7 +1990,8 @@
       "accepted": [
         "かばん"
       ],
-      "promptNote": "objeto",
+      "example": "**かばん**は あたらしいです。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1867,7 +2005,8 @@
         "CD",
         "シーディー"
       ],
-      "promptNote": "objeto; aceptar CD o シーディー",
+      "example": "**CD**を ききます。",
+      "tipId": null,
       "hint": "latin/katakana",
       "kanaMode": "other",
       "tags": ""
@@ -1880,7 +2019,8 @@
       "accepted": [
         "テレビ"
       ],
-      "promptNote": "objeto",
+      "example": "**テレビ**を みます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1893,7 +2033,8 @@
       "accepted": [
         "ラジオ"
       ],
-      "promptNote": "objeto",
+      "example": "**ラジオ**を ききます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1906,7 +2047,8 @@
       "accepted": [
         "カメラ"
       ],
-      "promptNote": "objeto",
+      "example": "**カメラ**で とります。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1919,7 +2061,8 @@
       "accepted": [
         "コンピューター"
       ],
-      "promptNote": "objeto",
+      "example": "**コンピューター**は べんりです。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1932,7 +2075,8 @@
       "accepted": [
         "パソコン"
       ],
-      "promptNote": "objeto",
+      "example": "**パソコン**で メールを かきます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1945,7 +2089,8 @@
       "accepted": [
         "ケータイ"
       ],
-      "promptNote": "objeto",
+      "example": "**ケータイ**は べんりです。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -1958,7 +2103,8 @@
       "accepted": [
         "つくえ"
       ],
-      "promptNote": "mueble",
+      "example": "**つくえ**の うえに ほんが あります。",
+      "tipId": null,
       "hint": "mueble",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1971,7 +2117,8 @@
       "accepted": [
         "いす"
       ],
-      "promptNote": "mueble",
+      "example": "**いす**は あたらしいです。",
+      "tipId": null,
       "hint": "mueble",
       "kanaMode": "hiragana",
       "tags": ""
@@ -1984,7 +2131,8 @@
       "accepted": [
         "メール"
       ],
-      "promptNote": "mensaje",
+      "example": "**メール**を おくります。",
+      "tipId": null,
       "hint": "katakana/mensaje",
       "kanaMode": "katakana",
       "tags": ""
@@ -1997,7 +2145,8 @@
       "accepted": [
         "ねんがじょう"
       ],
-      "promptNote": "correspondencia",
+      "example": "**ねんがじょう**を かきます。",
+      "tipId": null,
       "hint": "correspondencia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2010,7 +2159,8 @@
       "accepted": [
         "パンチ"
       ],
-      "promptNote": "papelería",
+      "example": "**パンチ**を かります。",
+      "tipId": null,
       "hint": "katakana/papelería",
       "kanaMode": "katakana",
       "tags": ""
@@ -2023,7 +2173,8 @@
       "accepted": [
         "ホッチキス"
       ],
-      "promptNote": "papelería",
+      "example": "**ホッチキス**を かります。",
+      "tipId": null,
       "hint": "katakana/papelería",
       "kanaMode": "katakana",
       "tags": ""
@@ -2036,7 +2187,8 @@
       "accepted": [
         "セロテープ"
       ],
-      "promptNote": "papelería",
+      "example": "**セロテープ**を かします。",
+      "tipId": null,
       "hint": "katakana/papelería",
       "kanaMode": "katakana",
       "tags": ""
@@ -2049,7 +2201,8 @@
       "accepted": [
         "けしゴム"
       ],
-      "promptNote": "papelería",
+      "example": "**けしゴム**を かります。",
+      "tipId": null,
       "hint": "mixta/papelería",
       "kanaMode": "mixed",
       "tags": ""
@@ -2062,7 +2215,8 @@
       "accepted": [
         "かみ"
       ],
-      "promptNote": "objeto",
+      "example": "**かみ**に かきます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2075,7 +2229,8 @@
       "accepted": [
         "て"
       ],
-      "promptNote": "cuerpo",
+      "example": "**て**で たべます。",
+      "tipId": null,
       "hint": "cuerpo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2088,7 +2243,8 @@
       "accepted": [
         "はし"
       ],
-      "promptNote": "herramienta para comer",
+      "example": "**はし**で たべます。",
+      "tipId": null,
       "hint": "herramienta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2101,7 +2257,8 @@
       "accepted": [
         "スプーン"
       ],
-      "promptNote": "herramienta",
+      "example": "**スプーン**で たべます。",
+      "tipId": null,
       "hint": "katakana/herramienta",
       "kanaMode": "katakana",
       "tags": ""
@@ -2114,7 +2271,8 @@
       "accepted": [
         "ナイフ"
       ],
-      "promptNote": "herramienta",
+      "example": "**ナイフ**で きります。",
+      "tipId": null,
       "hint": "katakana/herramienta",
       "kanaMode": "katakana",
       "tags": ""
@@ -2127,7 +2285,8 @@
       "accepted": [
         "フォーク"
       ],
-      "promptNote": "herramienta",
+      "example": "**フォーク**で たべます。",
+      "tipId": null,
       "hint": "katakana/herramienta",
       "kanaMode": "katakana",
       "tags": ""
@@ -2140,7 +2299,8 @@
       "accepted": [
         "はさみ"
       ],
-      "promptNote": "herramienta",
+      "example": "**はさみ**で きります。",
+      "tipId": null,
       "hint": "herramienta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2153,7 +2313,8 @@
       "accepted": [
         "チョコレート"
       ],
-      "promptNote": "comida",
+      "example": "**チョコレート**を たべます。",
+      "tipId": null,
       "hint": "katakana/comida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2166,7 +2327,8 @@
       "accepted": [
         "コーヒー"
       ],
-      "promptNote": "bebida",
+      "example": "**コーヒー**を のみます。",
+      "tipId": null,
       "hint": "katakana/bebida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2179,7 +2341,8 @@
       "accepted": [
         "ごはん"
       ],
-      "promptNote": "comida",
+      "example": "**ごはん**を たべます。",
+      "tipId": "tip10_014",
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2192,7 +2355,8 @@
       "accepted": [
         "あさごはん"
       ],
-      "promptNote": "comida",
+      "example": "**あさごはん**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2205,7 +2369,8 @@
       "accepted": [
         "ひるごはん"
       ],
-      "promptNote": "comida",
+      "example": "**ひるごはん**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2218,7 +2383,8 @@
       "accepted": [
         "ばんごはん"
       ],
-      "promptNote": "comida",
+      "example": "**ばんごはん**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2231,7 +2397,8 @@
       "accepted": [
         "パン"
       ],
-      "promptNote": "comida",
+      "example": "**パン**を たべます。",
+      "tipId": null,
       "hint": "katakana/comida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2244,7 +2411,8 @@
       "accepted": [
         "たまご"
       ],
-      "promptNote": "comida",
+      "example": "**たまご**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2257,7 +2425,8 @@
       "accepted": [
         "にく"
       ],
-      "promptNote": "comida",
+      "example": "**にく**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2270,7 +2439,8 @@
       "accepted": [
         "さかな"
       ],
-      "promptNote": "comida/animal",
+      "example": "**さかな**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2283,7 +2453,8 @@
       "accepted": [
         "やさい"
       ],
-      "promptNote": "comida",
+      "example": "**やさい**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2296,7 +2467,8 @@
       "accepted": [
         "くだもの"
       ],
-      "promptNote": "comida",
+      "example": "**くだもの**を たべます。",
+      "tipId": null,
       "hint": "comida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2309,7 +2481,8 @@
       "accepted": [
         "みず"
       ],
-      "promptNote": "bebida",
+      "example": "**みず**を のみます。",
+      "tipId": null,
       "hint": "bebida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2322,7 +2495,8 @@
       "accepted": [
         "おちゃ"
       ],
-      "promptNote": "bebida",
+      "example": "**おちゃ**を のみます。",
+      "tipId": null,
       "hint": "bebida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2335,7 +2509,8 @@
       "accepted": [
         "こうちゃ"
       ],
-      "promptNote": "bebida",
+      "example": "**こうちゃ**を のみます。",
+      "tipId": null,
       "hint": "bebida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2348,7 +2523,8 @@
       "accepted": [
         "ぎゅうにゅう"
       ],
-      "promptNote": "bebida",
+      "example": "**ぎゅうにゅう**を のみます。",
+      "tipId": null,
       "hint": "bebida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2361,7 +2537,8 @@
       "accepted": [
         "ジュース"
       ],
-      "promptNote": "bebida",
+      "example": "**ジュース**を のみます。",
+      "tipId": null,
       "hint": "katakana/bebida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2374,7 +2551,8 @@
       "accepted": [
         "ビール"
       ],
-      "promptNote": "bebida",
+      "example": "**ビール**を のみます。",
+      "tipId": null,
       "hint": "katakana/bebida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2387,7 +2565,8 @@
       "accepted": [
         "おさけ"
       ],
-      "promptNote": "bebida",
+      "example": "**おさけ**を のみます。",
+      "tipId": null,
       "hint": "bebida",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2400,7 +2579,8 @@
       "accepted": [
         "たばこ"
       ],
-      "promptNote": "objeto",
+      "example": "**たばこ**を すいます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2413,7 +2593,8 @@
       "accepted": [
         "ワイン"
       ],
-      "promptNote": "bebida",
+      "example": "**ワイン**を のみます。",
+      "tipId": null,
       "hint": "katakana/bebida",
       "kanaMode": "katakana",
       "tags": ""
@@ -2426,7 +2607,8 @@
       "accepted": [
         "てがみ"
       ],
-      "promptNote": "correspondencia",
+      "example": "**てがみ**を かきます。",
+      "tipId": "tip10_012",
       "hint": "correspondencia",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2439,7 +2621,8 @@
       "accepted": [
         "レポート"
       ],
-      "promptNote": "estudio/trabajo",
+      "example": "**レポート**を かきます。",
+      "tipId": "tip10_012",
       "hint": "katakana/estudio",
       "kanaMode": "katakana",
       "tags": ""
@@ -2452,7 +2635,8 @@
       "accepted": [
         "しゃしん"
       ],
-      "promptNote": "objeto",
+      "example": "**しゃしん**を とります。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2465,7 +2649,8 @@
       "accepted": [
         "ビデオ"
       ],
-      "promptNote": "cinta o aparato",
+      "example": "**ビデオ**を みます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -2478,7 +2663,8 @@
       "accepted": [
         "しゅくだい"
       ],
-      "promptNote": "actividad",
+      "example": "**しゅくだい**を します。",
+      "tipId": null,
       "hint": "actividad",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2491,7 +2677,8 @@
       "accepted": [
         "テニス"
       ],
-      "promptNote": "deporte",
+      "example": "**テニス**を します。",
+      "tipId": null,
       "hint": "katakana/deporte",
       "kanaMode": "katakana",
       "tags": ""
@@ -2504,7 +2691,8 @@
       "accepted": [
         "サッカー"
       ],
-      "promptNote": "deporte",
+      "example": "**サッカー**を します。",
+      "tipId": null,
       "hint": "katakana/deporte",
       "kanaMode": "katakana",
       "tags": ""
@@ -2517,7 +2705,8 @@
       "accepted": [
         "はな"
       ],
-      "promptNote": "objeto/naturaleza",
+      "example": "**はな**を かいます。",
+      "tipId": null,
       "hint": "naturaleza",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2530,7 +2719,8 @@
       "accepted": [
         "シャツ"
       ],
-      "promptNote": "ropa",
+      "example": "**シャツ**を かいます。",
+      "tipId": null,
       "hint": "katakana/ropa",
       "kanaMode": "katakana",
       "tags": ""
@@ -2543,7 +2733,8 @@
       "accepted": [
         "プレゼント"
       ],
-      "promptNote": "objeto",
+      "example": "**プレゼント**を もらいます。",
+      "tipId": null,
       "hint": "katakana/objeto",
       "kanaMode": "katakana",
       "tags": ""
@@ -2556,7 +2747,8 @@
       "accepted": [
         "にもつ"
       ],
-      "promptNote": "objeto",
+      "example": "**にもつ**を おくります。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2569,7 +2761,8 @@
       "accepted": [
         "おかね"
       ],
-      "promptNote": "objeto",
+      "example": "**おかね**を かします。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2582,7 +2775,8 @@
       "accepted": [
         "おみやげ"
       ],
-      "promptNote": "objeto",
+      "example": "**おみやげ**を かいます。",
+      "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2595,7 +2789,8 @@
       "accepted": [
         "たべもの"
       ],
-      "promptNote": "concepto",
+      "example": "この **たべもの**は おいしいです。",
+      "tipId": "tip10_014",
       "hint": "concepto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2608,7 +2803,8 @@
       "accepted": [
         "せいかつ"
       ],
-      "promptNote": "concepto",
+      "example": "にほんの **せいかつ**は たのしいです。",
+      "tipId": null,
       "hint": "concepto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2621,7 +2817,8 @@
       "accepted": [
         "しごと"
       ],
-      "promptNote": "concepto",
+      "example": "**しごと**は いそがしいです。",
+      "tipId": null,
       "hint": "concepto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2634,7 +2831,8 @@
       "accepted": [
         "ハンサムな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**ハンサムな** ひとです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "mixed",
       "tags": ""
@@ -2647,7 +2845,8 @@
       "accepted": [
         "きれいな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**きれいな** はなです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2660,7 +2859,8 @@
       "accepted": [
         "しずかな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**しずかな** へやです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2673,7 +2873,8 @@
       "accepted": [
         "にぎやかな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**にぎやかな** まちです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2686,7 +2887,8 @@
       "accepted": [
         "ゆうめいな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**ゆうめいな** みせです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2699,7 +2901,8 @@
       "accepted": [
         "しんせつな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**しんせつな** ひとです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2712,7 +2915,8 @@
       "accepted": [
         "げんきな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**げんきな** こどもです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2725,7 +2929,8 @@
       "accepted": [
         "ひまな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "きょうは **ひまな** ひです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2738,7 +2943,8 @@
       "accepted": [
         "べんりな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**べんりな** みせです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2751,7 +2957,8 @@
       "accepted": [
         "すてきな"
       ],
-      "promptNote": "adjetivo な",
+      "example": "**すてきな** プレゼントです。",
+      "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2764,7 +2971,8 @@
       "accepted": [
         "おおきい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "**おおきい** かばんです。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2777,7 +2985,8 @@
       "accepted": [
         "ちいさい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "**ちいさい** こどもです。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2790,7 +2999,8 @@
       "accepted": [
         "あたらしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "**あたらしい** くるまです。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2803,7 +3013,8 @@
       "accepted": [
         "ふるい"
       ],
-      "promptNote": "no se usa para gente",
+      "example": "**ふるい** ほんです。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2817,7 +3028,8 @@
         "いい",
         "よい"
       ],
-      "promptNote": "adjetivo い irregular; también よい",
+      "example": "これは **いい** ほんです。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2830,7 +3042,8 @@
       "accepted": [
         "わるい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "きょうは てんきが **わるい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2843,7 +3056,8 @@
       "accepted": [
         "あつい"
       ],
-      "promptNote": "clima o temperatura",
+      "example": "きょうは **あつい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2856,7 +3070,8 @@
       "accepted": [
         "さむい"
       ],
-      "promptNote": "clima o temperatura",
+      "example": "きょうは **さむい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2869,7 +3084,8 @@
       "accepted": [
         "つめたい"
       ],
-      "promptNote": "al tacto",
+      "example": "この みずは **つめたい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2882,7 +3098,8 @@
       "accepted": [
         "むずかしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "にほんごは **むずかしい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2895,7 +3112,8 @@
       "accepted": [
         "やさしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "この ほんは **やさしい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2908,7 +3126,8 @@
       "accepted": [
         "たかい"
       ],
-      "promptNote": "precio o altura",
+      "example": "この かばんは **たかい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2921,7 +3140,8 @@
       "accepted": [
         "やすい"
       ],
-      "promptNote": "precio",
+      "example": "この みせは **やすい**です。",
+      "tipId": "tip10_021",
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2934,7 +3154,8 @@
       "accepted": [
         "ひくい"
       ],
-      "promptNote": "altura/estatura",
+      "example": "この いすは **ひくい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2947,7 +3168,8 @@
       "accepted": [
         "おもしろい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "この ほんは **おもしろい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2960,7 +3182,8 @@
       "accepted": [
         "おいしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "この ごはんは **おいしい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2973,7 +3196,8 @@
       "accepted": [
         "いそがしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "きょうは **いそがしい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2986,7 +3210,8 @@
       "accepted": [
         "たのしい"
       ],
-      "promptNote": "adjetivo い",
+      "example": "まいにちが **たのしい**です。",
+      "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
       "tags": ""
@@ -2999,7 +3224,8 @@
       "accepted": [
         "しろい"
       ],
-      "promptNote": "color",
+      "example": "**しろい** かみです。",
+      "tipId": null,
       "hint": "adjetivo い/color",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3012,7 +3238,8 @@
       "accepted": [
         "くろい"
       ],
-      "promptNote": "color",
+      "example": "**くろい** かばんです。",
+      "tipId": null,
       "hint": "adjetivo い/color",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3025,7 +3252,8 @@
       "accepted": [
         "あかい"
       ],
-      "promptNote": "color",
+      "example": "**あかい** はなです。",
+      "tipId": null,
       "hint": "adjetivo い/color",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3038,7 +3266,8 @@
       "accepted": [
         "あおい"
       ],
-      "promptNote": "color",
+      "example": "**あおい** シャツです。",
+      "tipId": null,
       "hint": "adjetivo い/color",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3051,7 +3280,8 @@
       "accepted": [
         "いきます"
       ],
-      "promptNote": "[lugarへ/に] いきます",
+      "example": "がっこうへ **いきます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3064,7 +3294,8 @@
       "accepted": [
         "きます"
       ],
-      "promptNote": "[lugarへ/に] きます",
+      "example": "ともだちが **きます**。",
+      "tipId": "tip10_022",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3077,7 +3308,8 @@
       "accepted": [
         "かえります"
       ],
-      "promptNote": "[うちへ] かえります",
+      "example": "うちへ **かえります**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3090,7 +3322,8 @@
       "accepted": [
         "おきます"
       ],
-      "promptNote": "[horaに] おきます",
+      "example": "ろくじに **おきます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3103,7 +3336,8 @@
       "accepted": [
         "ねます"
       ],
-      "promptNote": "[horaに] ねます",
+      "example": "じゅうじに **ねます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3116,7 +3350,8 @@
       "accepted": [
         "はたらきます"
       ],
-      "promptNote": "[lugarで] はたらきます",
+      "example": "かいしゃで **はたらきます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3129,7 +3364,8 @@
       "accepted": [
         "やすみます"
       ],
-      "promptNote": "objeto no necesario",
+      "example": "にちようびは **やすみます**。",
+      "tipId": "tip10_021",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3142,7 +3378,8 @@
       "accepted": [
         "べんきょうします"
       ],
-      "promptNote": "[にほんごを] べんきょうします",
+      "example": "にほんごを **べんきょうします**。",
+      "tipId": "tip10_008",
       "hint": "verbo します",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3155,7 +3392,8 @@
       "accepted": [
         "おわります"
       ],
-      "promptNote": "[horaに] おわります",
+      "example": "しごとが **おわります**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3168,7 +3406,8 @@
       "accepted": [
         "たべます"
       ],
-      "promptNote": "[ごはんを] たべます",
+      "example": "ごはんを **たべます**。",
+      "tipId": "tip10_014",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3181,7 +3420,8 @@
       "accepted": [
         "のみます"
       ],
-      "promptNote": "[みずを] のみます",
+      "example": "みずを **のみます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3194,7 +3434,8 @@
       "accepted": [
         "すいます"
       ],
-      "promptNote": "[たばこを] すいます",
+      "example": "たばこを **すいます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3207,7 +3448,8 @@
       "accepted": [
         "みます"
       ],
-      "promptNote": "[テレビを] みます",
+      "example": "テレビを **みます**。",
+      "tipId": "tip10_011",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3220,7 +3462,8 @@
       "accepted": [
         "ききます"
       ],
-      "promptNote": "[ラジオを] ききます",
+      "example": "ラジオを **ききます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3233,7 +3476,8 @@
       "accepted": [
         "よみます"
       ],
-      "promptNote": "[ほんを] よみます",
+      "example": "ほんを **よみます**。",
+      "tipId": "tip10_013",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3246,7 +3490,8 @@
       "accepted": [
         "かきます"
       ],
-      "promptNote": "[てがみを] かきます",
+      "example": "てがみを **かきます**。",
+      "tipId": "tip10_012",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3259,7 +3504,8 @@
       "accepted": [
         "かいます"
       ],
-      "promptNote": "[おみやげを] かいます",
+      "example": "おみやげを **かいます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3272,7 +3518,8 @@
       "accepted": [
         "とります"
       ],
-      "promptNote": "[しゃしんを] とります",
+      "example": "しゃしんを **とります**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3285,7 +3532,8 @@
       "accepted": [
         "します"
       ],
-      "promptNote": "[しゅくだいを] します / [テニスを] します",
+      "example": "テニスを **します**。",
+      "tipId": null,
       "hint": "verbo irregular",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3298,7 +3546,8 @@
       "accepted": [
         "あいます"
       ],
-      "promptNote": "[ともだちに] あいます",
+      "example": "ともだちに **あいます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3311,7 +3560,8 @@
       "accepted": [
         "きります"
       ],
-      "promptNote": "[かみを] きります",
+      "example": "かみを **きります**。",
+      "tipId": "tip10_022",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3324,7 +3574,8 @@
       "accepted": [
         "おくります"
       ],
-      "promptNote": "[メールを] おくります",
+      "example": "メールを **おくります**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3337,7 +3588,8 @@
       "accepted": [
         "あげます"
       ],
-      "promptNote": "[ひとに プレゼントを] あげます",
+      "example": "ともだちに プレゼントを **あげます**。",
+      "tipId": "tip10_020",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3350,7 +3602,8 @@
       "accepted": [
         "もらいます"
       ],
-      "promptNote": "[ひとに/から プレゼントを] もらいます",
+      "example": "ちちに おかねを **もらいます**。",
+      "tipId": "tip10_020",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3363,7 +3616,8 @@
       "accepted": [
         "かします"
       ],
-      "promptNote": "[ひとに おかねを] かします",
+      "example": "ともだちに かさを **かします**。",
+      "tipId": "tip10_020",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3376,7 +3630,8 @@
       "accepted": [
         "かります"
       ],
-      "promptNote": "[ひとに/から おかねを] かります",
+      "example": "ともだちに ほんを **かります**。",
+      "tipId": "tip10_020",
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3389,7 +3644,8 @@
       "accepted": [
         "おしえます"
       ],
-      "promptNote": "[ひとに にほんごを] おしえます",
+      "example": "にほんごを **おしえます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3402,7 +3658,8 @@
       "accepted": [
         "ならいます"
       ],
-      "promptNote": "[ひとに/から にほんごを] ならいます",
+      "example": "にほんごを **ならいます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3415,7 +3672,8 @@
       "accepted": [
         "かけます"
       ],
-      "promptNote": "[でんわを] かけます",
+      "example": "でんわを **かけます**。",
+      "tipId": null,
       "hint": "verbo en ます",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3428,7 +3686,8 @@
       "accepted": [
         "いま"
       ],
-      "promptNote": "momento actual",
+      "example": "**いま** なんじですか。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3441,7 +3700,8 @@
       "accepted": [
         "ごぜん"
       ],
-      "promptNote": "antes de mediodía",
+      "example": "**ごぜん** くじです。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3454,7 +3714,8 @@
       "accepted": [
         "ごご"
       ],
-      "promptNote": "después de mediodía",
+      "example": "**ごご** さんじです。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3467,7 +3728,8 @@
       "accepted": [
         "あさ"
       ],
-      "promptNote": "parte del día",
+      "example": "**あさ** ごはんを たべます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3480,7 +3742,8 @@
       "accepted": [
         "ひる"
       ],
-      "promptNote": "parte del día",
+      "example": "**ひる** やすみます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3494,7 +3757,8 @@
         "ばん",
         "よる"
       ],
-      "promptNote": "también よる",
+      "example": "**ばん** べんきょうします。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3507,7 +3771,8 @@
       "accepted": [
         "けさ"
       ],
-      "promptNote": "hoy por la mañana",
+      "example": "**けさ** あさごはんを たべます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3520,7 +3785,8 @@
       "accepted": [
         "こんばん"
       ],
-      "promptNote": "hoy a la noche",
+      "example": "**こんばん** べんきょうします。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3533,7 +3799,8 @@
       "accepted": [
         "おととい"
       ],
-      "promptNote": "dos días antes",
+      "example": "**おととい** ともだちに あいました。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3546,7 +3813,8 @@
       "accepted": [
         "きのう"
       ],
-      "promptNote": "un día antes",
+      "example": "**きのう** やすみました。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3559,7 +3827,8 @@
       "accepted": [
         "きょう"
       ],
-      "promptNote": "día actual",
+      "example": "**きょう**は いそがしいです。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3572,7 +3841,8 @@
       "accepted": [
         "あした"
       ],
-      "promptNote": "día siguiente",
+      "example": "**あした** がっこうへ いきます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3585,7 +3855,8 @@
       "accepted": [
         "あさって"
       ],
-      "promptNote": "dos días después",
+      "example": "**あさって** ともだちが きます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3598,7 +3869,8 @@
       "accepted": [
         "せんしゅう"
       ],
-      "promptNote": "pasado",
+      "example": "**せんしゅう** やすみました。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3611,7 +3883,8 @@
       "accepted": [
         "こんしゅう"
       ],
-      "promptNote": "presente",
+      "example": "**こんしゅう**は いそがしいです。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3624,7 +3897,8 @@
       "accepted": [
         "らいしゅう"
       ],
-      "promptNote": "futuro",
+      "example": "**らいしゅう** ともだちに あいます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3637,7 +3911,8 @@
       "accepted": [
         "せんげつ"
       ],
-      "promptNote": "pasado",
+      "example": "**せんげつ** にほんへ いきました。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3650,7 +3925,8 @@
       "accepted": [
         "こんげつ"
       ],
-      "promptNote": "presente",
+      "example": "**こんげつ**は いそがしいです。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3663,7 +3939,8 @@
       "accepted": [
         "らいげつ"
       ],
-      "promptNote": "futuro",
+      "example": "**らいげつ** くにへ かえります。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3676,7 +3953,8 @@
       "accepted": [
         "きょねん"
       ],
-      "promptNote": "pasado",
+      "example": "**きょねん** にほんへ いきました。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3689,7 +3967,8 @@
       "accepted": [
         "ことし"
       ],
-      "promptNote": "presente",
+      "example": "**ことし** にほんごを ならいます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3702,7 +3981,8 @@
       "accepted": [
         "らいねん"
       ],
-      "promptNote": "futuro",
+      "example": "**らいねん** だいがくへ いきます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3715,7 +3995,8 @@
       "accepted": [
         "まいあさ"
       ],
-      "promptNote": "frecuencia",
+      "example": "**まいあさ** コーヒーを のみます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3728,7 +4009,8 @@
       "accepted": [
         "まいばん"
       ],
-      "promptNote": "frecuencia",
+      "example": "**まいばん** べんきょうします。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3741,7 +4023,8 @@
       "accepted": [
         "まいにち"
       ],
-      "promptNote": "frecuencia",
+      "example": "**まいにち** がっこうへ いきます。",
+      "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3754,7 +4037,8 @@
       "accepted": [
         "やすみ"
       ],
-      "promptNote": "sustantivo",
+      "example": "あしたは **やすみ**です。",
+      "tipId": "tip10_021",
       "hint": "tiempo/sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3767,7 +4051,8 @@
       "accepted": [
         "ひるやすみ"
       ],
-      "promptNote": "sustantivo",
+      "example": "**ひるやすみ**は いちじからです。",
+      "tipId": null,
       "hint": "tiempo/sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3781,7 +4066,8 @@
         "〜じ",
         "じ"
       ],
-      "promptNote": "ej.: よじ; aceptar con o sin 〜",
+      "example": "しち**じ**に おきます。",
+      "tipId": null,
       "hint": "contador/hora",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3797,7 +4083,8 @@
         "〜ぷん",
         "ぷん"
       ],
-      "promptNote": "también 〜ぷん; ej.: ごふん / じゅっぷん",
+      "example": "ご**ふん** まちます。",
+      "tipId": null,
       "hint": "contador/minuto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3810,7 +4097,8 @@
       "accepted": [
         "はん"
       ],
-      "promptNote": "ej.: 7じはん",
+      "example": "しちじ**はん**に おきます。",
+      "tipId": null,
       "hint": "hora",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3823,7 +4111,8 @@
       "accepted": [
         "なんじ"
       ],
-      "promptNote": "pregunta",
+      "example": "いま **なんじ**ですか。",
+      "tipId": "tip10_016",
       "hint": "interrogativo/hora",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3836,7 +4125,8 @@
       "accepted": [
         "なんぷん"
       ],
-      "promptNote": "pregunta",
+      "example": "いま なんじ **なんぷん**ですか。",
+      "tipId": "tip10_016",
       "hint": "interrogativo/minuto",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3850,7 +4140,8 @@
         "〜から",
         "から"
       ],
-      "promptNote": "inicio; aceptar con o sin 〜",
+      "example": "くじ**から** はたらきます。",
+      "tipId": null,
       "hint": "partícula/tiempo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3864,7 +4155,8 @@
         "〜まで",
         "まで"
       ],
-      "promptNote": "fin; aceptar con o sin 〜",
+      "example": "ごじ**まで** べんきょうします。",
+      "tipId": null,
       "hint": "partícula/tiempo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3878,7 +4170,8 @@
         "〜と〜",
         "と"
       ],
-      "promptNote": "conecta sustantivos; aceptar con o sin 〜",
+      "example": "コーヒー**と** ジュースを かいます。",
+      "tipId": null,
       "hint": "partícula/conector",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3891,7 +4184,8 @@
       "accepted": [
         "げつようび"
       ],
-      "promptNote": "",
+      "example": "**げつようび**に がっこうへ いきます。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3904,7 +4198,8 @@
       "accepted": [
         "かようび"
       ],
-      "promptNote": "",
+      "example": "**かようび**は いそがしいです。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3917,7 +4212,8 @@
       "accepted": [
         "すいようび"
       ],
-      "promptNote": "",
+      "example": "**すいようび**に やすみます。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3930,7 +4226,8 @@
       "accepted": [
         "もくようび"
       ],
-      "promptNote": "",
+      "example": "**もくようび**に かいぎが あります。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3943,7 +4240,8 @@
       "accepted": [
         "きんようび"
       ],
-      "promptNote": "",
+      "example": "**きんようび**に ともだちに あいます。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3956,7 +4254,8 @@
       "accepted": [
         "どようび"
       ],
-      "promptNote": "",
+      "example": "**どようび**に テニスを します。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3969,7 +4268,8 @@
       "accepted": [
         "にちようび"
       ],
-      "promptNote": "",
+      "example": "**にちようび**は やすみます。",
+      "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3982,7 +4282,8 @@
       "accepted": [
         "なんようび"
       ],
-      "promptNote": "pregunta",
+      "example": "きょうは **なんようび**ですか。",
+      "tipId": "tip10_016",
       "hint": "interrogativo/día de semana",
       "kanaMode": "hiragana",
       "tags": ""
@@ -3995,7 +4296,8 @@
       "accepted": [
         "ついたち"
       ],
-      "promptNote": "especial",
+      "example": "らいげつの **ついたち**に いきます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4008,7 +4310,8 @@
       "accepted": [
         "ふつか"
       ],
-      "promptNote": "especial",
+      "example": "**ふつか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4021,7 +4324,8 @@
       "accepted": [
         "みっか"
       ],
-      "promptNote": "especial",
+      "example": "**みっか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4034,7 +4338,8 @@
       "accepted": [
         "よっか"
       ],
-      "promptNote": "especial",
+      "example": "**よっか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4047,7 +4352,8 @@
       "accepted": [
         "いつか"
       ],
-      "promptNote": "especial",
+      "example": "**いつか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4060,7 +4366,8 @@
       "accepted": [
         "むいか"
       ],
-      "promptNote": "especial",
+      "example": "**むいか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4073,7 +4380,8 @@
       "accepted": [
         "なのか"
       ],
-      "promptNote": "especial",
+      "example": "**なのか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4086,7 +4394,8 @@
       "accepted": [
         "ようか"
       ],
-      "promptNote": "especial",
+      "example": "**ようか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4099,7 +4408,8 @@
       "accepted": [
         "ここのか"
       ],
-      "promptNote": "especial",
+      "example": "**ここのか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4112,7 +4422,8 @@
       "accepted": [
         "とおか"
       ],
-      "promptNote": "especial",
+      "example": "**とおか** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4125,7 +4436,8 @@
       "accepted": [
         "じゅうよっか"
       ],
-      "promptNote": "especial",
+      "example": "**じゅうよっか**に いきます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4138,7 +4450,8 @@
       "accepted": [
         "はつか"
       ],
-      "promptNote": "especial",
+      "example": "**はつか**に いきます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4151,7 +4464,8 @@
       "accepted": [
         "にじゅうよっか"
       ],
-      "promptNote": "especial",
+      "example": "**にじゅうよっか**に きます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4165,7 +4479,8 @@
         "〜にち",
         "にち"
       ],
-      "promptNote": "forma común desde 11, excepto especiales; aceptar con o sin 〜",
+      "example": "じゅう**にち** やすみます。",
+      "tipId": null,
       "hint": "día del mes/duración",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4178,7 +4493,8 @@
       "accepted": [
         "なんにち"
       ],
-      "promptNote": "pregunta",
+      "example": "きょうは **なんにち**ですか。",
+      "tipId": "tip10_016",
       "hint": "interrogativo/día del mes",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4191,7 +4507,8 @@
       "accepted": [
         "いつ"
       ],
-      "promptNote": "pregunta",
+      "example": "たんじょうびは **いつ**ですか。",
+      "tipId": null,
       "hint": "interrogativo/tiempo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4204,7 +4521,8 @@
       "accepted": [
         "たんじょうび"
       ],
-      "promptNote": "sustantivo",
+      "example": "**たんじょうび**は いつですか。",
+      "tipId": null,
       "hint": "fecha",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4219,7 +4537,8 @@
         "ですか",
         "〜ですか"
       ],
-      "promptNote": "convierte la oración en pregunta; aceptar con o sin 〜 y puntuación",
+      "example": "あなたは がくせい**ですか**。",
+      "tipId": null,
       "hint": "pregunta/patrón",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4232,7 +4551,8 @@
       "accepted": [
         "はい"
       ],
-      "promptNote": "respuesta básica",
+      "example": "**はい**、そうです。",
+      "tipId": null,
       "hint": "respuesta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4245,7 +4565,8 @@
       "accepted": [
         "いいえ"
       ],
-      "promptNote": "respuesta básica",
+      "example": "**いいえ**、ちがいます。",
+      "tipId": null,
       "hint": "respuesta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4254,11 +4575,12 @@
       "id": "cv8_004",
       "themeId": "preguntas",
       "japanese": "だれですか。",
-      "spanish": "¿Quién es?",
+      "spanish": "¿Quién es? (normal)",
       "accepted": [
         "だれですか。"
       ],
-      "promptNote": "normal",
+      "example": "あのひとは **だれですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4267,11 +4589,12 @@
       "id": "cv8_005",
       "themeId": "preguntas",
       "japanese": "どなたですか。",
-      "spanish": "¿Quién es?",
+      "spanish": "¿Quién es? (forma cortés)",
       "accepted": [
         "どなたですか。"
       ],
-      "promptNote": "más cortés",
+      "example": "あのかたは **どなたですか**。",
+      "tipId": null,
       "hint": "pregunta cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4284,7 +4607,8 @@
       "accepted": [
         "なんですか。"
       ],
-      "promptNote": "para objetos/cosas",
+      "example": "それは **なんですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4297,7 +4621,8 @@
       "accepted": [
         "これは なんですか。"
       ],
-      "promptNote": "これ/それ/あれ",
+      "example": "すみません、**これは なんですか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4310,7 +4635,8 @@
       "accepted": [
         "だれのですか。"
       ],
-      "promptNote": "posesión con の",
+      "example": "この かさは **だれのですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4323,7 +4649,8 @@
       "accepted": [
         "どれですか。"
       ],
-      "promptNote": "entre objetos",
+      "example": "あなたの ほんは **どれですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4339,7 +4666,8 @@
         "どの〜ですか",
         "どのですか"
       ],
-      "promptNote": "necesita sustantivo; aceptar con o sin 〜",
+      "example": "**どの かばんですか**。",
+      "tipId": null,
       "hint": "pregunta + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4348,11 +4676,12 @@
       "id": "cv8_011",
       "themeId": "preguntas",
       "japanese": "どこですか。",
-      "spanish": "¿Dónde está/es?",
+      "spanish": "¿Dónde está/es? (normal)",
       "accepted": [
         "どこですか。"
       ],
-      "promptNote": "lugar normal",
+      "example": "トイレは **どこですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4361,11 +4690,12 @@
       "id": "cv8_012",
       "themeId": "preguntas",
       "japanese": "どちらですか。",
-      "spanish": "¿Dónde/cuál/de qué país?",
+      "spanish": "¿Dónde/cuál? (forma cortés)",
       "accepted": [
         "どちらですか。"
       ],
-      "promptNote": "más cortés",
+      "example": "おくには **どちらですか**。",
+      "tipId": null,
       "hint": "pregunta cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4378,7 +4708,8 @@
       "accepted": [
         "おくには どちらですか。"
       ],
-      "promptNote": "frase fija",
+      "example": "**おくには どちらですか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4391,7 +4722,8 @@
       "accepted": [
         "いくらですか。"
       ],
-      "promptNote": "dinero",
+      "example": "これは **いくらですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4404,7 +4736,8 @@
       "accepted": [
         "なんがいですか。"
       ],
-      "promptNote": "pisos",
+      "example": "うりばは **なんがいですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4417,7 +4750,8 @@
       "accepted": [
         "なんじですか。"
       ],
-      "promptNote": "hora",
+      "example": "いま **なんじですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4430,7 +4764,8 @@
       "accepted": [
         "なんぷんですか。"
       ],
-      "promptNote": "minutos",
+      "example": "いま なんじ **なんぷんですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4443,7 +4778,8 @@
       "accepted": [
         "なんようびですか。"
       ],
-      "promptNote": "semana",
+      "example": "きょうは **なんようびですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4456,7 +4792,8 @@
       "accepted": [
         "なんばんですか。"
       ],
-      "promptNote": "número",
+      "example": "でんわは **なんばんですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4465,11 +4802,12 @@
       "id": "cv8_020",
       "themeId": "preguntas",
       "japanese": "なんさいですか。",
-      "spanish": "¿Cuántos años?",
+      "spanish": "¿Cuántos años? (normal)",
       "accepted": [
         "なんさいですか。"
       ],
-      "promptNote": "normal",
+      "example": "**なんさいですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4478,11 +4816,12 @@
       "id": "cv8_021",
       "themeId": "preguntas",
       "japanese": "おいくつですか。",
-      "spanish": "¿Cuántos años?",
+      "spanish": "¿Cuántos años? (forma cortés)",
       "accepted": [
         "おいくつですか。"
       ],
-      "promptNote": "más cortés",
+      "example": "しつれいですが、**おいくつですか**。",
+      "tipId": null,
       "hint": "pregunta cortés",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4495,7 +4834,8 @@
       "accepted": [
         "いつですか。"
       ],
-      "promptNote": "fecha/tiempo",
+      "example": "たんじょうびは **いつですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4508,7 +4848,8 @@
       "accepted": [
         "なんねんですか。"
       ],
-      "promptNote": "año",
+      "example": "ことしは **なんねんですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4521,7 +4862,8 @@
       "accepted": [
         "なんがつですか。"
       ],
-      "promptNote": "mes",
+      "example": "たんじょうびは **なんがつですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4534,7 +4876,8 @@
       "accepted": [
         "なんにちですか。"
       ],
-      "promptNote": "día",
+      "example": "きょうは **なんにちですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4547,7 +4890,8 @@
       "accepted": [
         "どこへ いきますか。"
       ],
-      "promptNote": "destino",
+      "example": "あした **どこへ いきますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4560,7 +4904,8 @@
       "accepted": [
         "なんで いきますか。"
       ],
-      "promptNote": "medio de transporte",
+      "example": "えきまで **なんで いきますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4573,7 +4918,8 @@
       "accepted": [
         "だれと いきますか。"
       ],
-      "promptNote": "compañía",
+      "example": "りょこうは **だれと いきますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4586,7 +4932,8 @@
       "accepted": [
         "いつ いきますか。"
       ],
-      "promptNote": "tiempo",
+      "example": "くにへ **いつ いきますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4599,7 +4946,8 @@
       "accepted": [
         "なにを しますか。"
       ],
-      "promptNote": "acción con を",
+      "example": "にちようびに **なにを しますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4612,7 +4960,8 @@
       "accepted": [
         "なにで たべますか。"
       ],
-      "promptNote": "herramienta con で",
+      "example": "**なにで たべますか**。",
+      "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4628,7 +4977,8 @@
         "どんな〜ですか",
         "どんなですか"
       ],
-      "promptNote": "tipo/característica; aceptar con o sin 〜",
+      "example": "それは **どんな ほんですか**。",
+      "tipId": null,
       "hint": "pregunta + sustantivo",
       "kanaMode": "hiragana",
       "tags": ""
@@ -4641,7 +4991,8 @@
       "accepted": [
         "どうですか。"
       ],
-      "promptNote": "opinión/estado",
+      "example": "にほんの せいかつは **どうですか**。",
+      "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",
       "tags": ""

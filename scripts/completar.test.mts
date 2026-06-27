@@ -6,13 +6,16 @@ import { evaluateAnswer } from "../src/lib/completar/scoring";
 import { foldSmallKana, romajiToKana, kanaToReading } from "../src/lib/completar/romaji";
 import { levelHint, kanaCount } from "../src/lib/completar/hints";
 import {
+  getAllItems,
   getItemById,
   getPartItems,
   getItemsForTheme,
   getThemes,
   isPartComplete,
   isThemeComplete,
+  tipForItem,
 } from "../src/lib/completar/data";
+import { isExactAtLevel } from "../src/lib/completar/progress";
 import type { CompletarItem } from "../src/lib/completar/types";
 
 let passed = 0;
@@ -35,7 +38,8 @@ function item(p: Partial<CompletarItem>): CompletarItem {
     japanese: "",
     spanish: "",
     accepted: [],
-    promptNote: "",
+    example: "**x**",
+    tipId: null,
     hint: "",
     kanaMode: "hiragana",
     tags: "",
@@ -115,6 +119,36 @@ eq("cv1_025 prompt", getItemById("cv1_025")?.spanish ?? "", "padre (mi familia)"
 eq("cv1_040 prompt", getItemById("cv1_040")?.spanish ?? "", "padre / papá (forma cortés)");
 eq("cv1_005 prompt", getItemById("cv1_005")?.spanish ?? "", "quién (normal)");
 eq("cv1_006 prompt", getItemById("cv1_006")?.spanish ?? "", "quién (más cortés)");
+eq("cv1_003 prompt", getItemById("cv1_003")?.spanish ?? "", "aquella persona (normal)");
+eq("cv1_004 prompt", getItemById("cv1_004")?.spanish ?? "", "aquella persona (forma cortés)");
+
+// examples: every item has one, with exactly one bold segment.
+{
+  const all = getAllItems();
+  const missing = all.filter((it) => !it.example);
+  eq("every item has an example", missing.length, 0);
+  const badBold = all.filter((it) => (it.example.match(/\*\*/g) || []).length !== 2);
+  eq("every example bolds exactly one segment", badBold.length, 0);
+  check("cv4_047 example contains コーヒー", (getItemById("cv4_047")?.example ?? "").includes("コーヒー"));
+}
+
+// consejos: only words in section-10 families get a tip; others get none.
+check("cv1_020 (かいしゃいん) has a tip", !!tipForItem(getItemById("cv1_020")!));
+check("cv6_010 (たべます) has a tip", !!tipForItem(getItemById("cv6_010")!));
+check("cv1_001 (わたし) has no tip", !tipForItem(getItemById("cv1_001")!));
+check("cv4_021 (とけい) has no tip", !tipForItem(getItemById("cv4_021")!));
+
+// badge cascade: exact at a harder level completes the easier ones.
+{
+  const levels: Record<string, string> = { "w:5": "exact" };
+  check("exact at L5 ⇒ L1 complete", isExactAtLevel(levels, "w", 1));
+  check("exact at L5 ⇒ L3 complete", isExactAtLevel(levels, "w", 3));
+  const levels3: Record<string, string> = { "w:3": "exact" };
+  check("exact at L3 ⇒ L2 complete", isExactAtLevel(levels3, "w", 2));
+  check("exact at L3 ⇏ L4 complete", !isExactAtLevel(levels3, "w", 4));
+  const near: Record<string, string> = { "w:5": "near" };
+  check("near does not complete", !isExactAtLevel(near, "w", 1));
+}
 
 // 6 & 7. badges per level + aggregation.
 {

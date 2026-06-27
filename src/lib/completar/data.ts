@@ -2,10 +2,6 @@ import raw from "../../data/completar.json";
 import type { CompletarData, CompletarItem, CompletarTheme, CompletarTip } from "./types";
 import { shuffle } from "../shuffle";
 
-function stripTilde(s: string): string {
-  return s.replace(/[〜～]/g, "").trim();
-}
-
 const data = raw as CompletarData;
 
 const itemsByTheme = new Map<string, CompletarItem[]>();
@@ -122,37 +118,16 @@ export function themeExactCount(
 
 // --- association tips ("Consejo") -----------------------------------------
 
-let tipMap: Map<string, CompletarTip> | null = null;
+const tipById = new Map<string, CompletarTip>();
+for (const tip of data.tips) tipById.set(tip.id, tip);
 
-function buildTipMap(): Map<string, CompletarTip> {
-  const map = new Map<string, CompletarTip>();
-  // Tokenize each tip chain (split on arrows, slashes, commas, spaces).
-  const tipTokens = data.tips.map((tip) => ({
-    tip,
-    tokens: new Set(
-      tip.text
-        .split(/[\s→/,、，]+/)
-        .map((t) => stripTilde(t))
-        .filter((t) => t.length >= 2)
-    ),
-  }));
-  for (const it of data.items) {
-    const needle = stripTilde(it.japanese);
-    if (needle.length < 2) continue; // single-char words are too ambiguous
-    for (const { tip, tokens } of tipTokens) {
-      if (tokens.has(needle)) {
-        map.set(it.id, tip);
-        break;
-      }
-    }
-  }
-  return map;
-}
-
-/** A brief association tip for an item, if any. */
+/**
+ * The curated association tip for an item, if any. Tips are assigned explicitly
+ * at build time (`item.tipId`), so only words that belong to a real root/meaning
+ * family (section 10) get a consejo.
+ */
 export function tipForItem(item: CompletarItem): CompletarTip | undefined {
-  if (!tipMap) tipMap = buildTipMap();
-  return tipMap.get(item.id);
+  return item.tipId ? tipById.get(item.tipId) : undefined;
 }
 
 /**

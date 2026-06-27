@@ -26,6 +26,7 @@ if (!Array.isArray(data.items) || data.items.length === 0) {
 }
 
 const themeIds = new Set(data.themes.map((t) => t.id));
+const tipIds = new Set((data.tips ?? []).map((t) => t.id));
 const counts = {};
 const seenItemIds = new Set();
 
@@ -41,6 +42,13 @@ for (const it of data.items) {
   }
   if (!it.accepted.includes(it.japanese)) {
     throw new Error(`${it.id}: accepted must include the primary japanese answer`);
+  }
+  if (!it.example) throw new Error(`${it.id}: missing example`);
+  if ((it.example.match(/\*\*/g) || []).length !== 2) {
+    throw new Error(`${it.id}: example must wrap exactly one segment in **bold**`);
+  }
+  if (it.tipId != null && !tipIds.has(it.tipId)) {
+    throw new Error(`${it.id}: tipId references unknown tip ${it.tipId}`);
   }
   if (!KANA_MODES.has(it.kanaMode)) throw new Error(`${it.id}: invalid kanaMode ${it.kanaMode}`);
   counts[it.themeId] = (counts[it.themeId] ?? 0) + 1;
