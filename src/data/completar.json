@@ -580,7 +580,7 @@
       "accepted": [
         "きょうだい"
       ],
-      "example": "**きょうだい**は ふたりです。",
+      "example": "**きょうだい**は げんきです。",
       "tipId": null,
       "hint": "familia propia",
       "kanaMode": "hiragana",
@@ -594,7 +594,7 @@
       "accepted": [
         "こども"
       ],
-      "example": "**こども**が さんにん います。",
+      "example": "**こども**は ちいさいです。",
       "tipId": null,
       "hint": "familia",
       "kanaMode": "hiragana",
@@ -790,7 +790,7 @@
       "accepted": [
         "ごきょうだい"
       ],
-      "example": "たなかさんの **ごきょうだい**は ふたりです。",
+      "example": "たなかさんの **ごきょうだい**は げんきです。",
       "tipId": null,
       "hint": "familia cortés",
       "kanaMode": "hiragana",
@@ -1000,7 +1000,7 @@
       "accepted": [
         "ロビー"
       ],
-      "example": "**ロビー**で まちます。",
+      "example": "**ロビー**は こちらです。",
       "tipId": null,
       "hint": "katakana/lugar",
       "kanaMode": "katakana",
@@ -1113,7 +1113,7 @@
       "accepted": [
         "ちか"
       ],
-      "example": "**ちか**に スーパーが あります。",
+      "example": "**ちか**へ いきます。",
       "tipId": null,
       "hint": "edificio",
       "kanaMode": "hiragana",
@@ -1130,7 +1130,7 @@
         "〜がい",
         "がい"
       ],
-      "example": "に**かい**に います。",
+      "example": "デパートは に**かい**です。",
       "tipId": null,
       "hint": "contador/piso",
       "kanaMode": "hiragana",
@@ -1340,7 +1340,7 @@
       "accepted": [
         "にわ"
       ],
-      "example": "**にわ**に はなが あります。",
+      "example": "**にわ**で やすみます。",
       "tipId": null,
       "hint": "lugar/naturaleza",
       "kanaMode": "hiragana",
@@ -1607,7 +1607,7 @@
       "accepted": [
         "プラットホーム"
       ],
-      "example": "**プラットホーム**で まちます。",
+      "example": "**プラットホーム**は あちらです。",
       "tipId": null,
       "hint": "katakana/transporte",
       "kanaMode": "katakana",
@@ -1948,7 +1948,7 @@
       "accepted": [
         "かぎ"
       ],
-      "example": "**かぎ**が あります。",
+      "example": "**かぎ**を かります。",
       "tipId": null,
       "hint": "objeto",
       "kanaMode": "hiragana",
@@ -2103,7 +2103,7 @@
       "accepted": [
         "つくえ"
       ],
-      "example": "**つくえ**の うえに ほんが あります。",
+      "example": "**つくえ**で ほんを よみます。",
       "tipId": null,
       "hint": "mueble",
       "kanaMode": "hiragana",
@@ -2803,7 +2803,7 @@
       "accepted": [
         "せいかつ"
       ],
-      "example": "にほんの **せいかつ**は たのしいです。",
+      "example": "だいがくの **せいかつ**は たのしいです。",
       "tipId": null,
       "hint": "concepto",
       "kanaMode": "hiragana",
@@ -2929,7 +2929,7 @@
       "accepted": [
         "ひまな"
       ],
-      "example": "きょうは **ひまな** ひです。",
+      "example": "**ひまな** ひとです。",
       "tipId": null,
       "hint": "adjetivo な",
       "kanaMode": "hiragana",
@@ -3042,7 +3042,7 @@
       "accepted": [
         "わるい"
       ],
-      "example": "きょうは てんきが **わるい**です。",
+      "example": "これは **わるい** ほんです。",
       "tipId": null,
       "hint": "adjetivo い",
       "kanaMode": "hiragana",
@@ -3799,7 +3799,7 @@
       "accepted": [
         "おととい"
       ],
-      "example": "**おととい** ともだちに あいました。",
+      "example": "**おととい**は やすみです。",
       "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
@@ -3813,7 +3813,7 @@
       "accepted": [
         "きのう"
       ],
-      "example": "**きのう** やすみました。",
+      "example": "**きのう**は やすみです。",
       "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
@@ -3869,7 +3869,7 @@
       "accepted": [
         "せんしゅう"
       ],
-      "example": "**せんしゅう** やすみました。",
+      "example": "**せんしゅう**は やすみです。",
       "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
@@ -3911,7 +3911,7 @@
       "accepted": [
         "せんげつ"
       ],
-      "example": "**せんげつ** にほんへ いきました。",
+      "example": "**せんげつ**は やすみです。",
       "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
@@ -3953,7 +3953,7 @@
       "accepted": [
         "きょねん"
       ],
-      "example": "**きょねん** にほんへ いきました。",
+      "example": "**きょねん**の たんじょうびは いつですか。",
       "tipId": null,
       "hint": "tiempo general",
       "kanaMode": "hiragana",
@@ -4083,7 +4083,7 @@
         "〜ぷん",
         "ぷん"
       ],
-      "example": "ご**ふん** まちます。",
+      "example": "ご**ふん** べんきょうします。",
       "tipId": null,
       "hint": "contador/minuto",
       "kanaMode": "hiragana",
@@ -4226,7 +4226,7 @@
       "accepted": [
         "もくようび"
       ],
-      "example": "**もくようび**に かいぎが あります。",
+      "example": "**もくようび**に かいぎを します。",
       "tipId": null,
       "hint": "día de semana",
       "kanaMode": "hiragana",
@@ -4918,7 +4918,7 @@
       "accepted": [
         "だれと いきますか。"
       ],
-      "example": "りょこうは **だれと いきますか**。",
+      "example": "がっこうへ **だれと いきますか**。",
       "tipId": null,
       "hint": "pregunta completa",
       "kanaMode": "hiragana",
@@ -4991,7 +4991,7 @@
       "accepted": [
         "どうですか。"
       ],
-      "example": "にほんの せいかつは **どうですか**。",
+      "example": "だいがくの せいかつは **どうですか**。",
       "tipId": null,
       "hint": "pregunta",
       "kanaMode": "hiragana",

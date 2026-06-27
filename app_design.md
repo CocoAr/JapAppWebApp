@@ -657,12 +657,12 @@ El input acepta `-` para producir `ー` (ej.: `ko-hi-` → `コーヒー`).
 | Nivel | Pista |
 |-------|-------|
 | 1 | Opción múltiple (palabras reales de la misma temática, `distractorsForItem`) |
-| 2 | Dos primeras letras + cantidad (solo cantidad si la palabra tiene ≤2 letras) |
+| 2 | Dos primeras letras + cantidad (1 letra si la palabra tiene 2; ninguna si tiene 1) |
 | 3 | Primera letra + cantidad (solo cantidad si la palabra tiene 1 letra) |
 | 4 | Solo la cantidad de letras |
 | 5 | Sin pista |
 
-"Letras" = kana, excluyendo `〜`, espacios y puntuación (`kanaCount`).
+"Letras" = kana, excluyendo `〜`, espacios y puntuación (`kanaCount`). En `/app/completar/levels` se aclara que en los niveles 2 y 3 hay que escribir la **palabra completa**, no solo los caracteres que faltan.
 
 ### Feedback, Ejemplo y Consejo
 

@@ -62,11 +62,12 @@ export function levelHint(answer: string, level: CompletarLevel): LevelHint | nu
   const count = kanaCount(answer);
   if (level === 4) return { count, pattern: null };
   if (level === 3) {
-    const k = count <= 1 ? 0 : 1;
+    // 1 kana, but nothing for a single-character word.
+    const k = count >= 2 ? 1 : 0;
     return { count, pattern: k > 0 ? revealPattern(answer, k) : null };
   }
-  // level === 2
-  const k = count <= 2 ? 0 : 2;
+  // level === 2: 2 kana, but 1 for a two-character word and none for a single one.
+  const k = count >= 3 ? 2 : count === 2 ? 1 : 0;
   return { count, pattern: k > 0 ? revealPattern(answer, k) : null };
 }
 

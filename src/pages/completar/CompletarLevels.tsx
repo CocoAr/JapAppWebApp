@@ -38,6 +38,11 @@ export function CompletarLevels() {
       </h1>
       <p className="muted page-lead">Elegí la dificultad. A mayor nivel, menos pistas.</p>
 
+      <div className="completar-level-note">
+        En los ejercicios de nivel 2 y 3 (donde se muestran algunos de los caracteres de la palabra) hay
+        que escribir la palabra completa, no solo los caracteres que faltan.
+      </div>
+
       <div className="completar-level-grid">
         {LEVELS.map((l) => (
           <button key={l.level} type="button" className="completar-level-card" onClick={() => start(l.level)}>

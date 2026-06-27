@@ -112,7 +112,7 @@ Tercer botón independiente en `/app`, además de Hiragana y Katakana. No compar
 - **Flujo:** el usuario elige **palabras por sesión** (5/10/15, default 10) y una **temática**; luego elige una **parte** (Parte 1, 2, 3…). Las partes son **fijas y no aleatorias**: siempre las mismas palabras (slices en orden del material). Después elige un **nivel** de dificultad.
 - **Niveles:**
   - Nivel 1: opción múltiple (palabras reales de la misma temática).
-  - Nivel 2: muestra las dos primeras letras + la cantidad (solo la cantidad si la palabra tiene 1–2 letras).
+  - Nivel 2: muestra las dos primeras letras + la cantidad (una sola letra si la palabra tiene 2; ninguna si tiene 1).
   - Nivel 3: muestra la primera letra + la cantidad (solo la cantidad si la palabra tiene 1 letra).
   - Nivel 4: solo la cantidad de letras.
   - Nivel 5: sin pista.

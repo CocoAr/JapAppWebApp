@@ -112,7 +112,23 @@ eq("empty input = empty", evaluateAnswer("   ", item({ japanese: "ねこ", accep
 eq("kanaCount きょうしつ = 5", kanaCount("きょうしつ"), 5);
 eq("level 4 hint has no pattern", levelHint("ねこ", 4)?.pattern ?? null, null);
 eq("level 5 hint is null", levelHint("ねこ", 5), null);
-check("level 2 hint reveals 2", (levelHint("きょうしつ", 2)?.pattern ?? "").startsWith("きょ"));
+check("level 2 reveals 2 for long word", (levelHint("きょうしつ", 2)?.pattern ?? "").startsWith("きょ"));
+
+// level 2: 2 kana, but 1 for a 2-char word and none for a 1-char word.
+function revealed(pattern: string | null | undefined): number {
+  if (!pattern) return 0;
+  return [...pattern].filter((c) => c !== "○" && c !== " ").length;
+}
+eq("level 2, 4 chars → reveals 2", revealed(levelHint("ともだち", 2)?.pattern), 2);
+eq("level 2, 3 chars → reveals 2", revealed(levelHint("くるま", 2)?.pattern), 2);
+eq("level 2, 2 chars → reveals 1", revealed(levelHint("ねこ", 2)?.pattern), 1);
+eq("level 2, 1 char → no pattern", levelHint("て", 2)?.pattern ?? null, null);
+eq("level 2 count is total", levelHint("ねこ", 2)?.count ?? 0, 2);
+
+// level 3: 1 kana, none for a 1-char word.
+eq("level 3, 3 chars → reveals 1", revealed(levelHint("くるま", 3)?.pattern), 1);
+eq("level 3, 2 chars → reveals 1", revealed(levelHint("ねこ", 3)?.pattern), 1);
+eq("level 3, 1 char → no pattern", levelHint("て", 3)?.pattern ?? null, null);
 
 // 8. formal/informal context visible in the prompt.
 eq("cv1_025 prompt", getItemById("cv1_025")?.spanish ?? "", "padre (mi familia)");
