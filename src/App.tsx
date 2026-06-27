@@ -17,6 +17,8 @@ import { SessionSummary } from "./pages/SessionSummary";
 import { Account } from "./pages/Account";
 import { CompletarLayout } from "./pages/completar/CompletarLayout";
 import { CompletarSettings } from "./pages/completar/CompletarSettings";
+import { CompletarParts } from "./pages/completar/CompletarParts";
+import { CompletarLevels } from "./pages/completar/CompletarLevels";
 import { CompletarSession } from "./pages/completar/CompletarSession";
 import { CompletarSummary } from "./pages/completar/CompletarSummary";
 import { CompletarTips } from "./pages/completar/CompletarTips";
@@ -41,6 +43,8 @@ export default function App() {
               <Route path="account" element={<Account />} />
               <Route path="completar" element={<CompletarLayout />}>
                 <Route index element={<CompletarSettings />} />
+                <Route path="parts" element={<CompletarParts />} />
+                <Route path="levels" element={<CompletarLevels />} />
                 <Route path="session" element={<CompletarSession />} />
                 <Route path="summary" element={<CompletarSummary />} />
                 <Route path="tips" element={<CompletarTips />} />

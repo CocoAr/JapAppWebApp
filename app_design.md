@@ -608,43 +608,59 @@ interface CompletarItem {
 }
 ```
 
+### Flujo: temática → partes → nivel → sesión
+
+1. **Settings** (`/app/completar`): elige **palabras por sesión** (5/10/15, default 10) y una **temática**.
+2. **Partes** (`/app/completar/parts`): la temática se divide en partes fijas de `size` ítems en **orden del material** (no aleatorio). Parte `p` = `items.slice((p-1)*size, p*size)`. Siempre las mismas palabras.
+3. **Niveles** (`/app/completar/levels`): elige dificultad 1–5.
+4. **Sesión** (`/app/completar/session`): corre el slice fijo de esa parte al nivel elegido.
+
 ### Conversión romaji → kana y scoring (`src/lib/completar/`)
 
 | Archivo | Rol |
 |---------|-----|
 | `romaji.ts` | `romajiToKana` (preview en vivo), `kanaToReading` (fold canónico), `readingFromRomaji`, `collapseLongVowels`, `levenshtein` |
 | `scoring.ts` | `evaluateAnswer(input, item)` → `exact` / `near` / `wrong` / `empty` |
-| `hints.ts` | Pistas progresivas: `contextHint`, `firstKanaInfo`, `maskedPattern`, niveles |
-| `data.ts` | Carga JSON, índices por temática, `pickSession`, `distractorsForItem` |
+| `hints.ts` | Niveles 1–5: `levelHint`, `revealPattern`, `kanaCount`, `LEVELS` |
+| `data.ts` | Carga JSON, índices, `partCount`/`getPartItems` (slices fijos), `distractorsForItem`, `tipForItem` |
 
 **Idea central del scoring:** tanto la respuesta esperada como lo que escribe el usuario se reducen a una **lectura canónica en hiragana** (katakana→hiragana, `ー`→vocal previa, se descartan `〜`/espacios/puntuación). Así, kana/katakana/vocales largas comparan igual.
 
 - `exact`: la lectura coincide con alguna variante aceptada.
-- `near`: coincide al colapsar vocales largas, o distancia de edición ≤ umbral (según longitud). Se muestra como "¡Casi!", feedback positivo.
-- `wrong`: lo demás no vacío.
-- `empty`: sin texto.
+- `near`: solo difiere por vocal larga, o **distancia de edición = 1** (errar por un carácter). Se muestra como "Casi! Estuviste cerca".
+- `wrong` / `empty`: lo demás.
 
-### Pistas progresivas
+### Niveles de dificultad
 
-1. Nota contextual (`promptNote`/`hint`).
-2. Primer kana + cantidad de caracteres.
-3. Patrón parcial enmascarado (`か○○`).
-4. Opciones: palabras **reales de la misma temática** (`distractorsForItem`), nunca inventadas.
-5. Respuesta completa.
+| Nivel | Pista |
+|-------|-------|
+| 1 | Opción múltiple (palabras reales de la misma temática, `distractorsForItem`) |
+| 2 | Dos primeras letras + cantidad (solo cantidad si la palabra tiene ≤2 letras) |
+| 3 | Primera letra + cantidad (solo cantidad si la palabra tiene 1 letra) |
+| 4 | Solo la cantidad de letras |
+| 5 | Sin pista |
 
-Usar opciones o revelar la respuesta marca el ítem como **asistido** → se persiste como `wrong` y se recomienda escribirlo a mano (no infla el dominio).
+"Letras" = kana, excluyendo `〜`, espacios y puntuación (`kanaCount`).
 
-### Sesiones, resumen y consejos
+### Feedback, Ejemplo y Consejo
 
-- Sesiones cortas: 5 / 10 / 15 ítems (default 10), por temática o "todas".
-- Resumen (`/app/completar/summary`): perfectas, casi, puntaje (`exact + 0.5·near`) y **lista de palabras para escribir a mano**.
+- **Correcto** → "Correcto! おめでとう!" (verde).
+- **Casi** (1 carácter) → "Casi! Estuviste cerca" (amarillo).
+- **Incorrecto** → "Incorrecto, seguí practicando!" (naranja).
+- Tras responder se muestra siempre **"Ejemplo: …"** (desde `promptNote`; si la nota no contiene japonés se etiqueta "Nota:") y, cuando aplica, **"Consejo: …"** con la asociación de raíces (`tipForItem` mapea ítems a tips de la sección 10 por tokens del encadenamiento).
+
+### Resumen y consejos
+
+- Resumen (`/app/completar/summary`): correctas, casi, puntaje (`exact + 0.5·near`) y **lista de palabras para escribir a mano** (las que no salieron exactas). Permite repetir, cambiar de nivel/parte/temática.
 - Consejos (`/app/completar/tips`): sección 10 como contenido, no quiz.
 
 ### Rutas y estado
 
 ```
-/app/completar              → CompletarSettings (elige temática + tamaño)
-/app/completar/session      → CompletarSession (?theme=&size=)
+/app/completar              → CompletarSettings (temática + tamaño)
+/app/completar/parts        → CompletarParts (?theme=&size=)
+/app/completar/levels       → CompletarLevels (?theme=&size=&part=)
+/app/completar/session      → CompletarSession (?theme=&size=&part=&level=)
 /app/completar/summary      → CompletarSummary (vía location.state)
 /app/completar/tips         → CompletarTips
 ```

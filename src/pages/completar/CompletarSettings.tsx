@@ -29,7 +29,7 @@ export function CompletarSettings() {
   const themes = getThemes();
 
   function start(themeId: string) {
-    navigate(`/app/completar/session?theme=${encodeURIComponent(themeId)}&size=${size}`);
+    navigate(`/app/completar/parts?theme=${encodeURIComponent(themeId)}&size=${size}`);
   }
 
   return (

@@ -2,18 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   distractorsForItem,
+  getPartItems,
   getThemeLabel,
-  pickSession,
+  partCount,
+  tipForItem,
 } from "../../lib/completar/data";
 import { romajiToKana } from "../../lib/completar/romaji";
 import { evaluateAnswer } from "../../lib/completar/scoring";
-import {
-  contextHint,
-  firstKanaInfo,
-  HINT_LEVELS,
-  MAX_HINT_LEVEL,
-  maskedPattern,
-} from "../../lib/completar/hints";
+import { isValidLevel, levelHint, type CompletarLevel } from "../../lib/completar/hints";
 import { shuffle } from "../../lib/shuffle";
 import { useCompletarProgress } from "../../context/CompletarProgressContext";
 import type { AnswerCategory, CompletarItem } from "../../lib/completar/types";
@@ -23,35 +19,40 @@ export interface CompletarLogEntry {
   japanese: string;
   spanish: string;
   category: AnswerCategory;
-  assisted: boolean;
   recommend: boolean;
 }
+
+const VALID_SIZES = [5, 10, 15];
+const HAS_JAPANESE = /[\u3040-\u30ff\u3400-\u9fff]/;
 
 function previewTarget(item: CompletarItem): "hiragana" | "katakana" {
   return item.kanaMode === "katakana" ? "katakana" : "hiragana";
 }
 
+function exampleFor(item: CompletarItem): { label: string; text: string } | null {
+  const note = item.promptNote?.trim();
+  if (!note) return null;
+  return { label: HAS_JAPANESE.test(note) ? "Ejemplo" : "Nota", text: note };
+}
+
 export function CompletarSession() {
-  const [searchParams] = useSearchParams();
-  const theme = searchParams.get("theme") ?? "all";
-  const sizeParam = Number(searchParams.get("size"));
-  const size = [5, 10, 15].includes(sizeParam) ? sizeParam : 10;
+  const [params] = useSearchParams();
   const navigate = useNavigate();
   const { recordResult } = useCompletarProgress();
 
-  const sessionKey = `${theme}:${size}`;
-  const itemsRef = useRef<{ key: string; items: CompletarItem[] }>({ key: "", items: [] });
-  if (itemsRef.current.key !== sessionKey) {
-    itemsRef.current = { key: sessionKey, items: pickSession(theme, size) };
-  }
-  const items = itemsRef.current.items;
+  const theme = params.get("theme") ?? "all";
+  const sizeRaw = Number(params.get("size"));
+  const size = VALID_SIZES.includes(sizeRaw) ? sizeRaw : 10;
+  const part = Number(params.get("part")) || 1;
+  const levelRaw = Number(params.get("level"));
+  const level: CompletarLevel = isValidLevel(levelRaw) ? levelRaw : 5;
+
+  const items = useMemo(() => getPartItems(theme, size, part), [theme, size, part]);
 
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState("");
-  const [hintLevel, setHintLevel] = useState(0);
   const [phase, setPhase] = useState<"input" | "result">("input");
   const [category, setCategory] = useState<AnswerCategory | null>(null);
-  const [assisted, setAssisted] = useState(false);
   const [log, setLog] = useState<CompletarLogEntry[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -59,24 +60,25 @@ export function CompletarSession() {
   const isLast = items.length > 0 && index >= items.length - 1;
   const target = current ? previewTarget(current) : "hiragana";
   const preview = useMemo(() => (current ? romajiToKana(input, target) : ""), [input, current, target]);
-
+  const hint = useMemo(
+    () => (current && level !== 1 ? levelHint(current.japanese, level) : null),
+    [current, level]
+  );
   const options = useMemo(() => {
-    if (!current) return [] as CompletarItem[];
+    if (!current || level !== 1) return [] as CompletarItem[];
     return shuffle([current, ...distractorsForItem(current, 3)]);
-  }, [current]);
+  }, [current, level]);
 
   useEffect(() => {
-    if (phase === "input") inputRef.current?.focus();
-  }, [phase, index]);
+    if (phase === "input" && level !== 1) inputRef.current?.focus();
+  }, [phase, index, level]);
 
   const finalize = useCallback(
-    (cat: AnswerCategory, wasAssisted: boolean) => {
+    (cat: AnswerCategory) => {
       if (!current) return;
       setCategory(cat);
-      setAssisted(wasAssisted);
       setPhase("result");
-      const persist = wasAssisted || cat === "empty" ? "wrong" : cat;
-      recordResult(current.id, persist);
+      recordResult(current.id, cat === "empty" ? "wrong" : cat);
       setLog((prev) => [
         ...prev,
         {
@@ -84,8 +86,7 @@ export function CompletarSession() {
           japanese: current.japanese,
           spanish: current.spanish,
           category: cat,
-          assisted: wasAssisted,
-          recommend: wasAssisted || cat !== "exact",
+          recommend: cat !== "exact",
         },
       ]);
     },
@@ -93,42 +94,38 @@ export function CompletarSession() {
   );
 
   const onCheck = useCallback(() => {
-    if (phase !== "input" || !current) return;
-    const res = evaluateAnswer(input, current);
-    finalize(res.category, false);
-  }, [phase, current, input, finalize]);
+    if (phase !== "input" || !current || level === 1) return;
+    finalize(evaluateAnswer(input, current).category);
+  }, [phase, current, input, level, finalize]);
 
   const onChooseOption = useCallback(
     (opt: CompletarItem) => {
       if (phase !== "input" || !current) return;
-      finalize(opt.id === current.id ? "exact" : "wrong", true);
+      finalize(opt.id === current.id ? "exact" : "wrong");
     },
     [phase, current, finalize]
   );
 
-  const onReveal = useCallback(() => {
-    if (phase !== "input" || !current) return;
-    finalize("wrong", true);
-  }, [phase, current, finalize]);
-
   const finishSession = useCallback(
     (finalLog: CompletarLogEntry[]) => {
-      const exact = finalLog.filter((e) => e.category === "exact" && !e.assisted).length;
-      const near = finalLog.filter((e) => e.category === "near" && !e.assisted).length;
-      const total = finalLog.length;
+      const exact = finalLog.filter((e) => e.category === "exact").length;
+      const near = finalLog.filter((e) => e.category === "near").length;
       navigate("/app/completar/summary", {
         replace: true,
         state: {
           theme,
           themeLabel: getThemeLabel(theme),
-          total,
+          size,
+          part,
+          level,
+          total: finalLog.length,
           exact,
           near,
           entries: finalLog,
         },
       });
     },
-    [navigate, theme]
+    [navigate, theme, size, part, level]
   );
 
   const onNext = useCallback(() => {
@@ -139,9 +136,7 @@ export function CompletarSession() {
     }
     setIndex((i) => i + 1);
     setInput("");
-    setHintLevel(0);
     setCategory(null);
-    setAssisted(false);
     setPhase("input");
   }, [phase, isLast, finishSession, log]);
 
@@ -149,23 +144,23 @@ export function CompletarSession() {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         e.preventDefault();
-        navigate("/app/completar");
+        navigate(`/app/completar/levels?theme=${encodeURIComponent(theme)}&size=${size}&part=${part}`);
         return;
       }
       if (e.key === "Enter") {
         e.preventDefault();
-        if (phase === "input") onCheck();
-        else onNext();
+        if (phase === "result") onNext();
+        else if (level !== 1) onCheck();
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, onCheck, onNext, navigate]);
+  }, [phase, level, onCheck, onNext, navigate, theme, size, part]);
 
-  if (items.length === 0) {
+  if (partCount(theme, size) === 0 || items.length === 0) {
     return (
       <div className="card">
-        <p>No hay palabras para esta temática.</p>
+        <p>No hay palabras para esta sesión.</p>
         <button type="button" className="btn btn-primary" onClick={() => navigate("/app/completar")}>
           Volver
         </button>
@@ -174,19 +169,15 @@ export function CompletarSession() {
   }
   if (!current) return null;
 
-  const kana = firstKanaInfo(current.japanese);
   const feedback =
-    category === "exact" && !assisted
-      ? { cls: "ok", text: "¡Perfecto!" }
-      : category === "exact" && assisted
-        ? { cls: "near", text: "Correcto (con ayuda)" }
-        : category === "near"
-          ? { cls: "near", text: "¡Casi! Te faltó muy poco." }
-          : category === "empty"
-            ? { cls: "bad", text: "No escribiste nada." }
-            : assisted
-              ? { cls: "bad", text: "Respuesta revelada." }
-              : { cls: "bad", text: "Todavía no, ¡seguí practicando!" };
+    category === "exact"
+      ? { cls: "ok", text: "Correcto! おめでとう!" }
+      : category === "near"
+        ? { cls: "near", text: "Casi! Estuviste cerca" }
+        : { cls: "bad", text: "Incorrecto, seguí practicando!" };
+
+  const example = exampleFor(current);
+  const tip = tipForItem(current);
 
   return (
     <div className="completar-session">
@@ -194,7 +185,9 @@ export function CompletarSession() {
         <span className="muted session-progress">
           {index + 1} / {items.length}
         </span>
-        <span className="completar-theme-tag">{getThemeLabel(theme)}</span>
+        <span className="completar-theme-tag">
+          {getThemeLabel(theme)} · Parte {part} · Nivel {level}
+        </span>
       </div>
 
       <div className="completar-prompt-card">
@@ -203,88 +196,58 @@ export function CompletarSession() {
       </div>
 
       {phase === "input" ? (
-        <>
-          <input
-            ref={inputRef}
-            className="input completar-input"
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="romaji (ej.: watashi)"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck={false}
-          />
-          <div className="completar-preview" aria-live="polite">
-            {preview || <span className="muted">…</span>}
-          </div>
-
-          <div className="completar-actions">
-            <button type="button" className="btn btn-primary btn-large" onClick={onCheck}>
-              Comprobar
-            </button>
-            {hintLevel < MAX_HINT_LEVEL ? (
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={() => setHintLevel((h) => Math.min(MAX_HINT_LEVEL, h + 1))}
-              >
-                {hintLevel === 0 ? "Pista" : "Otra pista"}
-              </button>
-            ) : null}
-          </div>
-
-          {hintLevel >= HINT_LEVELS.context ? (
-            <div className="completar-hints">
-              {hintLevel >= HINT_LEVELS.context ? (
-                <p className="completar-hint">
-                  <span className="completar-hint-tag">Pista</span> {contextHint(current)}
-                </p>
-              ) : null}
-              {hintLevel >= HINT_LEVELS.firstKana ? (
-                <p className="completar-hint">
-                  <span className="completar-hint-tag">Empieza</span> con{" "}
-                  <strong className="jp">{kana.first}</strong> · {kana.count} caracteres
-                </p>
-              ) : null}
-              {hintLevel >= HINT_LEVELS.pattern ? (
-                <p className="completar-hint">
-                  <span className="completar-hint-tag">Patrón</span>{" "}
-                  <strong className="jp">{maskedPattern(current.japanese)}</strong>
-                </p>
-              ) : null}
-              {hintLevel >= HINT_LEVELS.options ? (
-                <div className="completar-options">
-                  <span className="completar-hint-tag">Opciones</span>
-                  <div className="completar-options-row">
-                    {options.map((o) => (
-                      <button
-                        key={o.id}
-                        type="button"
-                        className="completar-option jp"
-                        onClick={() => onChooseOption(o)}
-                      >
-                        {o.japanese}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-              {hintLevel >= HINT_LEVELS.answer ? (
-                <p className="completar-hint">
-                  <span className="completar-hint-tag">Respuesta</span>{" "}
-                  <strong className="jp completar-answer">{current.japanese}</strong>
-                  <button type="button" className="btn btn-ghost completar-reveal-next" onClick={onReveal}>
-                    Continuar
-                  </button>
-                </p>
-              ) : null}
+        level === 1 ? (
+          <div className="completar-mc">
+            <p className="muted completar-mc-label">Elegí la palabra correcta</p>
+            <div className="completar-mc-grid">
+              {options.map((o) => (
+                <button
+                  key={o.id}
+                  type="button"
+                  className="completar-mc-option jp"
+                  onClick={() => onChooseOption(o)}
+                >
+                  {o.japanese}
+                </button>
+              ))}
             </div>
-          ) : (
-            <p className="muted hints">Enter = comprobar · Esc = salir</p>
-          )}
-        </>
+            <p className="muted hints">Esc = volver</p>
+          </div>
+        ) : (
+          <>
+            {hint ? (
+              <div className="completar-level-hint">
+                {hint.pattern ? <span className="jp completar-level-pattern">{hint.pattern}</span> : null}
+                <span className="completar-level-count">{hint.count} caracteres</span>
+              </div>
+            ) : (
+              <div className="completar-level-hint completar-level-hint--empty">Sin pista</div>
+            )}
+
+            <input
+              ref={inputRef}
+              className="input completar-input"
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="romaji (ej.: watashi)"
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck={false}
+            />
+            <div className="completar-preview" aria-live="polite">
+              {preview || <span className="muted">…</span>}
+            </div>
+
+            <div className="completar-actions">
+              <button type="button" className="btn btn-primary btn-large" onClick={onCheck}>
+                Comprobar
+              </button>
+            </div>
+            <p className="muted hints">Enter = comprobar · Esc = volver</p>
+          </>
+        )
       ) : (
         <div className="completar-result">
           <p className={`completar-feedback completar-feedback--${feedback.cls}`}>{feedback.text}</p>
@@ -296,7 +259,16 @@ export function CompletarSession() {
                 También válido: {current.accepted.filter((a) => a !== current.japanese).join(" · ")}
               </span>
             ) : null}
-            {current.promptNote ? <span className="muted completar-note">{current.promptNote}</span> : null}
+            {example ? (
+              <span className="completar-example">
+                <strong>{example.label}:</strong> {example.text}
+              </span>
+            ) : null}
+            {tip ? (
+              <span className="completar-consejo">
+                <strong>Consejo:</strong> {tip.note || tip.text}
+              </span>
+            ) : null}
           </div>
           <button type="button" className="btn btn-primary btn-large" onClick={onNext}>
             {isLast ? "Ver resumen" : "Siguiente"}

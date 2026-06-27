@@ -4,6 +4,9 @@ import type { CompletarLogEntry } from "./CompletarSession";
 type SummaryState = {
   theme: string;
   themeLabel: string;
+  size: number;
+  part: number;
+  level: number;
   total: number;
   exact: number;
   near: number;
@@ -26,20 +29,23 @@ export function CompletarSummary() {
     );
   }
 
-  const { theme, themeLabel, total, exact, near, entries } = st;
+  const { theme, themeLabel, size, part, level, total, exact, near, entries } = st;
   const score = total > 0 ? Math.round(((exact + 0.5 * near) / total) * 100) : 0;
   const recommend = entries.filter((e) => e.recommend);
+  const qp = `theme=${encodeURIComponent(theme)}&size=${size}&part=${part}`;
 
   return (
     <div className="completar-summary">
-      <h1 className="page-title">Resumen — {themeLabel}</h1>
+      <h1 className="page-title">
+        {themeLabel} · Parte {part} · Nivel {level}
+      </h1>
 
       <ul className="summary-stats">
         <li>
           Palabras: <strong>{total}</strong>
         </li>
         <li>
-          Perfectas: <strong className="ok">{exact}</strong>
+          Correctas: <strong className="ok">{exact}</strong>
         </li>
         <li>
           Casi: <strong className="near-text">{near}</strong>
@@ -53,8 +59,7 @@ export function CompletarSummary() {
         <div className="card completar-handwrite">
           <h2 className="completar-section-title">Conviene escribir a mano</h2>
           <p className="muted">
-            Estas palabras te costaron o necesitaste ayuda. Escribirlas a mano un par de veces ayuda a
-            fijarlas.
+            Estas palabras te costaron. Escribirlas a mano un par de veces ayuda a fijarlas.
           </p>
           <ul className="completar-handwrite-list">
             {recommend.map((e) => (
@@ -75,19 +80,18 @@ export function CompletarSummary() {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() =>
-            navigate(`/app/completar/session?theme=${encodeURIComponent(theme)}&size=${total}`, {
-              replace: true,
-            })
-          }
+          onClick={() => navigate(`/app/completar/session?${qp}&level=${level}`, { replace: true })}
         >
-          Repetir temática
+          Repetir
         </button>
-        <Link to="/app/completar" className="btn btn-ghost">
-          Elegir otra
+        <Link to={`/app/completar/levels?${qp}`} className="btn btn-ghost">
+          Otro nivel
         </Link>
-        <Link to="/app/completar/tips" className="btn btn-ghost">
-          Consejos
+        <Link to={`/app/completar/parts?theme=${encodeURIComponent(theme)}&size=${size}`} className="btn btn-ghost">
+          Otra parte
+        </Link>
+        <Link to="/app/completar" className="btn btn-ghost">
+          Temáticas
         </Link>
       </div>
     </div>

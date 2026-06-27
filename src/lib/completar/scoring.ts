@@ -39,6 +39,7 @@ export function evaluateAnswer(input: string, item: CompletarItem): ScoreResult 
   const accepted = acceptedReadings(item);
   if (accepted.includes(norm)) return { category: "exact", inputReading: norm };
 
+  // "Casi": off by exactly one character, or only a long-vowel difference.
   const normCollapsed = collapseLongVowels(norm);
   let best = Infinity;
   for (const r of accepted) {
@@ -47,10 +48,7 @@ export function evaluateAnswer(input: string, item: CompletarItem): ScoreResult 
     }
     best = Math.min(best, levenshtein(norm, r));
   }
-
-  const minLen = Math.min(...accepted.map((r) => r.length));
-  const threshold = minLen <= 2 ? 0 : minLen <= 5 ? 1 : 2;
-  if (best >= 1 && best <= threshold) {
+  if (best === 1) {
     return { category: "near", inputReading: norm };
   }
 

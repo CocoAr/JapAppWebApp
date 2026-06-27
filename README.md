@@ -109,14 +109,21 @@ Tipos y helpers: `src/data/vocabulary.ts`.
 Tercer botón independiente en `/app`, además de Hiragana y Katakana. No comparte vocabulario ni progreso con esos modos.
 
 - **Fuente de verdad:** `completar_vocabulario_source.txt` (TSV en la raíz). Se convierte a `src/data/completar.json` con `npm run completar:build` y se valida en el build (`npm run validate:completar`).
-- **Mecánica:** se muestra el significado en español; el usuario escribe en **romaji** con el teclado normal y la app convierte en vivo a hiragana/katakana. La respuesta se evalúa en `exact` / `near` / `wrong` / `empty` sobre una *lectura* canónica (hiragana folded), tolerante a kana, katakana y vocales largas. Los errores mínimos se muestran como "¡Casi!".
-- **Pistas progresivas:** nota contextual → primer kana + cantidad → patrón parcial → opciones (palabras reales de la misma temática) → respuesta.
-- **Sesiones cortas:** 5 / 10 / 15 ítems (default 10), por temática o "todas".
-- **Resumen:** puntaje + lista de palabras recomendadas para escribir a mano (las que costaron o necesitaron ayuda).
-- **Consejos:** la sección 10 del material (`/app/completar/tips`) se muestra como contenido, no como quiz.
+- **Flujo:** el usuario elige **palabras por sesión** (5/10/15, default 10) y una **temática**; luego elige una **parte** (Parte 1, 2, 3…). Las partes son **fijas y no aleatorias**: siempre las mismas palabras (slices en orden del material). Después elige un **nivel** de dificultad.
+- **Niveles:**
+  - Nivel 1: opción múltiple (palabras reales de la misma temática).
+  - Nivel 2: muestra las dos primeras letras + la cantidad (solo la cantidad si la palabra tiene 1–2 letras).
+  - Nivel 3: muestra la primera letra + la cantidad (solo la cantidad si la palabra tiene 1 letra).
+  - Nivel 4: solo la cantidad de letras.
+  - Nivel 5: sin pista.
+- **Entrada y evaluación:** se escribe en **romaji** y la app convierte en vivo a hiragana/katakana. La respuesta se evalúa en `exact` / `near` / `wrong` sobre una *lectura* canónica (hiragana folded), tolerante a kana/katakana/vocales largas. `near` = errar por **un solo carácter**.
+- **Feedback:** Correcto → "Correcto! おめでとう!" (verde); un carácter → "Casi! Estuviste cerca" (amarillo); error → "Incorrecto, seguí practicando!" (naranja).
+- **Ejemplo / Consejo:** en cada respuesta se muestra "Ejemplo: …" (del material) y, cuando aplica, "Consejo: …" con la asociación de raíces (sección 10).
+- **Resumen:** puntaje + lista de palabras recomendadas para escribir a mano.
+- **Consejos:** la sección 10 (`/app/completar/tips`) se muestra como contenido, no como quiz.
 - **Persistencia:** tabla D1 propia `completar_item_progress` (migración `0005_completar.sql`) + endpoints `GET /api/completar/progress` y `POST /api/completar/result`. El handler tolera que la migración no esté aplicada todavía (devuelve progreso vacío en vez de error).
 
-Rutas: `/app/completar`, `/app/completar/session?theme=<id>&size=10`, `/app/completar/summary`, `/app/completar/tips`.
+Rutas: `/app/completar`, `/app/completar/parts?theme=<id>&size=10`, `/app/completar/levels?theme=<id>&size=10&part=1`, `/app/completar/session?theme=<id>&size=10&part=1&level=5`, `/app/completar/summary`, `/app/completar/tips`.
 
 > Para producción, aplicá la migración nueva: `npm run db:migrate:remote` (incluye `0005_completar.sql`).
 
