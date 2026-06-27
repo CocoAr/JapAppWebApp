@@ -1,5 +1,11 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { getPartItems, getThemeLabel, partCount } from "../../lib/completar/data";
+import {
+  ALL_LEVELS,
+  getPartItems,
+  getThemeLabel,
+  isPartComplete,
+  partCount,
+} from "../../lib/completar/data";
 import { useCompletarProgress } from "../../context/CompletarProgressContext";
 import { cardGrey, masteryBackground } from "../../lib/colors";
 
@@ -8,7 +14,7 @@ const VALID_SIZES = [5, 10, 15];
 export function CompletarParts() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
-  const { items } = useCompletarProgress();
+  const { isExactAt } = useCompletarProgress();
 
   const theme = params.get("theme") ?? "all";
   const sizeRaw = Number(params.get("size"));
@@ -27,36 +33,27 @@ export function CompletarParts() {
     );
   }
 
-  function partMastery(part: number): { mastery: number; started: boolean } {
-    const list = getPartItems(theme, size, part);
-    if (list.length === 0) return { mastery: 0, started: false };
-    let mastered = 0;
-    let started = false;
-    for (const it of list) {
-      const s = items[it.id];
-      if (s) started = true;
-      if (s === "exact") mastered += 1;
-    }
-    return { mastery: Math.round((mastered / list.length) * 100), started };
-  }
-
   return (
     <div>
       <h1 className="page-title">{getThemeLabel(theme)}</h1>
       <p className="muted page-lead">
-        Elegí una parte. Cada parte tiene siempre las mismas palabras ({size} por parte).
+        Elegí una parte. Cada parte tiene siempre las mismas palabras ({size} por parte). Un badge se
+        pone verde cuando completás todas sus palabras de forma exacta en ese nivel.
       </p>
 
       <div className="category-grid completar-theme-grid">
         {Array.from({ length: total }, (_, i) => i + 1).map((part) => {
           const list = getPartItems(theme, size, part);
-          const { mastery, started } = partMastery(part);
-          const bg = started ? masteryBackground(mastery) : cardGrey;
+          const greens = ALL_LEVELS.map((lvl) =>
+            isPartComplete(theme, size, part, (id) => isExactAt(id, lvl))
+          );
+          const greenCount = greens.filter(Boolean).length;
+          const bg = greenCount > 0 ? masteryBackground((greenCount / 5) * 100) : cardGrey;
           return (
             <button
               key={part}
               type="button"
-              className={`completar-theme-card ${started ? "" : "completar-theme-card--grey"}`}
+              className={`completar-theme-card ${greenCount > 0 ? "" : "completar-theme-card--grey"}`}
               style={{ background: bg }}
               onClick={() =>
                 navigate(
@@ -67,7 +64,16 @@ export function CompletarParts() {
               <span className="completar-theme-title">Parte {part}</span>
               <span className="completar-theme-meta">
                 <span>{list.length} palabras</span>
-                <span className="completar-theme-pct">{started ? `${mastery}%` : "—"}</span>
+              </span>
+              <span className="completar-badges" aria-label="Niveles completados">
+                {ALL_LEVELS.map((lvl, idx) => (
+                  <span
+                    key={lvl}
+                    className={`completar-badge ${greens[idx] ? "completar-badge--on" : ""}`}
+                  >
+                    {lvl}
+                  </span>
+                ))}
               </span>
             </button>
           );

@@ -106,7 +106,7 @@
       "id": "cv1_005",
       "themeId": "personas_familia_roles",
       "japanese": "だれ",
-      "spanish": "quién",
+      "spanish": "quién (normal)",
       "accepted": [
         "だれ"
       ],
@@ -119,7 +119,7 @@
       "id": "cv1_006",
       "themeId": "personas_familia_roles",
       "japanese": "どなた",
-      "spanish": "quién",
+      "spanish": "quién (más cortés)",
       "accepted": [
         "どなた"
       ],
@@ -266,7 +266,7 @@
       "id": "cv1_017",
       "themeId": "personas_familia_roles",
       "japanese": "せんせい",
-      "spanish": "profesor / maestro",
+      "spanish": "profesor / maestro (de otra persona)",
       "accepted": [
         "せんせい"
       ],
@@ -279,7 +279,7 @@
       "id": "cv1_018",
       "themeId": "personas_familia_roles",
       "japanese": "きょうし",
-      "spanish": "profesor / maestro",
+      "spanish": "profesor / maestro (mi profesión)",
       "accepted": [
         "きょうし"
       ],
@@ -370,7 +370,7 @@
       "id": "cv1_025",
       "themeId": "personas_familia_roles",
       "japanese": "ちち",
-      "spanish": "mi padre",
+      "spanish": "padre (mi familia)",
       "accepted": [
         "ちち"
       ],
@@ -383,7 +383,7 @@
       "id": "cv1_026",
       "themeId": "personas_familia_roles",
       "japanese": "はは",
-      "spanish": "mi madre",
+      "spanish": "madre (mi familia)",
       "accepted": [
         "はは"
       ],
@@ -396,7 +396,7 @@
       "id": "cv1_027",
       "themeId": "personas_familia_roles",
       "japanese": "そふ",
-      "spanish": "mi abuelo",
+      "spanish": "abuelo (mi familia)",
       "accepted": [
         "そふ"
       ],
@@ -409,7 +409,7 @@
       "id": "cv1_028",
       "themeId": "personas_familia_roles",
       "japanese": "そぼ",
-      "spanish": "mi abuela",
+      "spanish": "abuela (mi familia)",
       "accepted": [
         "そぼ"
       ],
@@ -422,7 +422,7 @@
       "id": "cv1_029",
       "themeId": "personas_familia_roles",
       "japanese": "あに",
-      "spanish": "mi hermano mayor",
+      "spanish": "hermano mayor (mi familia)",
       "accepted": [
         "あに"
       ],
@@ -435,7 +435,7 @@
       "id": "cv1_030",
       "themeId": "personas_familia_roles",
       "japanese": "あね",
-      "spanish": "mi hermana mayor",
+      "spanish": "hermana mayor (mi familia)",
       "accepted": [
         "あね"
       ],
@@ -448,7 +448,7 @@
       "id": "cv1_031",
       "themeId": "personas_familia_roles",
       "japanese": "おとうと",
-      "spanish": "mi hermano menor",
+      "spanish": "hermano menor (mi familia)",
       "accepted": [
         "おとうと"
       ],
@@ -461,7 +461,7 @@
       "id": "cv1_032",
       "themeId": "personas_familia_roles",
       "japanese": "いもうと",
-      "spanish": "mi hermana menor",
+      "spanish": "hermana menor (mi familia)",
       "accepted": [
         "いもうと"
       ],
@@ -474,7 +474,7 @@
       "id": "cv1_033",
       "themeId": "personas_familia_roles",
       "japanese": "おっと",
-      "spanish": "mi esposo",
+      "spanish": "esposo (mi familia)",
       "accepted": [
         "おっと"
       ],
@@ -487,7 +487,7 @@
       "id": "cv1_034",
       "themeId": "personas_familia_roles",
       "japanese": "つま",
-      "spanish": "mi esposa",
+      "spanish": "esposa (mi familia)",
       "accepted": [
         "つま"
       ],
@@ -500,7 +500,7 @@
       "id": "cv1_035",
       "themeId": "personas_familia_roles",
       "japanese": "むすこ",
-      "spanish": "mi hijo",
+      "spanish": "hijo (mi familia)",
       "accepted": [
         "むすこ"
       ],
@@ -513,7 +513,7 @@
       "id": "cv1_036",
       "themeId": "personas_familia_roles",
       "japanese": "むすめ",
-      "spanish": "mi hija",
+      "spanish": "hija (mi familia)",
       "accepted": [
         "むすめ"
       ],
@@ -526,7 +526,7 @@
       "id": "cv1_037",
       "themeId": "personas_familia_roles",
       "japanese": "りょうしん",
-      "spanish": "mis padres",
+      "spanish": "padres (mi familia)",
       "accepted": [
         "りょうしん"
       ],
@@ -539,7 +539,7 @@
       "id": "cv1_038",
       "themeId": "personas_familia_roles",
       "japanese": "きょうだい",
-      "spanish": "mis hermanos",
+      "spanish": "hermanos (mi familia)",
       "accepted": [
         "きょうだい"
       ],
@@ -565,7 +565,7 @@
       "id": "cv1_040",
       "themeId": "personas_familia_roles",
       "japanese": "おとうさん",
-      "spanish": "padre / papá",
+      "spanish": "padre / papá (forma cortés)",
       "accepted": [
         "おとうさん"
       ],
@@ -578,7 +578,7 @@
       "id": "cv1_041",
       "themeId": "personas_familia_roles",
       "japanese": "おかあさん",
-      "spanish": "madre / mamá",
+      "spanish": "madre / mamá (forma cortés)",
       "accepted": [
         "おかあさん"
       ],
@@ -591,7 +591,7 @@
       "id": "cv1_042",
       "themeId": "personas_familia_roles",
       "japanese": "おじいさん",
-      "spanish": "abuelo",
+      "spanish": "abuelo (forma cortés)",
       "accepted": [
         "おじいさん"
       ],
@@ -604,7 +604,7 @@
       "id": "cv1_043",
       "themeId": "personas_familia_roles",
       "japanese": "おばあさん",
-      "spanish": "abuela",
+      "spanish": "abuela (forma cortés)",
       "accepted": [
         "おばあさん"
       ],
@@ -617,7 +617,7 @@
       "id": "cv1_044",
       "themeId": "personas_familia_roles",
       "japanese": "おにいさん",
-      "spanish": "hermano mayor",
+      "spanish": "hermano mayor (forma cortés)",
       "accepted": [
         "おにいさん"
       ],
@@ -630,7 +630,7 @@
       "id": "cv1_045",
       "themeId": "personas_familia_roles",
       "japanese": "おねえさん",
-      "spanish": "hermana mayor",
+      "spanish": "hermana mayor (forma cortés)",
       "accepted": [
         "おねえさん"
       ],
@@ -643,7 +643,7 @@
       "id": "cv1_046",
       "themeId": "personas_familia_roles",
       "japanese": "おとうとさん",
-      "spanish": "hermano menor",
+      "spanish": "hermano menor (forma cortés)",
       "accepted": [
         "おとうとさん"
       ],
@@ -656,7 +656,7 @@
       "id": "cv1_047",
       "themeId": "personas_familia_roles",
       "japanese": "いもうとさん",
-      "spanish": "hermana menor",
+      "spanish": "hermana menor (forma cortés)",
       "accepted": [
         "いもうとさん"
       ],
@@ -955,7 +955,7 @@
       "id": "cv2_016",
       "themeId": "lugares_ubicacion",
       "japanese": "トイレ",
-      "spanish": "baño",
+      "spanish": "baño (forma común)",
       "accepted": [
         "トイレ",
         "おてあらい"
@@ -1336,7 +1336,7 @@
       "id": "cv2_045",
       "themeId": "lugares_ubicacion",
       "japanese": "くに",
-      "spanish": "país / su país",
+      "spanish": "país",
       "accepted": [
         "くに",
         "おくに"
@@ -2852,7 +2852,7 @@
       "id": "cv5_018",
       "themeId": "adjetivos",
       "japanese": "さむい",
-      "spanish": "frío",
+      "spanish": "frío (clima)",
       "accepted": [
         "さむい"
       ],
@@ -2865,7 +2865,7 @@
       "id": "cv5_019",
       "themeId": "adjetivos",
       "japanese": "つめたい",
-      "spanish": "frío",
+      "spanish": "frío (al tacto)",
       "accepted": [
         "つめたい"
       ],

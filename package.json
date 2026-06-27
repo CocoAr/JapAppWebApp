@@ -12,6 +12,7 @@
     "validate:completar": "node scripts/validate-completar.mjs",
     "vocab:apply-taxonomy": "node scripts/apply-vocab-taxonomy.mjs",
     "completar:build": "node scripts/build-completar.mjs",
+    "test:completar": "node scripts/run-tests-completar.mjs",
     "build": "tsc --noEmit && npm run validate:vocab && npm run validate:katakana && npm run validate:completar && vite build",
     "preview": "wrangler pages dev dist --compatibility-date=2024-11-01",
     "cf-typegen": "wrangler types",

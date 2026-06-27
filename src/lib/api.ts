@@ -121,3 +121,17 @@ export const apiPostCompletarResult = (itemId: string, status: CompletarStatus) 
     method: "POST",
     body: JSON.stringify({ itemId, status }),
   });
+
+/** Per-(item, level) progress. Key format: `${itemId}:${level}`. */
+export interface CompletarLevelProgressPayload {
+  progress: Record<string, CompletarStatus>;
+}
+
+export const apiGetCompletarLevelProgress = () =>
+  api<CompletarLevelProgressPayload>("/api/completar/level-progress");
+
+export const apiPostCompletarLevelResult = (itemId: string, level: number, result: CompletarStatus) =>
+  api<{ ok: boolean }>("/api/completar/level-result", {
+    method: "POST",
+    body: JSON.stringify({ itemId, level, result }),
+  });

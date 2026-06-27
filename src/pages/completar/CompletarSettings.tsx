@@ -1,30 +1,21 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAllItems, getItemsForTheme, getThemes, SPECIAL_THEME_ALL } from "../../lib/completar/data";
+import {
+  ALL_LEVELS,
+  getAllItems,
+  getThemes,
+  isThemeComplete,
+  SPECIAL_THEME_ALL,
+} from "../../lib/completar/data";
 import { useCompletarProgress } from "../../context/CompletarProgressContext";
 import { cardGrey, masteryBackground } from "../../lib/colors";
 
 const SIZES = [5, 10, 15] as const;
 const DEFAULT_SIZE = 10;
 
-function themeMastery(
-  itemIds: string[],
-  items: Record<string, "exact" | "near" | "wrong">
-): { mastery: number; started: boolean } {
-  if (itemIds.length === 0) return { mastery: 0, started: false };
-  let mastered = 0;
-  let started = false;
-  for (const id of itemIds) {
-    const s = items[id];
-    if (s) started = true;
-    if (s === "exact") mastered += 1;
-  }
-  return { mastery: Math.round((mastered / itemIds.length) * 100), started };
-}
-
 export function CompletarSettings() {
   const navigate = useNavigate();
-  const { items } = useCompletarProgress();
+  const { isExactAt } = useCompletarProgress();
   const [size, setSize] = useState<number>(DEFAULT_SIZE);
   const themes = getThemes();
 
@@ -68,21 +59,30 @@ export function CompletarSettings() {
         </button>
 
         {themes.map((t) => {
-          const ids = getItemsForTheme(t.id).map((i) => i.id);
-          const { mastery, started } = themeMastery(ids, items);
-          const bg = started ? masteryBackground(mastery) : cardGrey;
+          const greens = ALL_LEVELS.map((lvl) => isThemeComplete(t.id, (id) => isExactAt(id, lvl)));
+          const greenCount = greens.filter(Boolean).length;
+          const bg = greenCount > 0 ? masteryBackground((greenCount / 5) * 100) : cardGrey;
           return (
             <button
               key={t.id}
               type="button"
-              className={`completar-theme-card ${started ? "" : "completar-theme-card--grey"}`}
+              className={`completar-theme-card ${greenCount > 0 ? "" : "completar-theme-card--grey"}`}
               style={{ background: bg }}
               onClick={() => start(t.id)}
             >
               <span className="completar-theme-title">{t.label}</span>
               <span className="completar-theme-meta">
                 <span>{t.count} palabras</span>
-                <span className="completar-theme-pct">{started ? `${mastery}%` : "—"}</span>
+              </span>
+              <span className="completar-badges" aria-label="Niveles completados">
+                {ALL_LEVELS.map((lvl, idx) => (
+                  <span
+                    key={lvl}
+                    className={`completar-badge ${greens[idx] ? "completar-badge--on" : ""}`}
+                  >
+                    {lvl}
+                  </span>
+                ))}
               </span>
             </button>
           );

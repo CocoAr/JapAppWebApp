@@ -8,7 +8,7 @@ import {
   tipForItem,
 } from "../../lib/completar/data";
 import { romajiToKana } from "../../lib/completar/romaji";
-import { evaluateAnswer } from "../../lib/completar/scoring";
+import { evaluateAnswer, type NearReason } from "../../lib/completar/scoring";
 import { isValidLevel, levelHint, type CompletarLevel } from "../../lib/completar/hints";
 import { shuffle } from "../../lib/shuffle";
 import { useCompletarProgress } from "../../context/CompletarProgressContext";
@@ -53,6 +53,8 @@ export function CompletarSession() {
   const [input, setInput] = useState("");
   const [phase, setPhase] = useState<"input" | "result">("input");
   const [category, setCategory] = useState<AnswerCategory | null>(null);
+  const [nearReason, setNearReason] = useState<NearReason | null>(null);
+  const [emptyNotice, setEmptyNotice] = useState(false);
   const [log, setLog] = useState<CompletarLogEntry[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -74,11 +76,13 @@ export function CompletarSession() {
   }, [phase, index, level]);
 
   const finalize = useCallback(
-    (cat: AnswerCategory) => {
+    (cat: Exclude<AnswerCategory, "empty">, reason: NearReason | null) => {
       if (!current) return;
       setCategory(cat);
+      setNearReason(cat === "near" ? reason : null);
+      setEmptyNotice(false);
       setPhase("result");
-      recordResult(current.id, cat === "empty" ? "wrong" : cat);
+      recordResult(current.id, level, cat);
       setLog((prev) => [
         ...prev,
         {
@@ -90,18 +94,23 @@ export function CompletarSession() {
         },
       ]);
     },
-    [current, recordResult]
+    [current, recordResult, level]
   );
 
   const onCheck = useCallback(() => {
     if (phase !== "input" || !current || level === 1) return;
-    finalize(evaluateAnswer(input, current).category);
+    const res = evaluateAnswer(input, current);
+    if (res.category === "empty") {
+      setEmptyNotice(true);
+      return;
+    }
+    finalize(res.category, res.reason ?? null);
   }, [phase, current, input, level, finalize]);
 
   const onChooseOption = useCallback(
     (opt: CompletarItem) => {
       if (phase !== "input" || !current) return;
-      finalize(opt.id === current.id ? "exact" : "wrong");
+      finalize(opt.id === current.id ? "exact" : "wrong", null);
     },
     [phase, current, finalize]
   );
@@ -137,6 +146,8 @@ export function CompletarSession() {
     setIndex((i) => i + 1);
     setInput("");
     setCategory(null);
+    setNearReason(null);
+    setEmptyNotice(false);
     setPhase("input");
   }, [phase, isLast, finishSession, log]);
 
@@ -173,8 +184,14 @@ export function CompletarSession() {
     category === "exact"
       ? { cls: "ok", text: "Correcto! おめでとう!" }
       : category === "near"
-        ? { cls: "near", text: "Casi! Estuviste cerca" }
-        : { cls: "bad", text: "Incorrecto, seguí practicando!" };
+        ? {
+            cls: "near",
+            text:
+              nearReason === "longVowel"
+                ? "Casi! Te faltó poner ー. Podés escribirlo con el signo menos (-). がんばれ"
+                : "Casi! Estuviste cerca. がんばれ",
+          }
+        : { cls: "bad", text: "Incorrecto! たいへんですね" };
 
   const example = exampleFor(current);
   const tip = tipForItem(current);
@@ -229,7 +246,10 @@ export function CompletarSession() {
               className="input completar-input"
               type="text"
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (emptyNotice) setEmptyNotice(false);
+              }}
               placeholder="romaji (ej.: watashi)"
               autoComplete="off"
               autoCorrect="off"
@@ -245,6 +265,11 @@ export function CompletarSession() {
                 Comprobar
               </button>
             </div>
+            {emptyNotice ? (
+              <p className="completar-empty-note" aria-live="polite">
+                Escribí una respuesta antes de comprobar.
+              </p>
+            ) : null}
             <p className="muted hints">Enter = comprobar · Esc = volver</p>
           </>
         )

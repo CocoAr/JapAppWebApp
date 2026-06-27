@@ -1,6 +1,6 @@
 # Jap Vocab (web)
 
-Aplicación web para practicar vocabulario japonés (hiragana → español) para un grupo pequeño: cuentas con usuario + PIN, progreso por usuario en **Cloudflare D1**, frontend estático y API en **Cloudflare Pages Functions**.
+Aplicación web para practicar vocabulario japonés en un grupo pequeño, con tres modos: **Hiragana** y **Katakana** (japonés → español, reconocer) y **Completar Vocabulario** (español → japonés, escribir en romaji). Cuentas con usuario + PIN, progreso por usuario en **Cloudflare D1**, frontend estático y API en **Cloudflare Pages Functions**.
 
 ## Stack
 
@@ -116,16 +116,22 @@ Tercer botón independiente en `/app`, además de Hiragana y Katakana. No compar
   - Nivel 3: muestra la primera letra + la cantidad (solo la cantidad si la palabra tiene 1 letra).
   - Nivel 4: solo la cantidad de letras.
   - Nivel 5: sin pista.
-- **Entrada y evaluación:** se escribe en **romaji** y la app convierte en vivo a hiragana/katakana. La respuesta se evalúa en `exact` / `near` / `wrong` sobre una *lectura* canónica (hiragana folded), tolerante a kana/katakana/vocales largas. `near` = errar por **un solo carácter**.
-- **Feedback:** Correcto → "Correcto! おめでとう!" (verde); un carácter → "Casi! Estuviste cerca" (amarillo); error → "Incorrecto, seguí practicando!" (naranja).
+- **Entrada y evaluación:** se escribe en **romaji** (la app convierte en vivo a hiragana/katakana según el ítem; también podés tipear `-` para `ー`). Se evalúa sobre una *lectura* canónica (hiragana folded), tolerante a kana/katakana, vocales largas y **kana chico vs grande** (`きゃ`=`きや`).
+  - `exact`: lectura correcta. Si tipeás a mano el silabario equivocado, baja a `near`.
+  - `near`: difiere **solo por vocal larga** (ej.: `コヒ` vs `コーヒー`) o por **un carácter** (falta/sobra `っ`, un typo). El kana chico/grande **no** baja a `near`.
+  - `empty`: no cuenta como intento.
+- **Feedback:** Correcto → "Correcto! おめでとう!" (verde); casi → "Casi! Estuviste cerca. がんばれ" (amarillo); falta `ー` → "Casi! Te faltó poner ー. Podés escribirlo con el signo menos (-). がんばれ"; error → "Incorrecto! たいへんですね" (naranja); vacío → "Escribí una respuesta antes de comprobar.". Solo kana visible (sin kanji).
+- **Badges por nivel:** cada parte y cada temática muestran badges 1–5. El badge de un nivel se pone **verde** solo cuando **todos** los ítems de ese alcance están `exact` en ese nivel; la temática agrega sus partes. Se calcula en vivo desde el progreso por ítem (sin porcentajes guardados).
+- **Prompts formal/informal:** los ítems ambiguos muestran contexto entre paréntesis en la consigna (ej.: `padre (mi familia)` vs `padre / papá (forma cortés)`); se aplica en `scripts/build-completar.mjs` (`SPANISH_OVERRIDES`).
 - **Ejemplo / Consejo:** en cada respuesta se muestra "Ejemplo: …" (del material) y, cuando aplica, "Consejo: …" con la asociación de raíces (sección 10).
 - **Resumen:** puntaje + lista de palabras recomendadas para escribir a mano.
 - **Consejos:** la sección 10 (`/app/completar/tips`) se muestra como contenido, no como quiz.
-- **Persistencia:** tabla D1 propia `completar_item_progress` (migración `0005_completar.sql`) + endpoints `GET /api/completar/progress` y `POST /api/completar/result`. El handler tolera que la migración no esté aplicada todavía (devuelve progreso vacío en vez de error).
+- **Persistencia:** progreso por **(ítem, nivel)** en `completar_level_progress` (migración `0006_completar_level_progress.sql`) + endpoints `GET /api/completar/level-progress` y `POST /api/completar/level-result`. Se mantiene la tabla legacy `completar_item_progress` (`0005`). Los handlers toleran que las migraciones no estén aplicadas todavía (devuelven progreso vacío en vez de error).
+- **Tests:** `npm run test:completar` (scoring, vocal larga, silabario, prompts, badges/agregación).
 
 Rutas: `/app/completar`, `/app/completar/parts?theme=<id>&size=10`, `/app/completar/levels?theme=<id>&size=10&part=1`, `/app/completar/session?theme=<id>&size=10&part=1&level=5`, `/app/completar/summary`, `/app/completar/tips`.
 
-> Para producción, aplicá la migración nueva: `npm run db:migrate:remote` (incluye `0005_completar.sql`).
+> Para producción, aplicá las migraciones: `npm run db:migrate:remote` (incluye `0005_completar.sql` y `0006_completar_level_progress.sql`).
 
 ## API (Pages Functions)
 
@@ -142,8 +148,10 @@ Rutas implementadas:
 | `POST` | `/api/progress/session` | Guardar resultado de sesión (modo `page` o `topic`) |
 | `POST` | `/api/progress/category-started` | Marcar categoría como iniciada (tarjetas no grises) |
 | `POST` | `/api/progress/vocab-celebration-seen` | Marcar como visto el popup de celebración global |
-| `GET` | `/api/completar/progress` | Progreso del modo Completar (independiente) |
-| `POST` | `/api/completar/result` | Guardar resultado de un ítem de Completar (`exact`/`near`/`wrong`) |
+| `GET` | `/api/completar/level-progress` | Progreso por (ítem, nivel) del modo Completar (badges) |
+| `POST` | `/api/completar/level-result` | Guardar resultado por (ítem, nivel) (`exact`/`near`/`wrong`) |
+| `GET` | `/api/completar/progress` | Progreso agregado por ítem (legacy) |
+| `POST` | `/api/completar/result` | Guardar resultado por ítem (legacy) |
 
 `GET /api/categories/page` y `GET /api/categories/topic` están alias a `GET /api/progress` para compatibilidad con la especificación.
 

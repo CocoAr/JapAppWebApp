@@ -72,6 +72,54 @@ export function getPartItems(themeId: string, size: number, part: number): Compl
   return all.slice(start, start + size);
 }
 
+// --- level badges / aggregation -------------------------------------------
+
+export const ALL_LEVELS = [1, 2, 3, 4, 5] as const;
+
+/** A part is "green" at a level when every one of its items is exact at that level. */
+export function isPartComplete(
+  themeId: string,
+  size: number,
+  part: number,
+  isExact: (itemId: string) => boolean
+): boolean {
+  const items = getPartItems(themeId, size, part);
+  return items.length > 0 && items.every((it) => isExact(it.id));
+}
+
+/** Count of items in a part that are exact at the given level. */
+export function partExactCount(
+  themeId: string,
+  size: number,
+  part: number,
+  isExact: (itemId: string) => boolean
+): { exact: number; total: number } {
+  const items = getPartItems(themeId, size, part);
+  let exact = 0;
+  for (const it of items) if (isExact(it.id)) exact += 1;
+  return { exact, total: items.length };
+}
+
+/**
+ * A theme is "green" at a level only when all of its parts are green, i.e. every
+ * item in the theme is exact at that level (aggregation of the small parts).
+ */
+export function isThemeComplete(themeId: string, isExact: (itemId: string) => boolean): boolean {
+  const items = getItemsForTheme(themeId);
+  return items.length > 0 && items.every((it) => isExact(it.id));
+}
+
+/** Count of items in a theme that are exact at the given level. */
+export function themeExactCount(
+  themeId: string,
+  isExact: (itemId: string) => boolean
+): { exact: number; total: number } {
+  const items = getItemsForTheme(themeId);
+  let exact = 0;
+  for (const it of items) if (isExact(it.id)) exact += 1;
+  return { exact, total: items.length };
+}
+
 // --- association tips ("Consejo") -----------------------------------------
 
 let tipMap: Map<string, CompletarTip> | null = null;

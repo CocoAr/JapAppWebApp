@@ -206,6 +206,31 @@ export function readingFromRomaji(input: string): string {
   return kanaToReading(romajiToHiragana(input.replace(/-/g, "ー")));
 }
 
+/**
+ * Expand small kana to their full-size counterpart for tolerant scoring:
+ *   ゃゅょ → やゆよ, ぁぃぅぇぉ → あいうえお.
+ * Small tsu (っ) is intentionally NOT folded (it stays a real, but "near", difference).
+ * Readings are hiragana-only (katakana was already folded by `kanaToReading`), so
+ * folding the hiragana smalls also covers their katakana origins.
+ */
+const SMALL_TO_LARGE: Record<string, string> = {
+  ゃ: "や",
+  ゅ: "ゆ",
+  ょ: "よ",
+  ぁ: "あ",
+  ぃ: "い",
+  ぅ: "う",
+  ぇ: "え",
+  ぉ: "お",
+  ゎ: "わ",
+};
+
+export function foldSmallKana(reading: string): string {
+  let out = "";
+  for (const ch of reading) out += SMALL_TO_LARGE[ch] ?? ch;
+  return out;
+}
+
 /** Collapse long vowels (double identical vowels) for tolerant comparison. */
 export function collapseLongVowels(reading: string): string {
   let out = "";

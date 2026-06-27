@@ -1,6 +1,6 @@
 # Jap Vocab — Diseño funcional y técnico
 
-Documento de referencia de la aplicación **Jap Vocab** tal como está implementada en el repositorio (commit de referencia: *sub text changed*). Describe propósito, flujos de usuario, modelo de datos, API, frontend, despliegue y decisiones de diseño.
+Documento de referencia de la aplicación **Jap Vocab** tal como está implementada en el repositorio (incluye el modo "Completar Vocabulario", ver §15.b). Describe propósito, flujos de usuario, modelo de datos, API, frontend, despliegue y decisiones de diseño.
 
 ---
 
@@ -8,12 +8,15 @@ Documento de referencia de la aplicación **Jap Vocab** tal como está implement
 
 ### 1.1 Qué es
 
-Aplicación web para **practicar vocabulario japonés → español** en un grupo pequeño y cerrado. Cada usuario tiene cuenta propia (usuario + PIN), progreso persistido en servidor y dos **tracks de escritura** independientes:
+Aplicación web para **practicar vocabulario japonés** en un grupo pequeño y cerrado. Cada usuario tiene cuenta propia (usuario + PIN) y progreso persistido en servidor. Ofrece **tres modos** independientes accesibles desde `/app`:
 
-| Track | Contenido | Identificador de palabras |
-|-------|-----------|---------------------------|
-| **Hiragana** | Material original en hiragana (~157 palabras) | `w001` … `w157` |
-| **Katakana** | Préstamos / katakana por niveles del material (~127 palabras) | `kw001` … `kw127` |
+| Modo | Dirección | Contenido | IDs |
+|------|-----------|-----------|-----|
+| **Hiragana** | ja → es (reconocer) | Material original en hiragana (~157 palabras) | `w001` … `w157` |
+| **Katakana** | ja → es (reconocer) | Préstamos / katakana por niveles (~127 palabras) | `kw001` … `kw127` |
+| **Completar Vocabulario** | es → ja (escribir) | TSV propio (351 ítems, 8 temáticas) — ver §15.b | `cv*` |
+
+Hiragana y Katakana comparten la misma mecánica de estudio (reconocimiento + autocomprobación). Completar es un modo distinto (producción escrita en romaji) con su propio dataset, progreso y persistencia.
 
 La UI está en **español (Rioplatense)**. No hay recuperación de PIN ni correo electrónico.
 
@@ -90,7 +93,7 @@ Flujo recomendado: `npm run dev:setup` (migraciones locales + build inicial) y l
 |------|-----------|------------|-------------|
 | `/` | No | `Login` | Inicio de sesión |
 | `/register` | No | `Register` | Alta de cuenta |
-| `/app` | Sí | `ScriptPicker` | Elegir Hiragana o Katakana |
+| `/app` | Sí | `ScriptPicker` | Elegir modo: Hiragana / Katakana / Completar |
 | `/app/account` | Sí | `Account` | Info de cuenta (sin edición de PIN) |
 | `/app/hiragana` | Sí | `TrainingMenu` | Menú de práctica hiragana |
 | `/app/katakana` | Sí | `TrainingMenu` | Menú de práctica katakana |
@@ -100,8 +103,14 @@ Flujo recomendado: `npm run dev:setup` (migraciones locales + build inicial) y l
 | `/app/:script/train/weak-page` | Sí | `TrainWeakByPage` | Débiles filtradas por nivel |
 | `/app/:script/session` | Sí | `StudySession` | Sesión activa (query `mode`, `category`) |
 | `/app/:script/summary` | Sí | `SessionSummary` | Resumen post-sesión (state de router) |
+| `/app/completar` | Sí | `CompletarSettings` | Elegir tamaño + temática |
+| `/app/completar/parts` | Sí | `CompletarParts` | Elegir parte fija |
+| `/app/completar/levels` | Sí | `CompletarLevels` | Elegir nivel 1–5 |
+| `/app/completar/session` | Sí | `CompletarSession` | Sesión de escritura |
+| `/app/completar/summary` | Sí | `CompletarSummary` | Resumen (state de router) |
+| `/app/completar/tips` | Sí | `CompletarTips` | Consejos (contenido, no quiz) |
 
-`:script` debe ser `hiragana` o `katakana`. Cualquier otro valor en esa posición redirige a `/app` (`ScriptOutlet`).
+La ruta estática `completar` se resuelve antes que `:script`. En la posición `:script`, cualquier valor que no sea `hiragana`/`katakana` redirige a `/app` (`ScriptOutlet`).
 
 ### 4.2 Jerarquía React Router
 
@@ -114,6 +123,13 @@ AuthProvider
       /app → ProtectedRoute → Layout
         index → ScriptPicker
         account → Account
+        completar → CompletarLayout (CompletarProgressProvider)
+          index → CompletarSettings
+          parts → CompletarParts
+          levels → CompletarLevels
+          session → CompletarSession
+          summary → CompletarSummary
+          tips → CompletarTips
         :script → ScriptOutlet
           index → TrainingMenu
           train/page → TrainByPage
@@ -126,8 +142,8 @@ AuthProvider
 
 ### 4.3 Barra superior (`Layout`)
 
-- **Marca** → `/app` (selector de script).
-- **Enlaces de práctica** solo visibles cuando la URL está bajo `/app/hiragana` o `/app/katakana` (prefijados al script activo).
+- **Marca** → `/app` (selector de modo).
+- **Enlaces de práctica** prefijados al script activo cuando la URL está bajo `/app/hiragana` o `/app/katakana`; bajo `/app/completar` muestra enlaces "Completar" y "Consejos".
 - **Cuenta** y **Salir** siempre visibles en `/app/*`.
 
 ---
@@ -141,9 +157,9 @@ AuthProvider
 3. Cliente redirige a `/app`.
 4. Login posterior: mismas credenciales → cookie renovada (TTL 7 días).
 
-### 5.2 Selección de script
+### 5.2 Selección de modo
 
-En `/app`, dos tiles grandes: **Hiragana** y **Katakana**. Cada uno lleva a su menú de entrenamiento con vocabulario y categorías propias, pero **misma mecánica de ejercicios**.
+En `/app`, tres tiles: **Hiragana**, **Katakana** y **Completar Vocabulario**. Hiragana y Katakana llevan a su menú de entrenamiento (mismo mecanismo de ejercicios, vocabulario propio). Completar lleva a su propio flujo (§15.b).
 
 ### 5.3 Modos de entrenamiento
 
@@ -619,16 +635,21 @@ interface CompletarItem {
 
 | Archivo | Rol |
 |---------|-----|
-| `romaji.ts` | `romajiToKana` (preview en vivo), `kanaToReading` (fold canónico), `readingFromRomaji`, `collapseLongVowels`, `levenshtein` |
-| `scoring.ts` | `evaluateAnswer(input, item)` → `exact` / `near` / `wrong` / `empty` |
+| `romaji.ts` | `romajiToKana` (preview en vivo, `-`→`ー`), `kanaToReading` (fold canónico), `foldSmallKana` (chico→grande), `readingFromRomaji`, `collapseLongVowels`, `levenshtein` |
+| `scoring.ts` | `evaluateAnswer(input, item)` → `exact` / `near` (`reason: longVowel \| general`) / `wrong` / `empty` |
 | `hints.ts` | Niveles 1–5: `levelHint`, `revealPattern`, `kanaCount`, `LEVELS` |
-| `data.ts` | Carga JSON, índices, `partCount`/`getPartItems` (slices fijos), `distractorsForItem`, `tipForItem` |
+| `data.ts` | Carga JSON, índices, `partCount`/`getPartItems` (slices fijos), `isPartComplete`/`isThemeComplete`/`*ExactCount` (badges), `distractorsForItem`, `tipForItem` |
 
-**Idea central del scoring:** tanto la respuesta esperada como lo que escribe el usuario se reducen a una **lectura canónica en hiragana** (katakana→hiragana, `ー`→vocal previa, se descartan `〜`/espacios/puntuación). Así, kana/katakana/vocales largas comparan igual.
+**Idea central del scoring:** tanto la respuesta esperada como lo que escribe el usuario se reducen a una **lectura canónica en hiragana** (katakana→hiragana, `ー`→vocal previa, se descartan `〜`/espacios/puntuación) y luego se **expanden los kana chicos a grandes** (`foldSmallKana`: `ゃゅょ→やゆよ`, `ぁぃぅぇぉ→あいうえお`). Así kana/katakana, vocales largas y chico/grande comparan de forma tolerante.
 
-- `exact`: la lectura coincide con alguna variante aceptada.
-- `near`: solo difiere por vocal larga, o **distancia de edición = 1** (errar por un carácter). Se muestra como "Casi! Estuviste cerca".
-- `wrong` / `empty`: lo demás.
+- `exact`: la lectura (con kana chico expandido) coincide con alguna variante aceptada. **Excepción:** si el usuario tipea kana a mano en el silabario equivocado para un ítem de un solo silabario (y no es una variante explícita en `accepted`), baja a `near`.
+- `near`:
+  - `reason: "longVowel"` → difiere **solo por vocal larga** (`ー`/vocal repetida). Ej.: `コヒ` vs `コーヒー`.
+  - `reason: "general"` → **distancia de edición = 1** (falta/sobra `っ`, un typo, o lectura correcta en silabario equivocado). Ej.: `がこう` vs `がっこう`.
+  - El kana chico vs grande **no** baja a `near`: es `exact`.
+- `wrong`: lo demás. `empty`: sin texto (no cuenta como intento).
+
+El input acepta `-` para producir `ー` (ej.: `ko-hi-` → `コーヒー`).
 
 ### Niveles de dificultad
 
@@ -645,9 +666,19 @@ interface CompletarItem {
 ### Feedback, Ejemplo y Consejo
 
 - **Correcto** → "Correcto! おめでとう!" (verde).
-- **Casi** (1 carácter) → "Casi! Estuviste cerca" (amarillo).
-- **Incorrecto** → "Incorrecto, seguí practicando!" (naranja).
+- **Casi** (general) → "Casi! Estuviste cerca. がんばれ" (amarillo).
+- **Casi** (falta `ー`) → "Casi! Te faltó poner ー. Podés escribirlo con el signo menos (-). がんばれ" (amarillo).
+- **Incorrecto** → "Incorrecto! たいへんですね" (naranja).
+- **Vacío** → no cuenta como intento; nota sobria "Escribí una respuesta antes de comprobar." y se permanece en el input.
+- Solo hiragana/katakana en los textos japoneses visibles (sin kanji).
 - Tras responder se muestra siempre **"Ejemplo: …"** (desde `promptNote`; si la nota no contiene japonés se etiqueta "Nota:") y, cuando aplica, **"Consejo: …"** con la asociación de raíces (`tipForItem` mapea ítems a tips de la sección 10 por tokens del encadenamiento).
+
+### Badges por nivel y agregación
+
+- Progreso real por **(ítem, nivel)**; nada de porcentajes derivados guardados.
+- Cada **parte** muestra badges 1–5: el badge del nivel `n` se pone **verde** solo si **todos** sus ítems están `exact` en ese nivel (`near`/`wrong` no cuentan).
+- Cada **temática** muestra badges 1–5 que **agregan** las partes: verde solo si todos los ítems de la temática están `exact` en ese nivel. Como se calcula en vivo desde el progreso por ítem, lo logrado en una sesión se refleja automáticamente en partes y temáticas.
+- Helpers puros y testeables: `isPartComplete`, `isThemeComplete`, `partExactCount`, `themeExactCount` (`data.ts`).
 
 ### Resumen y consejos
 
@@ -669,10 +700,17 @@ interface CompletarItem {
 
 ### Persistencia (independiente)
 
-- Migración `0005_completar.sql`: tabla `completar_item_progress(user_id, item_id, status, updated_at)` con `status ∈ {exact, near, wrong}`.
-- Endpoints: `GET /api/completar/progress`, `POST /api/completar/result`.
-- El `GET` es **defensivo**: si la migración no se aplicó aún, devuelve `{ items: {} }` en lugar de 500, y el `POST` del cliente es no-fatal. Así el deploy no se rompe antes de migrar.
-- IDs `cv*` y tabla separada → cero solapamiento con `word_progress`.
+- Migración `0005_completar.sql`: tabla `completar_item_progress(user_id, item_id, status, updated_at)` (legacy, agregada por ítem).
+- Migración `0006_completar_level_progress.sql`: tabla `completar_level_progress(user_id, item_id, level, best_result, exact_count, near_count, wrong_count, updated_at)`, PK `(user_id, item_id, level)`. Es el modelo que alimenta los badges por nivel.
+- Endpoints nuevos: `GET /api/completar/level-progress` (devuelve `{ progress: { "<itemId>:<level>": best_result } }`), `POST /api/completar/level-result` (upsert: `best_result` = máximo entre el guardado y el nuevo, incrementa contadores). Se mantienen `GET /api/completar/progress` y `POST /api/completar/result` como legacy (no rompe lo existente).
+- Los `GET` son **defensivos**: si la migración no se aplicó aún, devuelven progreso vacío en lugar de 500, y los `POST` del cliente son no-fatales. Así el deploy no se rompe antes de migrar.
+- El cliente (`CompletarProgressContext`) guarda `levels: { "<itemId>:<level>": status }` con actualización optimista y expone `isExactAt(itemId, level)`.
+- IDs `cv*` y tablas separadas → cero solapamiento con `word_progress`.
+
+### Prompts formal/informal (contexto entre paréntesis)
+
+- Para ítems ambiguos por formalidad/posesión/cortesía o familia propia vs ajena, la consigna en español incluye una aclaración entre paréntesis (ej.: `padre (mi familia)` → `ちち`, `padre / papá (forma cortés)` → `おとうさん`).
+- Decisión: se resuelve en el pipeline (`scripts/build-completar.mjs`, mapa `SPANISH_OVERRIDES` por `item_id`) en vez de editar el TSV, para dejar la fuente canónica intacta y la política de prompts en un solo lugar revisable. Las variantes corteses dentro de `accepted` (ej.: `おくに`, `おてあらい`) siguen siendo respuestas válidas.
 
 ---
 
@@ -684,6 +722,7 @@ interface CompletarItem {
 - Web Speech API depende del navegador/SO; voces japonesas pueden variar.
 - No hay modo offline ni PWA.
 - PIN olvidado requiere intervención manual en D1 o nueva cuenta.
+- Completar: el progreso server-side requiere las migraciones `0005` y `0006` aplicadas (sin ellas el modo funciona pero no persiste, por diseño defensivo). Refrescar `/app/completar/summary` sin `location.state` muestra "No hay datos de sesión".
 
 ---
 
@@ -691,18 +730,21 @@ interface CompletarItem {
 
 ```
 JapAppWebApp/
+├── completar_vocabulario_source.txt  # Fuente de verdad del modo Completar (TSV)
 ├── functions/
-│   ├── api/[[path]].ts      # API monolítica
+│   ├── api/[[path]].ts      # API monolítica (incluye /api/completar/*)
 │   └── _utils/              # crypto, http, validate
-├── migrations/              # SQL D1 versionado
+├── migrations/              # SQL D1 versionado (…, 0005_completar.sql, 0006_completar_level_progress.sql)
 ├── public/                  # Assets estáticos + _redirects
-├── scripts/                 # Validación y generación vocab
+├── scripts/                 # Validación/generación (vocab, katakana, completar)
 ├── src/
 │   ├── components/          # UI reutilizable
-│   ├── context/             # Auth, Speech
-│   ├── data/                # vocabulary.json, vocabulary-katakana.json, vocabulary.ts
+│   ├── context/             # Auth, Speech, CompletarProgress
+│   ├── data/                # vocabulary.json, vocabulary-katakana.json, completar.json, vocabulary.ts
 │   ├── lib/                 # api, progress, colors, speech, shuffle, script
+│   │   └── completar/       # types, data, romaji, scoring, hints
 │   └── pages/               # Pantallas por ruta
+│       └── completar/       # Layout, Settings, Parts, Levels, Session, Summary, Tips
 ├── dist/                    # Salida build (gitignored)
 ├── wrangler.toml
 ├── vite.config.ts

@@ -9,33 +9,41 @@ import {
   type ReactNode,
 } from "react";
 import {
-  apiGetCompletarProgress,
-  apiPostCompletarResult,
+  apiGetCompletarLevelProgress,
+  apiPostCompletarLevelResult,
   type CompletarStatus,
 } from "../lib/api";
 
+const RANK: Record<CompletarStatus, number> = { wrong: 1, near: 2, exact: 3 };
+
+function key(itemId: string, level: number): string {
+  return `${itemId}:${level}`;
+}
+
 type CompletarProgressContextValue = {
-  /** itemId → best/last persisted status. */
-  items: Record<string, CompletarStatus>;
+  /** Best result per `${itemId}:${level}`. */
+  levels: Record<string, CompletarStatus>;
   loaded: boolean;
-  /** Optimistically store a result and persist it (non-fatal on failure). */
-  recordResult: (itemId: string, status: CompletarStatus) => void;
+  /** True when item is `exact` at the given level. */
+  isExactAt: (itemId: string, level: number) => boolean;
+  /** Optimistically store the best result for (item, level) and persist it. */
+  recordResult: (itemId: string, level: number, result: CompletarStatus) => void;
   reload: () => Promise<void>;
 };
 
 const CompletarProgressContext = createContext<CompletarProgressContextValue | null>(null);
 
 export function CompletarProgressProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<Record<string, CompletarStatus>>({});
+  const [levels, setLevels] = useState<Record<string, CompletarStatus>>({});
   const [loaded, setLoaded] = useState(false);
   const loadingRef = useRef(false);
 
   const reload = useCallback(async () => {
     try {
-      const p = await apiGetCompletarProgress();
-      setItems(p.items ?? {});
+      const p = await apiGetCompletarLevelProgress();
+      setLevels(p.progress ?? {});
     } catch {
-      setItems({});
+      setLevels({});
     } finally {
       setLoaded(true);
     }
@@ -47,16 +55,26 @@ export function CompletarProgressProvider({ children }: { children: ReactNode })
     void reload();
   }, [reload]);
 
-  const recordResult = useCallback((itemId: string, status: CompletarStatus) => {
-    setItems((prev) => ({ ...prev, [itemId]: status }));
-    apiPostCompletarResult(itemId, status).catch(() => {
+  const recordResult = useCallback((itemId: string, level: number, result: CompletarStatus) => {
+    const k = key(itemId, level);
+    setLevels((prev) => {
+      const existing = prev[k];
+      if (existing && RANK[existing] >= RANK[result]) return prev;
+      return { ...prev, [k]: result };
+    });
+    apiPostCompletarLevelResult(itemId, level, result).catch(() => {
       /* non-fatal: progress is best-effort */
     });
   }, []);
 
+  const isExactAt = useCallback(
+    (itemId: string, level: number) => levels[key(itemId, level)] === "exact",
+    [levels]
+  );
+
   const value = useMemo(
-    () => ({ items, loaded, recordResult, reload }),
-    [items, loaded, recordResult, reload]
+    () => ({ levels, loaded, isExactAt, recordResult, reload }),
+    [levels, loaded, isExactAt, recordResult, reload]
   );
 
   return (

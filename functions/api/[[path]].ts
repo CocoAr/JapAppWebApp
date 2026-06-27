@@ -62,6 +62,12 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === "/api/completar/result" && request.method === "POST") {
       return handlePostCompletarResult(env, request);
     }
+    if (path === "/api/completar/level-progress" && request.method === "GET") {
+      return handleGetCompletarLevelProgress(env, request);
+    }
+    if (path === "/api/completar/level-result" && request.method === "POST") {
+      return handlePostCompletarLevelResult(env, request);
+    }
 
     return jsonError("Not found", 404);
   } catch (e) {
@@ -348,6 +354,78 @@ async function handlePostCompletarResult(env: Env, request: Request): Promise<Re
      ON CONFLICT(user_id, item_id) DO UPDATE SET status = excluded.status, updated_at = excluded.updated_at`
   )
     .bind(user.id, itemId, status, now)
+    .run();
+
+  return json({ ok: true });
+}
+
+async function handleGetCompletarLevelProgress(env: Env, request: Request): Promise<Response> {
+  const user = await requireUser(env, request);
+  if (!user) return jsonError("No autenticado.", 401);
+
+  // Defensive: works even if migration 0006 has not been applied yet.
+  try {
+    const rows = await env.DB.prepare(
+      "SELECT item_id, level, best_result FROM completar_level_progress WHERE user_id = ?"
+    )
+      .bind(user.id)
+      .all<{ item_id: string; level: number; best_result: string }>();
+
+    const progress: Record<string, "exact" | "near" | "wrong"> = {};
+    for (const r of rows.results ?? []) {
+      if (r.best_result === "exact" || r.best_result === "near" || r.best_result === "wrong") {
+        progress[`${r.item_id}:${r.level}`] = r.best_result;
+      }
+    }
+    return json({ progress });
+  } catch (e) {
+    console.error("completar level progress unavailable", e);
+    return json({ progress: {} });
+  }
+}
+
+async function handlePostCompletarLevelResult(env: Env, request: Request): Promise<Response> {
+  const user = await requireUser(env, request);
+  if (!user) return jsonError("No autenticado.", 401);
+
+  let body: { itemId?: string; level?: number; result?: string };
+  try {
+    body = (await request.json()) as { itemId?: string; level?: number; result?: string };
+  } catch {
+    return jsonError("Invalid JSON", 400);
+  }
+
+  const itemId = body.itemId?.trim() ?? "";
+  const level = body.level;
+  const result = body.result;
+  if (!itemId) return jsonError("itemId requerido.", 400);
+  if (typeof level !== "number" || !Number.isInteger(level) || level < 1 || level > 5) {
+    return jsonError("level debe ser 1–5.", 400);
+  }
+  if (result !== "exact" && result !== "near" && result !== "wrong") {
+    return jsonError("result inválido.", 400);
+  }
+
+  const now = Date.now();
+  const ex = result === "exact" ? 1 : 0;
+  const ne = result === "near" ? 1 : 0;
+  const wr = result === "wrong" ? 1 : 0;
+
+  await env.DB.prepare(
+    `INSERT INTO completar_level_progress
+       (user_id, item_id, level, best_result, exact_count, near_count, wrong_count, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(user_id, item_id, level) DO UPDATE SET
+       best_result = CASE
+         WHEN excluded.best_result = 'exact' OR best_result = 'exact' THEN 'exact'
+         WHEN excluded.best_result = 'near' OR best_result = 'near' THEN 'near'
+         ELSE 'wrong' END,
+       exact_count = exact_count + excluded.exact_count,
+       near_count = near_count + excluded.near_count,
+       wrong_count = wrong_count + excluded.wrong_count,
+       updated_at = excluded.updated_at`
+  )
+    .bind(user.id, itemId, level, result, ex, ne, wr, now)
     .run();
 
   return json({ ok: true });
